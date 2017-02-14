@@ -6,20 +6,20 @@
     <display-name>IBBL iBanking Web Service</display-name>
 
     <servlet>
-        <servlet-name>dwellerWS</servlet-name>
+        <servlet-name>condoLoggerWS</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>dwellerWS</servlet-name>
+        <servlet-name>condoLoggerWS</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>/WEB-INF/dwellerWS-servlet.xml
-            /WEB-INF/dwellerWS-security.xml</param-value>
+        <param-value>/WEB-INF/condoLoggerWS-servlet.xml
+            /WEB-INF/condoLoggerWS-security.xml</param-value>
     </context-param>
 
     <listener>
