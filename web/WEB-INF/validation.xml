@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE form-validation PUBLIC
+        "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+        "http://jakarta.apache.org/commons/dtds/validator_1_2_0.dtd">
+
+<form-validation>
+    <global>
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^\d{5}\d*$</constant-value>
+        </constant>
+        <constant>
+            <constant-name>zip</constant-name>
+            <constant-value>^\d{5}\d*$</constant-value>
+        </constant>
+        <constant>
+            <constant-name>password</constant-name>
+            <constant-value>^[0-9a-zA-Z]*$</constant-value>
+        </constant>
+        <constant>
+            <constant-name>dateFormat</constant-name>
+            <constant-value>[0-9]{1,2}[/\-\.][0-9]{1,2}[/\-\.][0-9]{2,4}</constant-value>
+        </constant>
+    </global>
+
+    <formset>
+        <form name="accountForm">
+            <field property="accountNo" depends="required">
+                <arg key="prompt.accNo" bundle="wst"/>
+            </field>
+            <field property="custID" depends="required">
+                <arg key="prompt.custID" bundle="wst"/>
+            </field>
+        </form>
+        <form name="customerForm">
+            <field property="custID" depends="required">
+                <arg key="prompt.custID" bundle="wst"/>
+            </field>
+        </form>
+        <form name="/viewAccountsDetails">
+            <field property="textValue" depends="required">
+                <arg key="prompt.accNo" bundle="wst"/>
+            </field>
+        </form>
+        <form name="/maintainAdminUser01">
+            <field property="textValue" depends="required">
+                <arg key="prompt.screenName" bundle="wst"/>
+            </field>
+        </form>
+        <!--<form name="loginInfoBean">-->
+        <!--<field property="loginID" depends="required">-->
+        <!--<arg key="prompt.login.id" bundle="wst"/>-->
+        <!--</field>-->
+        <!--<field property="password" depends="required,mask">-->
+        <!--<arg key="prompt.login.password" bundle="wst"/>-->
+        <!--<var>-->
+        <!--<var-name>mask</var-name>-->
+        <!--<var-value>${password}</var-value>-->
+        <!--</var>-->
+        <!--</field>-->
+        <!--</form>-->
+        <form name="/login">
+            <field property="loginID" depends="required">
+                <arg key="prompt.email" bundle="wst"/>
+            </field>
+            <field property="password" depends="required">
+                <arg key="prompt.password" bundle="wst"/>
+                <!--<var>-->
+                <!--<var-name>mask</var-name>-->
+                <!--<var-value>${password}</var-value>-->
+                <!--</var>-->
+            </field>
+        </form>
+
+        <form name="reportForm">
+            <!--<field property="accNo" depends="required">-->
+            <!--<arg key="prompt.accNo" bundle="wst"/>-->
+            <!--</field>-->
+            <field property="fromDate" depends="required,date">
+                <arg key="prompt.fromDate" bundle="wst"/>
+                <var>
+                    <var-name>datePattern</var-name>
+                    <var-value>dd/MM/yyyy</var-value>
+                </var>
+            </field>
+            <field property="toDate" depends="required,date">
+                <arg key="prompt.toDate" bundle="wst"/>
+                <var>
+                    <var-name>datePattern</var-name>
+                    <var-value>dd/MM/yyyy</var-value>
+                </var>
+            </field>
+            <field property="filename" depends="required">
+                <arg key="prompt.name" bundle="wst"/>
+            </field>
+            <field property="format" depends="required">
+                <arg key="prompt.format" bundle="wst"/>
+            </field>
+        </form>
+
+        <!-- <form name="gReportForm">
+             <field property="filename" depends="required">
+                 <arg key="prompt.filename" bundle="wst"/>
+             </field>
+             <field property="format" depends="required">
+                 <arg key="prompt.format" bundle="wst"/>
+             </field>
+         </form>
+
+         <form name="selectForm">
+             <field property="id" depends="required">
+                 <arg key="prompt.id" bundle="wst"/>
+             </field>
+         </form>-->
+        <!-- <form name="ssBean">
+             <field property="string" depends="required">
+                 <arg key="prompt.string" bundle="wst"/>
+             </field>
+         </form>-->
+        <form name="passwordForm">
+            <field property="password" depends="required">
+                <arg key="prompt.password" bundle="wst"/>
+            </field>
+            <field property="newPassword" depends="required">
+                <arg key="prompt.password" bundle="wst"/>
+            </field>
+            <!--<field property="newConfirmedPassword" depends="required">-->
+            <!--<arg key="prompt.newConfirmedPassword" bundle="wst"/>-->
+            <!--</field>-->
+            <!--
+                        <field property="newConfirmedPassword" depends="validwhen">
+                            <arg0 key="prompt.confirmedPassword" bundle="wst"/>
+                            <var>
+                                <var-name>test</var-name>
+                                <var-value>( (newPassword == null ) or (*this* == newPassword) )</var-value>
+                            </var>
+                        </field>
+            -->
+        </form>
+        <form name="/adminCreate01">
+            <field property="screenName" depends="required">
+                <arg key="prompt.screenName" bundle="wst"/>
+            </field>
+            <field property="actualName" depends="required">
+                <arg key="prompt.actualName" bundle="wst"/>
+            </field>
+            <field property="password" depends="required">
+                <arg key="prompt.password" bundle="wst"/>
+            </field>
+            <!--<field property="confirmedPassword" depends="required">-->
+            <!--<arg key="prompt.confirmedPassword" bundle="wst"/>-->
+            <!--</field>-->
+            <!--
+                        <field property="confirmedPassword" depends="validwhen">
+                            <arg0 key="prompt.confirmedPassword" bundle="wst"/>
+                            <var>
+                                <var-name>test</var-name>
+                                <var-value>( (password == null ) or (*this* == password) )</var-value>
+                            </var>
+                        </field>
+            -->
+        </form>
+        <!--<form name="maintainAdminUser02">
+            <field property="string" depends="required">
+                <arg key="prompt.screenName" bundle="wst"/>
+            </field>
+        </form>-->
+        <form name="pendingRequestForm">
+            <field property="profileID" depends="required">
+                <arg key="prompt.profileID" bundle="wst"/>
+            </field>
+            <field property="authCodeFirst" depends="required">
+                <arg key="prompt.authCodeFirst" bundle="wst"/>
+            </field>
+            <field property="authCodeLast" depends="required">
+                <arg key="prompt.authCodeLast" bundle="wst"/>
+            </field>
+        </form>
+        <form name="activateProfile">
+            <field property="email" depends="required">
+                <arg key="prompt.email" bundle="wst"/>
+            </field>
+            <field property="code" depends="required">
+                <arg key="prompt.code" bundle="wst"/>
+            </field>
+        </form>
+        <form name="/profileWaiver03">
+            <field property="percent" depends="required">
+                <arg key="prompt.waiverPercent" bundle="wst"/>
+            </field>
+            <field property="upperLimit" depends="required">
+                <arg key="prompt.waiverMaxLimit" bundle="wst"/>
+            </field>
+            <field property="lowerLimit" depends="required">
+                <arg key="prompt.waiverMinLimit" bundle="wst"/>
+            </field>
+            <field property="period" depends="required">
+                <arg key="prompt.waiverPeriod" bundle="wst"/>
+            </field>
+        </form>
+    </formset>
+</form-validation>

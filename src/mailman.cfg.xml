@@ -1,0 +1,3023 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<mailman-config>
+
+    <!-- ATTENTION!! Following entries should be changed according to the implementation -->
+    <!--CORETEAM-->
+    <domain>coreteam.com</domain>
+    <mail-server>192.168.0.5</mail-server>
+    <smtp-port>25</smtp-port>-->
+    <!--islamibankbd.org-->
+    <!--
+        <domain>islamibankbd.org</domain>
+        <mail-server>192.168.6.44</mail-server>
+        <smtp-port>25</smtp-port>
+    -->
+
+    <!--Following entries are prepended with @domain to form the mail addresses-->
+    <admin-addr>admin.portal</admin-addr>
+    <admin-pass>pass123</admin-pass>
+    <admin-personal>iBanking Administrator</admin-personal>
+    <support-addr>support.portal</support-addr>
+    <support-pass>pass123</support-pass>
+    <support-personal>iBanking Support</support-personal>
+    <info-addr>admin.portal</info-addr>
+    <info-pass>pass123</info-pass>
+    <info-personal>iBanking Notification</info-personal>
+
+
+    <!--
+    Runtime Variables are denoted by @...@
+
+    Currently the following runtime variables are defined:
+
+    @to@				Name of recipient (profile's owner)
+    @admin@				Email address of administrator(s)
+    @support@			Email address of support section
+    @info@				Email address of information section
+    @profile-name@    	User name of a profile
+    @profile-email@		Email address of a profile
+    @profile-contact@	Contact address of a profile
+    @profile-passwd@	Password assigne to a profile
+    @activation-code@	Activation code of a profile
+    -->
+    <mail-template name="invitation">
+        <subject>[IBBL iBanking] Your registration request has been approved.</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt; Congratulations! &lt;br/&gt;
+            We are pleased to let you know that your application for registration to the IBBL iBanking System has been
+            approved by administration.
+            &lt;/p&gt;
+
+            &lt;p&gt;Your account has been created and put in an inactive state for security reasons. To activate your
+            account,
+            you may follow either of the way:
+            &lt;/p&gt;
+            &lt;p&gt;
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            1. Activation is only the one time process and you wont require to do it after you use the
+            activation. Please click this link to activate: &lt;br&gt;
+            @start-link@$ACTIVATION-ACTION$?email=@profile-email@&amp;code=@activation-code@@end-link@
+            $ACTIVATION-ACTION$?email=@profile-email@&amp;code=@activation-code@
+            @end-link-brace@ &lt;br/&gt;
+            If link doesn't work copy and paste the link in the browser.
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt; &lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            2.If the above link does not work then to activate your account, please click the link below or
+            go to the address &lt;br/&gt;
+            @start-link@$ACTIVATION-WEB$@end-link@
+            $ACTIVATION-WEB$
+            @end-link-brace@ and activate your account using the activation code @activation-code@
+            &lt;br/&gt;
+            If link doesn't work copy and paste the link in the browser.
+
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/p&gt;
+            &lt;p&gt;
+            For viewing account statement online you have to follow the following link. &lt;br/&gt;
+            Address: $WEB$
+            &lt;/p&gt;
+            &lt;p&gt;
+            And then use the following information for accessing your account: &lt;br/&gt;
+            User id: @profile-email@ &lt;br/&gt;
+            Password: PASSWORD YOU PROVIDED AT SIGN-UP &lt;br/&gt;
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            N.B. If for any reason, you are in doubt about the authenticity of this mail, then please feel free to
+            contact us at @support@.
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+        </body>
+
+
+    </mail-template>
+
+    <mail-template name="reset-status">
+        <subject>[IBBL iBanking] Account is locked. Please check your a/c status.</subject>
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt; IBBL iBanking has detected that, you portal account has been accessed either by some intruder or
+            you
+            may have given wrong user
+            name and password several times. &lt;br /&gt;
+            Due to the security reasons our system put your portal account in a lock state.
+            &lt;/p&gt;
+            &lt;p&gt;
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            To unlock your account (from lock status to regular status), please click on the link below &lt;br /&gt;
+            @start-link@$RESET-STATUS-ACTION$?uid=@profile-email@@end-link@
+            $RESET-STATUS-ACTION$?uid=@profile-email@
+            @end-link-brace@
+            &lt;br/&gt;
+            If link doesn't work copy and paste the link in the browser.
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            N.B. If for any reason, you are in doubt about the authenticity of this mail, then please feel free to
+            contact us at @support@.
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+        </body>
+    </mail-template>
+
+
+    <mail-template name="unban-request">
+        <subject>[IBBL iBanking] Unban-request.</subject>
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt; IBBL iBanking has detected that, suspicious/unusual access to you portal account has occurred
+            several times
+            by some intruder. To prevent such access we had previously put your portal account in lock state.
+            But it seems that this type of activities was occurred repeatedly.
+            &lt;/p&gt;
+            &lt;p&gt;
+            Due to the security reasons our system put your portal account in a ban state.
+            To unban your account (from banned status to regular status), please click on the link below
+            &lt;/p&gt;
+            &lt;p&gt;
+            &lt;table &gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            To send UNBAN-REQ your account, please click on the link below &lt;br /&gt;
+            @start-link@$UNBAN-REQ-ACTION$?uid=@profile-email@@end-link@
+            $UNBAN-REQ-ACTION$?uid=@profile-email@
+            @end-link-brace@
+            &lt;br/&gt;
+            If link doesn't work copy and paste the link in the browser.
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+
+            N.B. If for any reason, you are in doubt about the authenticity of this mail, then please feel free to
+            contact us at @support@.
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+        </body>
+    </mail-template>
+
+
+    <mail-template name="link-change-pwd">
+        <subject>[IBBL iBanking] User Password Reset Request</subject>
+
+
+        <body>
+            &lt;table style="border-radius:4px;border:1px #dceaf5 solid;font-size:11pt;font-family:'Trebuchet MS','Open
+            Sans','Lucida Grande','Segoe UI',Arial,Verdana,'Lucida Sans Unicode',Tahoma,'Sans Serif';padding:10px;"&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt; Someone recently requested to change your iBanking password.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            &lt;table style="font-size:11pt;font-family:'Trebuchet MS','Open Sans','Lucida Grande','Segoe
+            UI',Arial,Verdana,'Lucida Sans Unicode',Tahoma,'Sans Serif';"&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            If this was you, you can set a new password follow the link:&lt;br/&gt;
+            @start-link@$FORGOT-PWD-ACTION$?uid=@profile-email@ @end-link@
+            $FORGOT-PWD-ACTION$?uid=@profile-email@ @end-link-brace@
+            &lt;br/&gt;&lt;br/&gt;
+            If link doesn't work copy and paste the link in the browser.
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;/p&gt;
+            &lt;p&gt; If you don't want to change your password, just ignore this message.&lt;/p&gt;
+            &lt;p&gt;
+            Regards, &lt;br/&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            N.B. If for any reason, you are in doubt about the authenticity of this mail, then please feel free to
+            contact us at @support@.
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+        </body>
+
+
+    </mail-template>
+
+
+    <mail-template name="rejection">
+        <subject>[IBBL iBanking] Your registration request is regretted.</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt; Sorry! &lt;br /&gt;
+            We are sorry to let you know that your application for registration to the IBBL iBanking System was not
+            approved by administration. It might be due to some information provided by you at registration process was
+            not correct. Please correct that information and try again.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            &lt;table &gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            If you want to register again, please click this link to register:$REGISTER-USER$
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;/p&gt;
+            &lt;p&gt; ***If you did not reset your password, please ignore this message.&lt;/p&gt;
+            &lt;p&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            N.B. If for any reason, you are in doubt about the authenticity of this mail, then please feel free to
+            contact us at @support@.
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+        </body>
+
+
+    </mail-template>
+
+    <mail-template name="reg-notification">
+        <subject>[IBBL iBanking] New registration request</subject>
+        <body>
+            A new registration request has been placed in the registration queue. The details are as follows:
+
+            Name: @profile-name@
+            Email: @profile-email@
+            Contact Address: @profile-contact@
+
+        </body>
+    </mail-template>
+
+    <mail-template name="notify-direct-reg">
+        <subject>[IBBL iBanking] iBanking Registration Info From Islami Bank Bangladesh Limited</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;Welcome to IBBL iBanking services.
+            &lt;/p&gt;
+            &lt;p&gt; IBBL is offering this service for you as you have shown interest
+            about it. IBBL management has registered your account on behalf of you.
+            &lt;/p&gt;
+            &lt;p&gt; Currently available iBanking services are-
+            &lt;/p&gt;
+            &lt;p&gt; @features@
+            &lt;/p&gt;
+            &lt;p&gt;
+            To enjoying these services you have to follow the following link. &lt;br/&gt;
+            Address: $WEB$ &lt;br/&gt;
+            OR $ALTER-WEB$ &lt;br/&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+            Use the following information for accessing your profile: &lt;br/&gt;
+            User id: @profile-email@ &lt;br/&gt;
+            Password: Please check your cell phone &lt;br/&gt;
+            &lt;/p&gt;
+            &lt;p&gt; *** For your safety, please change the password periodically.&lt;/p&gt;
+            &lt;p&gt; For any further query related to technical support/ updating any information,
+            please contact: @support@ &lt;/p&gt;
+            &lt;p&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+        </body>
+
+
+    </mail-template>
+    <mail-template name="notify-passwd-change">
+        <subject>[IBBL iBanking] Resetting password for eIBS a/c as requested by user</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt; We have received a request from your side that, you wanted to change(reset) your password to
+            access your IBBL iBanking a/c. As per request, our system had changed your password with a randomly
+            generated
+            password which you will receive through this mail.
+
+
+            &lt;/p&gt;
+
+            &lt;p&gt; Use the following information for accessing your account:
+            Address: $WEB$ &lt;br/&gt;
+            OR $ALTER-WEB$ &lt;br/&gt;
+            User id: @profile-email@ &lt;br/&gt;
+            Password: @profile-passwd@ &lt;br/&gt;
+
+            &lt;/p&gt;
+            &lt;p&gt;
+            For future access you will have to use this password until and unless you change your own password from our
+            IBBL iBanking system.
+
+            &lt;/p&gt;
+            &lt;p&gt; ****We STRONGLY recommend that you change this random generated password on your NEXT login.****
+            &lt;/p&gt;
+            &lt;p&gt; Thanks for using our system and really appreciate our client’s suggestion to make our system more
+            user friendly. For any further query related to technical support/ updating any information,
+            please contact: @support@&lt;/p&gt;
+            &lt;p&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+        </body>
+
+
+    </mail-template>
+    <mail-template name="link-verify-emailid">
+        <subject>[IBBL iBanking] Verify user email address to initiate new registration</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt; Welcome! &lt;br/&gt;
+            We are pleased to let you know that your email address has been verified successfully.
+            &lt;/p&gt;
+
+            Please click this link to continue your registration: &lt;br&gt;
+            @start-link@$VERIFY-EMAILID$?@profile-intro@ @end-link@
+            $VERIFY-EMAILID$?@profile-intro@ @end-link-brace@
+            &lt;p&gt;
+            If link doesn't work copy and paste the link in the browser.
+            &lt;/p&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt; &lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+
+        </body>
+
+
+    </mail-template>
+    <mail-template name="link-last-page-of-registration">
+        <subject>[IBBL iBanking] Authentication Form of registration accepted for approval.</subject>
+        <body>
+            &lt;table border="0" width="100%"&gt;
+            &lt;tr&gt;
+
+            &lt;td align="center" style="font-family: Palatino Linotype, sans-serif;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: normal;
+            text-align: center;
+            color: black;
+            "&gt;Islami Bank Bangladesh Limited
+            &lt;/td&gt;
+
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td align="center" style="font-family: Helvetica, Verdana, Arial, sans-serif;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: normal;
+            text-align: center;
+            color: black;
+            "&gt;Based on Islamic Shariah
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td align="center" style="font-family: Verdana, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: bold;
+            text-align: center;
+            color: black;"&gt;IBBL iBanking Service
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;table border="0" cellspacing="2" cellpadding="1"&gt;
+
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;&lt;b&gt;Profile ID:&lt;/b&gt; @profile-profileid@
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;&lt;b&gt;Authentication
+            Code:&lt;/b&gt; @profile-authcode@
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;td colspan="3"&gt;Dear
+            Mr/Mrs.@profile-firstname@ @profile-lastname@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt; The information
+            you provided needs to be verified by our iBanking Administrator.
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt; Please &lt;strong&gt;bring this printed
+            information&lt;/strong&gt; to branch of IBBL. Activation process
+            will be completed within 72 hours, inshallah.
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;Your
+            submitted information summary is as follows:
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;&lt;b&gt;Personal Information&lt;/b&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt;First Name&lt;/td&gt;
+            &lt;td colspan="2"&gt;@profile-firstname@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt;Last Name&lt;/td&gt;
+            &lt;td colspan="2"&gt;@profile-lastname@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt;E-mail&lt;/td&gt;
+            &lt;td colspan="2"&gt;@profile-email@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt;Date of Birth / Incorporation &lt;/td&gt;
+            &lt;td colspan="2"&gt;@profile-dob@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt; Phone No &lt;/td&gt;
+            &lt;td colspan="2"&gt; @profile-phoneno@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt; Contact Address &lt;/td&gt;
+            &lt;td colspan="2"&gt; @profile-contactaddress@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt; Permanent Address &lt;/td&gt;
+            &lt;td colspan="2"&gt; @profile-permanentaddress@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt; Passport Number &lt;/td&gt;
+            &lt;td colspan="2"&gt; @profile-passportno@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt; Passport Expiry Date &lt;/td&gt;
+            &lt;td colspan="2"&gt;@profile-expdate@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt; Registration Date &lt;/td&gt;
+            &lt;td colspan="2"&gt; @profile-regdate@ &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;table border="0"&gt;
+            &lt;tr class="th1"&gt;
+            &lt;td&gt;&lt;strong&gt;Account No &lt;/strong&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;strong&gt;Customer ID &lt;/strong&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;strong&gt;Branch Name &lt;/strong&gt; &lt;/td&gt;
+            &lt;td&gt;&lt;strong&gt;Signature of A/C Holder&lt;/strong&gt; &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            @profile-account@
+
+            &lt;td&gt; &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+            &lt;/tr&gt;
+            &lt;font size="1"&gt;
+
+            &lt;font size="1"&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt; &lt;/td&gt;
+            &lt;td colspan="2"&gt; &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt; Thank
+            You for banking with us. &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt; &lt;/td&gt;
+            &lt;td colspan="2"&gt; &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt; iBanking Administrator &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt; Islami
+            Bank Bangladesh Limited &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;admin.portal@islamibankbd.com &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt; &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;Note: If any Non Resident Bangladeshi wants to register for iBanking service,
+            s/he will have to send the signed document (last page of registration ) as attachment to the mail address:
+            admin.portal@islamibankbd.com &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;hr size="1"&gt;
+            &lt;table&gt;
+            &lt;tr&gt;&lt;td &gt;
+            &lt;table border="0"&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;For
+            Office Use Only &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="227" height="21"&gt;&lt;strong&gt;Signature
+            Checked? &lt;/strong&gt;&lt;/td&gt;
+            &lt;td width="197" height="21"&gt;&lt;strong&gt;Account
+            No Checked? &lt;/strong&gt;&lt;/td&gt;
+            &lt;td width="232" height="21"&gt;&lt;strong&gt;Customer
+            ID Checked? &lt;/strong&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td height="21" &gt;&lt;strong&gt;Approved/Rejected
+            ? &lt;/strong&gt;&lt;/td&gt;
+            &lt;td height="21"&gt;&lt;strong&gt;Activation
+            Send? &lt;/strong&gt;&lt;/td&gt;
+            &lt;td height="21"&gt;&lt;strong&gt;Date
+            of approval &lt;/strong&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td height="21" &gt;&lt;strong&gt; Name
+            and Signature of Branch Portal Admin: &lt;/strong&gt;&lt;/td&gt;
+            &lt;td height="21"&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/td&gt;
+            &lt;td height="21"&gt;&lt;strong&gt; Name
+            and Signature of Branch Authority: &lt;/strong&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td height="41" colspan="3"&gt; &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+
+            &lt;/td&gt;&lt;/tr&gt;
+
+            &lt;/table&gt;
+
+
+        </body>
+
+
+    </mail-template>
+    <mail-template name="verify-change-userid">
+        <subject>[IBBL iBanking] Change iBanking Userid.</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We have received a request from your side that, you wanted to change your email(iBanking User id).
+            &lt;/p&gt;
+
+            Please click this link to Change your User id: &lt;br&gt;
+            @start-link@$VERIFY-CHANGE-USERID$?@profile-intro@ @end-link@
+            $VERIFY-CHANGE-USERID$?@profile-intro@ @end-link-brace@
+            &lt;p&gt;
+            If link doesn't work copy and paste the link in the browser.
+            &lt;/p&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt; &lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+        </body>
+
+
+    </mail-template>
+    <mail-template name="link-change-userid">
+        <subject>[IBBL iBanking] Verify user email address to change userid.</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that your email address has been verified successfully.
+            &lt;/p&gt;
+
+            Please click this link to Change your User id: &lt;br&gt;
+            @start-link@$CHANGE-USERID$?@profile-intro@ @end-link@
+            $CHANGE-USERID$?@profile-intro@ @end-link-brace@
+            &lt;p&gt;
+            If link doesn't work copy and paste the link in the browser.
+            &lt;/p&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt; &lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+
+        </body>
+
+
+    </mail-template>
+    <mail-template name="link-change-phoneno">
+        <subject>[IBBL iBanking] Change User Phone Number.</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that your phone number has been verified successfully.
+            &lt;/p&gt;
+
+            Please click this link to Change your Phone Number: &lt;br&gt;
+            @start-link@$CHANGE-PHONENO$?@new-phone-no@ @end-link@
+            $CHANGE-PHONENO$?@new-phone-no@ @end-link-brace@
+            &lt;p&gt;
+            If link doesn't work copy and paste the link in the browser.
+            &lt;/p&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt; &lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+
+        </body>
+
+
+    </mail-template>
+
+    <mail-template name="fundTransfer-otp">
+        <subject>[IBBL iBanking] Fund transfer request has been queued which need one time key verification</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that you have requested for a fund transfer. This need an One Time Key
+            verification.
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;From Account :&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;To Account :&lt;/td&gt; &lt;td&gt;@dest-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Transfer ID :&lt;/td&gt; &lt;td&gt;@transfer-ID@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;ONE TIME KEY :&lt;/td&gt;&lt;td&gt;&lt;strong&gt; @otp-value@ &lt;/strong&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;/table&gt;
+
+
+        </body>
+
+
+    </mail-template>
+
+    <mail-template name="eftIssue-otp">
+        <subject>[IBBL iBanking] Fund transfer request has been queued which need one time key verification</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that you have requested for a fund transfer. This need an One Time Key
+            verification.
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;From Account :&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;To Account :&lt;/td&gt; &lt;td&gt;@dest-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Transfer ID :&lt;/td&gt; &lt;td&gt;@transfer-ID@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;ONE TIME KEY :&lt;/td&gt;&lt;td&gt;&lt;strong&gt; @otp-value@ &lt;/strong&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+
+
+        </body>
+
+
+    </mail-template>
+
+
+    <mail-template name="fundTransfer-success">
+        <subject>[IBBL iBanking] Fund transfer successfully completed</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that you have successfully completed a fund transfer which has the following
+            details :
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;From Account :&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;To Account :&lt;/td&gt; &lt;td&gt;@dest-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Transfer ID :&lt;/td&gt; &lt;td&gt;@transfer-ID@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Transfer Date :&lt;/td&gt; &lt;td&gt;@transfer-date@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration &lt;br /&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+
+
+    </mail-template>
+
+    <mail-template name="eftIssue-success">
+        <subject>[IBBL iBanking] EFT successfully Issued</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that you have successfully issued a EFT request which has the following
+            details :
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;From Account :&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Name of Recipient :&lt;/td&gt; &lt;td&gt;@dest-name@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;To Account :&lt;/td&gt; &lt;td&gt;@dest-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Transfer ID :&lt;/td&gt; &lt;td&gt;@transfer-ID@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Transfer Date :&lt;/td&gt; &lt;td&gt;@transfer-date@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+
+
+    </mail-template>
+
+    <mail-template name="eftIssue-return">
+        <subject>[IBBL iBanking] EFT Instruction Returned.</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are sorry to let you know that your Fund Transfer request of Tk. @amount@ from A/C @src-acc@, IBBL to
+            @dest-name@,
+            A/C
+            @dest-acc@ returned from BEFTN. &lt;br /&gt;
+            Your deducted Amount will be refunded soon.
+
+            details :
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;From Account :&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;To Account :&lt;/td&gt; &lt;td&gt;@dest-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Transfer ID :&lt;/td&gt; &lt;td&gt;@transfer-ID@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Transfer Date :&lt;/td&gt; &lt;td&gt;@transfer-date@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+
+
+    </mail-template>
+
+
+    <mail-template name="recharge-success">
+        <subject>[IBBL iBanking] Recharge request accepted successfully.</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that your recharge request is accepted to process. Details are follow :
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Account :&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Cell :&lt;/td&gt; &lt;td&gt;@cell-no@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Recharge Date :&lt;/td&gt; &lt;td&gt;@recharge-date@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Recharge ID :&lt;/td&gt; &lt;td&gt;@recharge-id@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+
+
+    </mail-template>
+    <mail-template name="link-change-static-pin-code">
+        <subject>[IBBL iBanking] Change iBanking TPIN(Pin code).</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            You tried for a TPIN change request.
+            &lt;/p&gt;
+
+            Please click this link to Change your iBanking TPIN (Pin Code): &lt;br&gt;
+            @start-link@$CHANGE-STATIC-PIN$?@static-pin-code@ @end-link@
+            $CHANGE-STATIC-PIN$?@static-pin-code@ @end-link-brace@
+            &lt;p&gt;
+            If link doesn't work copy and paste the link in the browser.
+            &lt;/p&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt; &lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+
+        </body>
+
+
+    </mail-template>
+    <mail-template name="link-request-new-tpin">
+        <subject>[IBBL iBanking] New TPIN Request</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt; You recently requested to subscribe a new TPIN.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            &lt;table &gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            To subscribe TPIN, follow the link:
+            @start-link@$REQUEST-NEW-TPIN$?textValue=@profile-email@ @end-link@
+            $REQUEST-NEW-TPIN$?textValue=@profile-email@ @end-link-brace@
+            &lt;br/&gt;
+            If link doesn't work copy and paste the link in the browser.
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;/p&gt;
+            &lt;p&gt; ***If you did not subscribe your TPIN, please ignore this message.&lt;/p&gt;
+            &lt;p&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+
+            N.B. If for any reason, you are in doubt about the authenticity of this mail, then please feel free to
+            contact us at @support@.
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+        </body>
+
+
+    </mail-template>
+
+    <mail-template name="wimax-bill-pay-qubee-postpaid-success">
+        <subject>[IBBL iBanking] Qubee Bill Paid successfully</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that you have successfully completed your bill payment:
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Debit Account :&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Connection Provider :&lt;/td&gt; &lt;td&gt;@conn-provider@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Package Type :&lt;/td&gt; &lt;td&gt;@package@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Qubee Account :&lt;/td&gt; &lt;td&gt;@qubee-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Recharge Date :&lt;/td&gt; &lt;td&gt;@recharge-date@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Service ID :&lt;/td&gt; &lt;td&gt;@service-id@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+
+
+    </mail-template>
+    <mail-template name="wimax-banglalion-recharge-success">
+        <subject>[IBBL iBanking] Banglalion Recharge request accepted successfully.</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that your banglalion wimax recharge request is accepted to process. Details
+            are follow :
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Debit Account :&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Connection Provider :&lt;/td&gt; &lt;td&gt;@conn-provider@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Package Type :&lt;/td&gt; &lt;td&gt;@package@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Banglalion Account :&lt;/td&gt; &lt;td&gt;@blion-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Service ID :&lt;/td&gt; &lt;td&gt;@service-id@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+
+
+    </mail-template>
+    <mail-template name="wimax-bill-pay-success">
+        <subject>[IBBL iBanking] Purchase Wimax Card success</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that you have successfully purchased the following cards :
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Debit Account :&lt;/td&gt;&lt;td&gt;@src-acc@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Connection Provider :&lt;/td&gt;&lt;td&gt;@conn-provider@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Package Type :&lt;/td&gt;&lt;td&gt;@package@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Card Detail :&lt;/td&gt;
+            &lt;td&gt;
+            &lt;table border="0"&gt;
+            &lt;tr&gt;
+            &lt;td width="140"&gt;&lt;strong&gt;Card Value&lt;/strong&gt;&lt;/td&gt;
+            &lt;td width="160"&gt;&lt;strong&gt;Serial No&lt;/strong&gt;&lt;/td&gt;
+            &lt;td width="120"&gt;&lt;strong&gt;Card Pin&lt;/strong&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            @card-detail@
+            &lt;/tr&gt;
+            &lt;/table&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td&gt;Recharge Date :&lt;/td&gt;&lt;td&gt;@recharge-date@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Service ID :&lt;/td&gt;&lt;td&gt;@service-id@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards,&lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited&lt;br/&gt;
+            Email: @admin@&lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+
+
+    </mail-template>
+    <mail-template name="profile-activate">
+        <subject>[IBBL iBanking] Your registration request has been approved and activated.</subject>
+        <body>
+
+            &lt;table border="0" width="100%"&gt;
+            &lt;tr&gt;
+
+            &lt;td align="center" style="font-family: Palatino Linotype, sans-serif;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: normal;
+            text-align: center;
+            color: black;
+            "&gt;Islami Bank Bangladesh Limited&lt;/td&gt;
+
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td align="center" style="font-family: Helvetica, Verdana, Arial, sans-serif;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: normal;
+            text-align: center;
+            color: black;
+            "&gt;Based on Islamic Shariah&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td align="center" style="font-family: Verdana, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: bold;
+            text-align: center;
+            color: #ffd700;"&gt;IBBL iBanking Service&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;table border="0" cellspacing="2" cellpadding="1"&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;Dear
+            Mr/Mrs.@profile-firstname@ @profile-lastname@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;
+            &lt;p&gt; Congratulations! &lt;br/&gt;
+            We are pleased to let you know that your iBanking profile has been approved and activated by iBanking
+            Administrator.
+            &lt;/p&gt;
+            &lt;p&gt;
+            Please login your iBanking profile using: &lt;br/&gt;
+            User id: @profile-email@ &lt;br/&gt;
+            Password: PASSWORD YOU PROVIDED AT SIGN-UP &lt;br/&gt;
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;&lt;b&gt;Your Profile Summary&lt;/b&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt;Profile Id&lt;/td&gt;
+            &lt;td colspan="2"&gt;@profile-profileid@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt;Date of Birth / Incorporation&lt;/td&gt;
+            &lt;td colspan="2"&gt;@profile-dob@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt; Phone No&lt;/td&gt;
+            &lt;td colspan="2"&gt; @profile-phoneno@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt; Contact Address&lt;/td&gt;
+            &lt;td colspan="2"&gt; @profile-contactaddress@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt; Permanent Address&lt;/td&gt;
+            &lt;td colspan="2"&gt; @profile-permanentaddress@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt; Passport Number&lt;/td&gt;
+            &lt;td colspan="2"&gt; @profile-passportno@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt; Passport Expiry Date&lt;/td&gt;
+            &lt;td colspan="2"&gt;@profile-expdate@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt; Registration Date&lt;/td&gt;
+            &lt;td colspan="2"&gt; @profile-regdate@&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;table border="0"&gt;
+            &lt;tr class="th1"&gt;
+            &lt;td&gt;&lt;strong&gt;Account No&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;strong&gt;Customer ID&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;strong&gt;Branch Name &lt;/strong&gt; &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            @profile-account@
+
+            &lt;td&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+            &lt;/tr&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt;&lt;/td&gt;
+            &lt;td colspan="2"&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt; Thank
+            You for banking with us.&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt;&lt;/td&gt;
+            &lt;td colspan="2"&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt; iBanking Administrator&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt; Islami
+            Bank Bangladesh Limited&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;admin.portal@islamibankbd.com&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+
+        </body>
+    </mail-template>
+
+    <mail-template name="utility-bill-pay-queued">
+        <subject>[IBBL iBanking] Utility Bill Pay request accepted to process.</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that your bill pay request is accepted to process. Details are follow :
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Debit Account :&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Service Name :&lt;/td&gt; &lt;td&gt;@service-name@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill No :&lt;/td&gt; &lt;td&gt;@bill-no@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill Month :&lt;/td&gt; &lt;td&gt;@bill-month@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill Year :&lt;/td&gt; &lt;td&gt;@bill-year@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Meter No :&lt;/td&gt; &lt;td&gt;@meter-no@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Service Charge :&lt;/td&gt; &lt;td&gt;@service-charge@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Total Deduction :&lt;/td&gt; &lt;td&gt;@total-amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Receive Date :&lt;/td&gt; &lt;td&gt;@receive-date@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Service ID :&lt;/td&gt; &lt;td&gt;@service-id@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+    </mail-template>
+
+    <mail-template name="desco-bill-pay-queued">
+        <subject>[IBBL iBanking] DESCO Bill Pay Completed successfully.</subject>
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that your DESCO bill pay request is completed successfully :
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Debit Account :&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill No :&lt;/td&gt; &lt;td&gt;@bill-no@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill Month :&lt;/td&gt; &lt;td&gt;@bill-month@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill Year :&lt;/td&gt; &lt;td&gt;@bill-year@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+    </mail-template>
+
+    <mail-template name="subscription-acc-stmt">
+        <subject>[IBBL iBanking] Your e-Statement from Islami Bank Bangladesh Limited.</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear Customer,&lt;br /&gt;
+
+            &lt;p&gt;
+            Thanks for being with us. Please find attached your account Statement as per your request.
+            &lt;/p&gt;
+            &lt;p&gt;
+            We assure you of our best services at all times. Please do not reply to this mail
+            and feel free to email us at @support@ for any further information.
+            &lt;/p&gt;
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/table&gt;
+        </body>
+    </mail-template>
+    <mail-template name="link-change-userid-by-admin">
+        <subject>[IBBL iBanking] Your request to change User ID has been accepted and updated successfully.</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that your iBanking user id(email address) has been changed successfully as
+            per your request.
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            Old User id: @old-email@ &lt;br/&gt;
+            New User id: @profile-email@ &lt;br/&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+            Please login your iBanking profile using: &lt;br/&gt;
+            User id: @profile-email@ &lt;br/&gt;
+            Password: Password Remains the same &lt;br/&gt;
+            &lt;/p&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt; &lt;/td&gt;&lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+
+        </body>
+
+
+    </mail-template>
+    <mail-template name="utility-bill-pay-success">
+        <subject>[IBBL iBanking] Your Utility Bill payment request processed successfully</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that your requested bill payment successfully completed, details are follow:
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Debit Account :&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Service Name :&lt;/td&gt; &lt;td&gt;@service-name@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill No :&lt;/td&gt; &lt;td&gt;@bill-no@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill Month :&lt;/td&gt; &lt;td&gt;@bill-month@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill Year :&lt;/td&gt; &lt;td&gt;@bill-year@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Meter No :&lt;/td&gt; &lt;td&gt;@meter-no@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Service Charge :&lt;/td&gt; &lt;td&gt;@service-charge@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Total Deduction :&lt;/td&gt; &lt;td&gt;@total-amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Receive Date :&lt;/td&gt; &lt;td&gt;@receive-date@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Service ID :&lt;/td&gt; &lt;td&gt;@service-id@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Transaction ID :&lt;/td&gt; &lt;td&gt;@transaction-id@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+
+    </mail-template>
+    <mail-template name="utility-bill-pay-failed">
+        <subject>[IBBL iBanking] Utility Bill Payment Failed</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            Your requested utility bill payment is Failed.you can reprocess the bill:
+            &lt;/p&gt;
+            &lt;table width='80%'&gt;
+
+            &lt;tr&gt;
+            &lt;td&gt;Service Name :&lt;/td&gt; &lt;td&gt;@service-name@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill No :&lt;/td&gt; &lt;td&gt;@bill-no@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill Month :&lt;/td&gt; &lt;td&gt;@bill-month@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill Year :&lt;/td&gt; &lt;td&gt;@bill-year@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Receive Date :&lt;/td&gt; &lt;td&gt;@receive-date@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Service ID :&lt;/td&gt; &lt;td&gt;@service-id@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+    </mail-template>
+    <mail-template name="recharge-failed">
+        <subject>[IBBL iBanking] Recharge request failed</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We like to inform you that your requested recharge is failed and refunded to your account. Details are
+            follow :
+            &lt;/p&gt;
+            &lt;table width='80%'&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Debit Account:&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Cell :&lt;/td&gt; &lt;td&gt;@cell-no@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Recharge Date :&lt;/td&gt; &lt;td&gt;@recharge-date@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Recharge ID :&lt;/td&gt; &lt;td&gt;@recharge-id@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;p&gt;
+            We are sorry for this inconvenience.Please try again.
+            &lt;/p&gt;
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+    </mail-template>
+
+    <mail-template name="wimax-bill-pay-failed">
+        <subject>[IBBL iBanking] Wimax Card purchase Failed</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We like to inform you that your requested Wimax Card purchasing is Failed and refunded to your account which
+            has the following
+            details :
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Debit Account :&lt;/td&gt;&lt;td&gt;@src-acc@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Connection Provider :&lt;/td&gt;&lt;td&gt;@conn-provider@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Package Type :&lt;/td&gt;&lt;td&gt;@package@&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td&gt;Recharge Date :&lt;/td&gt;&lt;td&gt;@recharge-date@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Service ID :&lt;/td&gt;&lt;td&gt;@service-id@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;p&gt;
+            We are sorry for this inconvenience.Please try again.
+            &lt;/p&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards,&lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited&lt;br/&gt;
+            Email: @admin@&lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+
+
+    </mail-template>
+    <mail-template name="resolve_complain">
+        <subject>[IBBL iBanking] Resolve complain</subject>
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            The complaint you have issued has been received by our customer support team.
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;&lt;/td&gt;&lt;td&gt;@admin_note@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards,&lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited&lt;br/&gt;
+            Email: @admin@&lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+    </mail-template>
+    <mail-template name="reopen_complain">
+        <subject>[IBBL iBanking] Correction of Resolved complain</subject>
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            The complaint you have issued has been resolved by our customer support team.we like to notify you some
+            update which has the following detail:
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;&lt;/td&gt;&lt;td&gt;@admin_note@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards,&lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited&lt;br/&gt;
+            Email: @admin@&lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+    </mail-template>
+    <mail-template name="issue_complain">
+        <subject>[IBBL iBanking] Issue complain</subject>
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We like to inform you that your complain issued successfully and which has the following details :
+            &lt;/p&gt;
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Complain No :&lt;/td&gt;&lt;td&gt;@ticket_no@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Issue Date :&lt;/td&gt;&lt;td&gt;@issue_date@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Summary :&lt;/td&gt;&lt;td&gt;@summary@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards,&lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited&lt;br/&gt;
+            Email: @admin@&lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+    </mail-template>
+    <mail-template name="system_alert">
+        <subject>[IBBL iBanking] System alert: @subject</subject>
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear Administrator,&lt;br /&gt;
+
+            &lt;p&gt;
+            The following system alert is occurred :
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;&lt;/td&gt;&lt;td&gt;@message@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards,&lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited&lt;br/&gt;
+            Email: @admin@&lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+    </mail-template>
+
+    <mail-template name="forward-ticket">
+        <subject>[IBBL iBanking] Complain issued by IBBl iBanking User</subject>
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear Sir,&lt;br /&gt;
+
+            &lt;p&gt;
+            The following complain is issued by iBanking user. We forward this for your kind consideration:
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td width="150"&gt;Complain Detail :&lt;/td&gt;&lt;td&gt;@message@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="150"&gt;Complained By :&lt;/td&gt;&lt;td&gt;@complainedBy@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;User Id :&lt;/td&gt;&lt;td&gt;@userId@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards,&lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited&lt;br/&gt;
+            Email: @admin@&lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+    </mail-template>
+    <mail-template name="credit-card-bill-payment-success">
+        <subject>[IBBL iBanking] Your Credit card bill payment successfully completed</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that you have successfully completed credit card bill payment which has the
+            following details :
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;From Account :&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Credit card No :&lt;/td&gt; &lt;td&gt;@credit-card-no@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Transfer ID :&lt;/td&gt; &lt;td&gt;@transfer-ID@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill payment Date :&lt;/td&gt; &lt;td&gt;@transfer-date@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration &lt;br /&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+
+
+    </mail-template>
+    <mail-template name="VISA-money-transfer-success">
+        <subject>[IBBL iBanking] Your VISA Instant Payment successfully completed</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that you have successfully completed VISA Instant Payment which has the
+            following details :
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;From Account :&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;VISA card No :&lt;/td&gt; &lt;td&gt;@visa-card-no@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Transfer ID :&lt;/td&gt; &lt;td&gt;@transfer-ID@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Bill payment Date :&lt;/td&gt; &lt;td&gt;@transfer-date@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration &lt;br /&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+
+
+    </mail-template>
+
+    <mail-template name="bulk-recharge-success">
+        <subject>[IBBL iBanking] Your Bulk Recharge request accepted to process.</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            We are pleased to let you know that your bulk recharge request is accepted to process. Details are follow :
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Account :&lt;/td&gt; &lt;td&gt;@src-acc@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Batch No :&lt;/td&gt; &lt;td&gt;@batch-no@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Execution Date :&lt;/td&gt; &lt;td&gt;@execution-date@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Total No of Recharges :&lt;/td&gt; &lt;td&gt;@total-recharge@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Total Amount :&lt;/td&gt; &lt;td&gt;@amount@ &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+        </body>
+
+
+    </mail-template>
+
+    <mail-template name="login-notification">
+        <subject>[IBBL iBanking] Login Notification</subject>
+
+
+        <body>
+            &lt;table style="border-radius:4px;border:1px #dceaf5 solid;font-size:11pt;font-family:'Open
+            Sans','Tahoma','Segoe UI','Sans Serif';padding:10px;"&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            You seems to be logged in from new device or browser. Please be noted, we preserve your browser or device
+            info for a particular time.
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr bgcolor="E1E1E1"&gt;
+            &lt;th colspan="2" style="text-align:left;font-weight:bold"&gt;Login Info&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;Date and time :&lt;/td&gt; &lt;td&gt;@login-date@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td&gt;IP:&lt;/td&gt; &lt;td&gt;@ip@ &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            @location@
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            @device@
+            &lt;/tr&gt;
+            &lt;tr&gt;
+
+
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/table&gt;
+
+        </body>
+
+
+    </mail-template>
+
+    <mail-template name="2FactorLogin-otp">
+        <subject>[IBBL iBanking] Your Login Code for new login.</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            Use this code for your fresh login from a new device/browser for verification.
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;LOGIN CODE :&lt;/td&gt;&lt;td&gt;&lt;strong&gt; @otp-value@ &lt;/strong&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;/table&gt;
+
+
+        </body>
+
+
+    </mail-template>
+
+    <mail-template name="changeProfileCellNoByAdmin">
+        <subject>[IBBL iBanking] Your request to change Profile CELL NO has been executed successfully.</subject>
+
+
+        <body>
+            &lt;table&gt;
+            &lt;tr&gt;
+            &lt;td&gt;
+            Dear @to@,&lt;br /&gt;
+
+            &lt;p&gt;
+            Your request to change your iBanking Profile CELL NO has been done.
+            &lt;/p&gt;
+
+            &lt;table width='80%'&gt;
+            &lt;tr&gt;
+            &lt;td&gt;New Cell No :&lt;/td&gt;&lt;td&gt;&lt;strong&gt; @cellNo@ &lt;/strong&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan=2&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;tr&gt;
+            &lt;td&gt;
+            Regards, &lt;br/&gt;&lt;br /&gt;
+
+            IBBL iBanking Administration&lt;br/&gt;
+            Islami Bank Bangladesh Limited &lt;br/&gt;
+            Email: @admin@ &lt;br/&gt;
+
+            &lt;/p&gt;
+
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.
+            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+
+
+            &lt;/table&gt;
+
+
+        </body>
+
+
+    </mail-template>
+
+    <mail-template name="activateBannedUserByAdmin">
+        <subject>[IBBL iBanking] Your Profile has been activated.</subject>
+
+
+        <body>
+            &lt;table border="0" width="100%"&gt;
+            &lt;tr&gt;
+
+            &lt;td align="center" style="font-family: Palatino Linotype, sans-serif;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: normal;
+            text-align: center;
+            color: black;
+            "&gt;Islami Bank Bangladesh Limited&lt;/td&gt;
+
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td  width="100%" align="center" style="font-family: Helvetica, Verdana, Arial, sans-serif;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: normal;
+            text-align: center;
+            color: black;
+            "&gt;Based on Islamic Shariah&lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;tr&gt;
+            &lt;td align="center" style="font-family: Verdana, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: bold;
+            text-align: center;
+            color: #ffd700;"&gt;IBBL iBanking Service&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+
+            &lt;table align="center" style="font-family: Verdana, Helvetica, Arial, sans-serif;font-size: 12px; width:90%"&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;Dear
+            Mr/Mrs.@profile-firstname@ @profile-lastname@&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;&amp;nbsp;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;
+            &lt;p&gt; Congratulations! &lt;br/&gt;
+            We are pleased to let you know that your iBanking profile has been approved and activated by iBanking
+            Administrator.
+            You must take care of your password to secure your iBanking profile.&lt;/p&gt;
+            &lt;ul&gt;
+            &lt;li&gt;Make them complex,change them frequently.&lt;/li&gt;
+            &lt;li&gt; You should memorize this password &amp; never write it down anywhere or reveal it to anyone.&amp;nbsp;&lt;/li&gt;
+            &lt;li&gt;Create an obscure and memorable password using passphrase and don't use common passphrases. &lt;/li&gt;
+            &lt;li&gt; Disable Auto-complete/Password storage in-browser. &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;
+
+            &lt;/p&gt;            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt;&lt;/td&gt;
+            &lt;td colspan="2"&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt; Thank
+            You for banking with us.&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td width="206"&gt;&lt;/td&gt;
+            &lt;td colspan="2"&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt; iBanking Administrator&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt; Islami
+            Bank Bangladesh Limited&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+            &lt;td colspan="3"&gt;admin.portal@islamibankbd.com&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr style="color:#666666"&gt;
+            &lt;td colspan="3"&gt;
+            &lt;p&gt;
+            This is an automatically generated e-mail. Please do not reply to this e-mail address. Thank you for your
+            co-operation.            &lt;/p&gt;
+            &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/table&gt;
+        </body>
+    </mail-template>
+
+    <!--
+	Mail Variables are place-holders of the form $...$ in mail templates
+	Don't use the $'s in definitions.
+	-->
+
+    <!-- ATTENTION!! Following entries should be changed according to the implementation -->
+    <mail-variables>
+        <variable>
+            <name>WEB</name>
+            <value>http://ibblportal.islamibankbd.com/</value>
+        </variable>
+        <variable>
+            <name>ALTER-WEB</name>
+            <value>http://ibblportal.islamibankbd.com/</value>
+        </variable>
+        <variable>
+            <name>ACTIVATION-WEB</name>
+            <value>http://ibblportal.islamibankbd.com/activateProfile.do</value>
+        </variable>
+        <variable>
+            <name>ALTER-ACTIVATION-WEB</name>
+            <value>http://ibblportal.islamibankbd.com/activateProfile.do</value>
+        </variable>
+        <variable>
+            <name>ACTIVATION-ACTION</name>
+            <value>http://ibblportal.islamibankbd.com/activateProfile.do</value>
+        </variable>
+        <variable>
+            <name>REGISTER-USER</name>
+            <value>http://ibblportal.islamibankbd.com/registrationPage.do</value>
+        </variable>
+        <variable>
+            <name>ALTER-REGISTER-USER</name>
+            <value>http://ibblportal.islamibankbd.com/registrationPage.do</value>
+        </variable>
+        <variable>
+            <name>RESET-STATUS-ACTION</name>
+            <value>http://ibblportal.islamibankbd.com/autoUnlockUser.do</value>
+        </variable>
+        <variable>
+            <name>UNBAN-REQ-ACTION</name>
+            <value>http://ibblportal.islamibankbd.com/sendUnbanRequest.do</value>
+        </variable>
+        <variable>
+            <name>FORGOT-PWD-ACTION</name>
+            <value>http://ibblportal.islamibankbd.com/reqForgotPwd02.do</value>
+        </variable>
+        <variable>
+            <name>VERIFY-EMAILID</name>
+            <value>http://ibblportal.islamibankbd.com/indexRegisterUser01.do</value>
+        </variable>
+        <variable>
+            <name>LAST-PAGE-OF-REGISTRATION</name>
+            <value>http://ibblportal.islamibankbd.com/indexRegisterUser02.do</value>
+        </variable>
+        <variable>
+            <name>VERIFY-CHANGE-USERID</name>
+            <value>http://ibblportal.islamibankbd.com/changeUserId02.do</value>
+        </variable>
+        <variable>
+            <name>CHANGE-USERID</name>
+            <value>http://ibblportal.islamibankbd.com/changeUserId04.do</value>
+        </variable>
+        <variable>
+            <name>CHANGE-PHONENO</name>
+            <value>http://ibblportal.islamibankbd.com/changePhoneNo01.do</value>
+        </variable>
+        <variable>
+            <name>CHANGE-STATIC-PIN</name>
+            <value>http://ibblportal.islamibankbd.com/changeFundTransferPinCode02.do</value>
+        </variable>
+        <variable>
+            <name>REQUEST-NEW-TPIN</name>
+            <value>http://ibblportal.islamibankbd.com/requestNewPinCode.do</value>
+        </variable>
+
+    </mail-variables>
+</mailman-config>

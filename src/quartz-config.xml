@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-scheduling-data
+        xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData
+        http://www.quartz-scheduler.org/xml/job_scheduling_data_1_8.xsd"
+        version="1.8">
+
+    <schedule>
+        <!--
+                <job>
+                    <name>JobSchedulerTest</name>
+                    <group>groupTestScheduler</group>
+                    <description>This is job scheduler test</description>
+                    <job-class>com.ibbl.portal.schedule.jobs.MySchedulerTestJob</job-class>
+                </job>
+        -->
+        <!--EFT processes-->
+        <job>
+            <name>jobProcessEFTInstructionIssue</name>
+            <group>groupEFTScheduler</group>
+            <description>Send EFT Instruction debiting customer account</description>
+            <job-class>com.ibbl.portal.schedule.jobs.EFTInstructionIssueJob</job-class>
+        </job>
+
+        <job>
+            <name>jobProcessEFTFundSettlement</name>
+            <group>groupEFTScheduler</group>
+            <description>Fund transfer to BACH Service Branch</description>
+            <job-class>com.ibbl.portal.schedule.jobs.EFTFundSettlementJob</job-class>
+        </job>
+
+        <job>
+            <name>jobProcessEFTRefundPBMFailItems</name>
+            <group>groupEFTScheduler</group>
+            <description>Refund EFT amount to customer account for PBM fail</description>
+            <job-class>com.ibbl.portal.schedule.jobs.EFTRefundPBMFailItemsJob</job-class>
+        </job>
+
+        <job>
+            <name>jobProcessEFTRefundRBReturnItems</name>
+            <group>groupEFTScheduler</group>
+            <description>Refund EFT amount to customer account rejected by Receiving Bank</description>
+            <job-class>com.ibbl.portal.schedule.jobs.EFTRefundRBReturnItemsJob</job-class>
+        </job>
+
+        <!--e-Commerce processes-->
+        <job>
+            <name>jobProcessECommercePaymentTransferSettlementAccount</name>
+            <group>groupECommerceProcess</group>
+            <description>E-commerce payment receive to Settlement Account</description>
+            <job-class>com.ibbl.portal.schedule.jobs.EComPayReceiveJob</job-class>
+        </job>
+
+
+        <!--<trigger>
+            <cron>
+                <name>JobSchedulerTestTrigger</name>
+                <job-name>JobSchedulerTest</job-name>
+                <job-group>GroupTest</job-group>
+                <cron-expression>0/10 * 9-18 ? * SUN-SAT</cron-expression>
+            </cron>
+        </trigger>-->
+        <trigger>
+            <cron>
+                <name>triggerProcessEFTInstructionIssue</name>
+                <job-name>jobProcessEFTInstructionIssue</job-name>
+                <job-group>groupEFTScheduler</job-group>
+                <cron-expression>0 0 10-17 * * ?</cron-expression>
+            </cron>
+        </trigger>
+
+        <trigger>
+            <cron>
+                <name>triggerProcessEFTFundSettlement</name>
+                <job-name>jobProcessEFTFundSettlement</job-name>
+                <job-group>groupEFTScheduler</job-group>
+                <cron-expression>0 0 19 * * ?</cron-expression>
+            </cron>
+        </trigger>
+
+        <trigger>
+            <cron>
+                <name>triggerProcessEFTRefundPBMFailItems</name>
+                <job-name>jobProcessEFTRefundPBMFailItems</job-name>
+                <job-group>groupEFTScheduler</job-group>
+                <cron-expression>0 0 7,23 * * ?</cron-expression>
+            </cron>
+        </trigger>
+
+        <trigger>
+            <cron>
+                <name>triggerProcessEFTRefundRBReturnItems</name>
+                <job-name>jobProcessEFTRefundRBReturnItems</job-name>
+                <job-group>groupEFTScheduler</job-group>
+                <cron-expression>0 0 8,22 * * ?</cron-expression>
+            </cron>
+        </trigger>
+
+
+        <trigger>
+            <cron>
+                <name>triggerProcessECommercePaymentTransferSettlementAccount</name>
+                <job-name>jobProcessECommercePaymentTransferSettlementAccount</job-name>
+                <job-group>groupECommerceProcess</job-group>
+                <cron-expression>0 0 10-23 * * ?</cron-expression>
+            </cron>
+        </trigger>
+
+
+        <!--VISA process-->
+        <job>
+            <name>jobProcessVISATransactionFundSettleCoverAccount</name>
+            <group>groupVISATransactionProcess</group>
+            <description>VISA transaction fund settlement to Cover Account</description>
+            <job-class>com.ibbl.portal.schedule.jobs.VISAFundSettlementJob</job-class>
+        </job>
+
+        <trigger>
+            <cron>
+                <name>triggerProcessVISATransactionFundSettleCoverAccount</name>
+                <job-name>jobProcessVISATransactionFundSettleCoverAccount</job-name>
+                <job-group>groupVISATransactionProcess</job-group>
+                <cron-expression>0 30 11-18 * * ?</cron-expression>
+            </cron>
+        </trigger>
+
+    </schedule>
+</job-scheduling-data>

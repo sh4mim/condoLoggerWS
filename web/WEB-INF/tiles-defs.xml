@@ -1,0 +1,1998 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+        "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<!--
+This is a Tiles definition file for Deposit module.
+-->
+
+<tiles-definitions>
+    <definition name="mainLayout" path="/layout/layout.jsp">
+        <put name="title" value="title.layout"/>
+        <put name="header" value="/layout/tiles/header.jsp"/>
+        <put name="titlebar" value="/layout/tiles/titlebar.jsp"/>
+        <put name="newFeatureBar" value="/layout/tiles/newFeatureBar.jsp"/>
+        <put name="menuPanel" value="/layout/tiles/menuPanel.jsp"/>
+        <!--<put name="menuPanel" value="/layout/tiles/megamenu.jsp"/>-->
+        <put name="body" value="/layout/tiles/body.jsp"/>
+        <put name="footer" value="/layout/tiles/footer.jsp"/>
+        <put name="sitemap" value="/layout/tiles/sitemap.jsp"/>
+    </definition>
+    <definition name="userLayout" path="/layout/loginLayout.jsp">
+        <put name="title" value="title.layout"/>
+        <put name="header" value="/layout/tiles/header.jsp"/>
+        <put name="titlebar" value="/layout/tiles/index_Titlebar.jsp"/>
+        <put name="newFeatureBar" value="/layout/tiles/noticeBar.jsp"/>
+        <put name="body" value="/layout/tiles/body.jsp"/>
+        <put name="footer" value="/layout/tiles/footer.jsp"/>
+    </definition>
+    <definition name="indexLayout" path="/layout/layout.jsp">
+        <put name="title" value="title.layout"/>
+        <put name="header" value="/layout/tiles/header.jsp"/>
+        <put name="titlebar" value="/layout/tiles/index_Titlebar.jsp"/>
+        <put name="newFeatureBar" value="/layout/tiles/noticeBar.jsp"/>
+        <put name="body" value="/layout/tiles/body.jsp"/>
+        <put name="footer" value="/layout/tiles/footer.jsp"/>
+    </definition>
+    <definition name="loginLayout" path="/layout/loginLayout.jsp">
+        <put name="title" value="title.layout"/>
+        <put name="titlebar" value="/layout/tiles/index_Titlebar.jsp"/>
+        <put name="header" value="/layout/tiles/header.jsp"/>
+        <put name="newFeatureBar" value="/layout/tiles/noticeBar.jsp"/>
+        <put name="body" value="/layout/tiles/body.jsp"/>
+        <put name="footer" value="/layout/tiles/footer.jsp"/>
+    </definition>
+    <definition name="faqLayout" path="/layout/layout.jsp">
+        <put name="title" value="title.layout"/>
+        <put name="header" value="/layout/tiles/header.jsp"/>
+        <put name="titlebar" value="/layout/tiles/index_Titlebar.jsp"/>
+        <put name="newFeatureBar" value="/layout/tiles/noticeBar.jsp"/>
+        <put name="menuPanel" value="/layout/tiles/faqMenu.jsp"/>
+        <put name="body" value="/layout/tiles/body.jsp"/>
+        <put name="footer" value="/layout/tiles/footer.jsp"/>
+    </definition>
+    <definition name="index" extends="loginLayout">
+        <put name="title" value="title.home"/>
+        <put name="body" value="/jsp/userLogin.jsp"/>
+    </definition>
+    <definition name="logOutSuccess" extends="loginLayout">
+        <put name="title" value="title.home"/>
+        <put name="body" value="/jsp/logOutSuccess.jsp"/>
+    </definition>
+    <definition name="bannerIndex" extends="loginLayout">
+        <put name="title" value="title.home"/>
+        <put name="body" value="/jsp/index.jsp"/>
+    </definition>
+
+    <definition name="highlightedFeatureDetail" extends="loginLayout">
+        <put name="title" value="title.featureDetail"/>
+        <put name="body" value="/jsp/highlightedFeatureDetail.jsp"/>
+    </definition>
+
+    <definition name="allFeatures" extends="mainLayout">
+        <put name="title" value="title.featureDetail"/>
+        <put name="titlebar" value="/layout/tiles/blank.jsp"/>
+        <put name="body" value="/jsp/allFeaturesList.jsp"/>
+        <put name="menuPanel" value="/layout/tiles/blank.jsp"/>
+    </definition>
+    <definition name="userLogin" extends="loginLayout">
+        <put name="title" value="title.home"/>
+        <put name="body" value="/jsp/userLogin.jsp"/>
+    </definition>
+
+    <definition name="query" extends="mainLayout">
+        <put name="title" value="title.query"/>
+        <put name="body" value="/jsp/query.jsp"/>
+    </definition>
+    <definition name="futurePlan" extends="mainLayout">
+        <put name="title" value="title.futurePlan"/>
+        <put name="body" value="/jsp/futurePlan.jsp"/>
+    </definition>
+    <definition name="aboutUs" extends="mainLayout">
+        <put name="title" value="title.aboutUs"/>
+        <put name="body" value="/jsp/aboutUs.jsp"/>
+    </definition>
+    <definition name="serviceList" extends="mainLayout">
+        <put name="title" value="title.ourService"/>
+        <put name="body" value="/jsp/serviceList.jsp"/>
+    </definition>
+    <definition name="feedBack" extends="mainLayout">
+        <put name="title" value="title.feedBack"/>
+        <put name="body" value="/jsp/feedBack.jsp"/>
+    </definition>
+    <definition name="feedBack01" extends="mainLayout">
+        <put name="title" value="title.feedBack"/>
+        <put name="body" value="/jsp/feedBackSuccess.jsp"/>
+    </definition>
+
+    <definition name="userPanel" extends="mainLayout">
+        <put name="title" value="title.userPanel"/>
+        <put name="body" value="/jsp/userAwarness.jsp"/>
+    </definition>
+    <definition name="viewAccountsMain" extends="mainLayout">
+        <put name="title" value="title.viewAccounts"/>
+        <put name="body" value="/jsp/viewAccounts.jsp"/>
+    </definition>
+    <definition name="enlistAccounts" extends="mainLayout">
+        <put name="title" value="title.enlistAccounts"/>
+        <put name="body" value="/jsp/underConstruction.jsp"/>
+    </definition>
+    <definition name="viewAccountBalance" extends="mainLayout">
+        <put name="title" value="title.balanceEnquiry"/>
+        <put name="body" value="/jsp/viewBranchAccount.jsp"/>
+    </definition>
+    <definition name="accountStatement01" extends="mainLayout">
+        <put name="title" value="title.accountStatement"/>
+        <put name="body" value="/jsp/accountStatement01.jsp"/>
+    </definition>
+    <definition name="invAccountList" extends="mainLayout">
+        <put name="title" value="title.invAccountStatement"/>
+        <put name="body" value="/jsp/invAccountsList.jsp"/>
+    </definition>
+    <definition name="accountStatement02" extends="mainLayout">
+        <put name="title" value="title.accountStatement"/>
+        <put name="body" value="/WEB-INF/reportxml/accountStatement01.xml"/>
+    </definition>
+    <definition name="accountStatementHtml" extends="mainLayout">
+        <put name="title" value="title.accountStatement"/>
+        <put name="body" value="/jsp/accountStatementHtml.jsp"/>
+    </definition>
+    <definition name="invAccountStatementHtml" extends="mainLayout">
+        <put name="title" value="title.accountStatement"/>
+        <put name="body" value="/jsp/invAccountStatementHtml.jsp"/>
+    </definition>
+    <definition name="manageSubscriptions" extends="mainLayout">
+        <put name="title" value="title.manageSubscriptions"/>
+        <put name="body" value="/jsp/underConstruction.jsp"/>
+    </definition>
+    <!--User Registration individual-->
+    <definition name="registerUserEmailVerify01" extends="userLayout">
+        <put name="title" value="title.registerPage"/>
+        <!--<put name="titlebar" value="/layout/tiles/blank.jsp"/>-->
+        <put name="body" value="/jsp/registerUserEmailVerify01.jsp"/>
+        <!--<put name="menuPanel" value="/layout/tiles/blank.jsp"/>-->
+    </definition>
+    <definition name="registerUserEmailVerify02" extends="userLayout">
+        <put name="title" value="title.registerPage"/>
+        <!--<put name="titlebar" value="/layout/tiles/blank.jsp"/>-->
+        <put name="body" value="/jsp/registerUserEmailVerify02.jsp"/>
+        <!--<put name="menuPanel" value="/layout/tiles/blank.jsp"/>-->
+    </definition>
+
+    <definition name="registerUser01" extends="userLayout">
+        <put name="title" value="title.registerPage"/>
+        <!--<put name="titlebar" value="/layout/tiles/blank.jsp"/>-->
+        <put name="body" value="/jsp/register01.jsp"/>
+        <!--<put name="menuPanel" value="/layout/tiles/blank.jsp"/>-->
+    </definition>
+
+    <definition name="registerUser02" extends="userLayout">
+        <put name="title" value="title.registerPage"/>
+        <!--<put name="titlebar" value="/layout/tiles/blank.jsp"/>-->
+        <put name="body" value="/jsp/register02.jsp"/>
+        <!--<put name="menuPanel" value="/layout/tiles/blank.jsp"/>-->
+    </definition>
+    <definition name="registerUser03" extends="userLayout">
+        <put name="title" value="title.registerPage"/>
+        <!--<put name="titlebar" value="/layout/tiles/blank.jsp"/>-->
+        <put name="body" value="/jsp/register03.jsp"/>
+        <!--<put name="menuPanel" value="/layout/tiles/blank.jsp"/>-->
+    </definition>
+    <definition name="registerUser04" extends="userLayout">
+        <put name="title" value="title.registerPage"/>
+        <put name="body" value="/jsp/register04.jsp"/>
+    </definition>
+    <definition name="regAcknowledge" extends="userLayout">
+        <put name="title" value="title.manageSubscriptions"/>
+        <put name="body" value="/jsp/regAcknowledge.jsp"/>
+    </definition>
+    <definition name="regError" extends="mainLayout">
+        <put name="title" value="title.manageSubscriptions"/>
+        <put name="titlebar" value="/layout/tiles/blank.jsp"/>
+        <put name="body" value="/jsp/regError.jsp"/>
+        <put name="menuPanel" value="/layout/tiles/blank.jsp"/>
+    </definition>
+
+    <!--enlist Accounts-->
+    <definition name="enlistAccounts01" extends="adminLayout">
+        <put name="title" value="title.enlistAccounts"/>
+        <put name="body" value="/jsp/admin/enlistAccounts01.jsp"/>
+    </definition>
+    <definition name="enlistAccounts02" extends="adminLayout">
+        <put name="title" value="title.enlistAccounts"/>
+        <put name="body" value="/jsp/admin/enlistAccounts02.jsp"/>
+    </definition>
+    <definition name="enlistAccounts03" extends="adminLayout">
+        <put name="title" value="title.enlistAccounts"/>
+        <put name="body" value="/jsp/admin/enlistAccounts03.jsp"/>
+    </definition>
+    <definition name="addAccounts" extends="adminLayout">
+        <put name="title" value="title.enlistAccounts"/>
+        <put name="body" value="/jsp/admin/addAccounts.jsp"/>
+    </definition>
+
+    <!--enlist Inv or Fex Cust ID-->
+    <definition name="enlistInvFexCustID01" extends="adminLayout">
+        <put name="title" value="title.enlistInvFexCustID"/>
+        <put name="body" value="/jsp/admin/enlistInvFexCustID01.jsp"/>
+    </definition>
+    <definition name="enlistInvFexCustID02" extends="adminLayout">
+        <put name="title" value="title.enlistInvFexCustID"/>
+        <put name="body" value="/jsp/admin/enlistInvFexCustID02.jsp"/>
+    </definition>
+    <definition name="addInvCustID" extends="adminLayout">
+        <put name="title" value="title.enlistInvFexCustID"/>
+        <put name="body" value="/jsp/admin/addInvCustID.jsp"/>
+    </definition>
+    <definition name="addFexCustID" extends="adminLayout">
+        <put name="title" value="title.enlistInvFexCustID"/>
+        <put name="body" value="/jsp/admin/addFexCustID.jsp"/>
+    </definition>
+    <definition name="enlistInvFexCustID03" extends="adminLayout">
+        <put name="title" value="title.enlistInvFexCustID"/>
+        <put name="body" value="/jsp/admin/enlistInvFexCustID03.jsp"/>
+    </definition>
+
+    <!--change Password-->
+    <definition name="changePassword01" extends="mainLayout">
+        <put name="title" value="title.changePassword"/>
+        <put name="body" value="/jsp/changePassword01.jsp"/>
+    </definition>
+    <definition name="changePassword02" extends="mainLayout">
+        <put name="title" value="title.changePassword"/>
+        <put name="body" value="/jsp/changePassword02.jsp"/>
+    </definition>
+    <definition name="accountTxSummary" extends="mainLayout">
+        <put name="title" value="title.accountTxSummary"/>
+        <put name="body" value="/jsp/accountTxSummary.jsp"/>
+    </definition>
+    <definition name="accountSummary" extends="mainLayout">
+        <put name="title" value="title.accountSummary"/>
+        <put name="body" value="/jsp/accountSummary.jsp"/>
+    </definition>
+
+    <definition name="adminLayout" path="/layout/admin_layout.jsp">
+        <put name="title" value="title.layout"/>
+        <put name="titlebar" value="/layout/tiles/admin_Titlebar.jsp"/>
+        <put name="header" value="/layout/tiles/header.jsp"/>
+        <put name="newFeatureBar" value="/layout/tiles/adminNoticeBar.jsp"/>
+        <put name="menuPanel" value="/layout/tiles/admin_MenuPanel.jsp"/>
+        <put name="body" value="/layout/tiles/body.jsp"/>
+        <put name="footer" value="/layout/tiles/footer.jsp"/>
+    </definition>
+
+    <definition name="adminUserPanel" extends="adminLayout">
+        <put name="title" value="title.adminPanel"/>
+        <put name="body" value="/jsp/admin/userPanel.jsp"/>
+    </definition>
+
+    <definition name="adminChangePassword01" extends="adminLayout">
+        <put name="title" value="title.changePassword"/>
+        <put name="body" value="/jsp/admin/changePassword01.jsp"/>
+    </definition>
+    <definition name="adminChangePassword02" extends="adminLayout">
+        <put name="title" value="title.changePassword"/>
+        <put name="body" value="/jsp/admin/changePassword02.jsp"/>
+    </definition>
+    <definition name="adminUpdatePassword01" extends="userLayout">
+        <put name="title" value="title.changePassword"/>
+        <put name="body" value="/jsp/admin/updateAdminPassword.jsp"/>
+    </definition>
+
+
+    <definition name="reqForgotPwd01" extends="loginLayout">
+        <put name="title" value="title.resetPassword"/>
+        <put name="body" value="/jsp/admin/reqForgotPwd01.jsp"/>
+    </definition>
+    <definition name="reqForgotPwd" extends="loginLayout">
+        <put name="title" value="title.resetPassword"/>
+        <put name="body" value="/jsp/admin/reqForgotPwd.jsp"/>
+    </definition>
+    <definition name="reqForgotPwd03" extends="loginLayout">
+        <put name="title" value="title.resetPassword"/>
+        <put name="body" value="/jsp/admin/reqForgotPwd02.jsp"/>
+    </definition>
+    <definition name="reqForgotPwd04" extends="loginLayout">
+        <put name="title" value="title.resetPassword"/>
+        <put name="body" value="/jsp/admin/reqForgotPwd03.jsp"/>
+    </definition>
+
+    <definition name="changeUserPasswdAdmin" extends="adminLayout">
+        <put name="title" value="title.changePassword"/>
+        <put name="body" value="/jsp/admin/changeUserPasswdAdmin01.jsp"/>
+    </definition>
+    <definition name="changeUserPasswdAdmin02" extends="adminLayout">
+        <put name="title" value="title.changePassword"/>
+        <put name="body" value="/jsp/admin/changeUserPasswdAdmin02.jsp"/>
+    </definition>
+    <definition name="changeUserPasswdAdmin03" extends="adminLayout">
+        <put name="title" value="title.changePassword"/>
+        <put name="body" value="/jsp/admin/changeUserPasswdAdmin03.jsp"/>
+    </definition>
+
+    <definition name="changeUserType" extends="adminLayout">
+        <put name="title" value="title.changeUserType"/>
+        <put name="body" value="/jsp/admin/changeUserType01.jsp"/>
+    </definition>
+    <definition name="changeUserType02" extends="adminLayout">
+        <put name="title" value="title.changeUserType"/>
+        <put name="body" value="/jsp/admin/changeUserType02.jsp"/>
+    </definition>
+    <definition name="changeUserType03" extends="adminLayout">
+        <put name="title" value="title.changeUserType"/>
+        <put name="body" value="/jsp/admin/changeUserType03.jsp"/>
+    </definition>
+
+    <definition name="changeAdminType" extends="adminLayout">
+        <put name="title" value="title.changeAdminType"/>
+        <put name="body" value="/jsp/admin/changeAdminType01.jsp"/>
+    </definition>
+    <definition name="changeAdminType02" extends="adminLayout">
+        <put name="title" value="title.changeAdminType"/>
+        <put name="body" value="/jsp/admin/changeAdminType02.jsp"/>
+    </definition>
+    <definition name="changeAdminType03" extends="adminLayout">
+        <put name="title" value="title.changeAdminType"/>
+        <put name="body" value="/jsp/admin/changeAdminType03.jsp"/>
+    </definition>
+
+    <definition name="sendUnbanRequest02" extends="userLayout">
+        <put name="title" value="title.sendUnbanRequest"/>
+        <put name="body" value="/jsp/sendUnbanRequest02.jsp"/>
+    </definition>
+    <definition name="sendUnbanRequest03" extends="userLayout">
+        <put name="title" value="title.sendUnbanRequest"/>
+        <put name="body" value="/jsp/sendUnbanRequest03.jsp"/>
+    </definition>
+    <definition name="adminCreateHRInfo" extends="adminLayout">
+        <put name="title" value="title.createAdmin"/>
+        <put name="body" value="/jsp/admin/adminCreateHRInfo.jsp"/>
+    </definition>
+    <definition name="adminCreate01" extends="adminLayout">
+        <put name="title" value="title.createAdmin"/>
+        <put name="body" value="/jsp/admin/createAdmin01.jsp"/>
+    </definition>
+    <definition name="adminCreate02" extends="adminLayout">
+        <put name="title" value="title.createAdmin"/>
+        <put name="body" value="/jsp/admin/createAdmin02.jsp"/>
+    </definition>
+
+    <definition name="adminApproveRegistration01" extends="adminLayout">
+        <put name="title" value="title.approveRegistration"/>
+        <put name="body" value="/jsp/admin/approveRegistration01.jsp"/>
+    </definition>
+    <definition name="adminApproveRegistration02" extends="adminLayout">
+        <put name="title" value="title.approveRegistration"/>
+        <put name="body" value="/jsp/admin/approveRegistration02.jsp"/>
+    </definition>
+    <definition name="adminApproveRegistration03" extends="adminLayout">
+        <put name="title" value="title.approveRegistration"/>
+        <put name="body" value="/jsp/admin/approveRegistration03.jsp"/>
+    </definition>
+
+    <definition name="adminLogin" extends="loginLayout">
+        <put name="title" value="title.maintain"/>
+        <put name="body" value="/jsp/admin/login.jsp"/>
+    </definition>
+    <definition name="activate" extends="mainLayout">
+        <put name="title" value="title.activate"/>
+        <put name="titlebar" value="/layout/tiles/blank.jsp"/>
+        <put name="body" value="/jsp/activate.jsp"/>
+        <put name="menuPanel" value="/layout/tiles/blank.jsp"/>
+    </definition>
+    <definition name="activateSuccess" extends="mainLayout">
+        <put name="title" value="title.activate"/>
+        <put name="titlebar" value="/layout/tiles/blank.jsp"/>
+        <put name="body" value="/jsp/activationSuccess.jsp"/>
+        <put name="menuPanel" value="/layout/tiles/blank.jsp"/>
+    </definition>
+
+    <definition name="listOfRequest01" extends="adminLayout">
+        <put name="title" value="title.listOfRequest"/>
+        <put name="body" value="/jsp/admin/listOfRequest01.jsp"/>
+    </definition>
+    <definition name="listOfRequest02" extends="adminLayout">
+        <put name="title" value="title.listOfRequest"/>
+        <put name="body" value="/jsp/admin/listOfRequest02.jsp"/>
+    </definition>
+    <definition name="listOfRequest03" extends="adminLayout">
+        <put name="title" value="title.listOfRequest"/>
+        <put name="body" value="/jsp/admin/listOfRequest03.jsp"/>
+    </definition>
+
+    <definition name="listOfAdmin01" extends="adminLayout">
+        <put name="title" value="title.listOfAdmin"/>
+        <put name="body" value="/jsp/admin/listOfAdmin01.jsp"/>
+    </definition>
+    <definition name="listOfAdmin02" extends="adminLayout">
+        <put name="title" value="title.listOfAdmin"/>
+        <put name="body" value="/jsp/admin/listOfAdmin02.jsp"/>
+    </definition>
+
+    <!--maintainAdminUser01-->
+    <definition name="maintainAdminUser01" extends="adminLayout">
+        <put name="title" value="title.maintainAdminUser"/>
+        <put name="body" value="/jsp/admin/maintainAdminUser01.jsp"/>
+    </definition>
+    <definition name="maintainAdminUser02" extends="adminLayout">
+        <put name="title" value="title.maintainAdminUser"/>
+        <put name="body" value="/jsp/admin/maintainAdminUser02.jsp"/>
+    </definition>
+    <definition name="maintainAdminUser03" extends="adminLayout">
+        <put name="title" value="title.maintainAdminUser"/>
+        <put name="body" value="/jsp/admin/maintainAdminUser03.jsp"/>
+    </definition>
+    <!-- Direct Register 01 -->
+    <definition name="directRegister01" extends="adminLayout">
+        <put name="title" value="title.registerPage"/>
+        <put name="body" value="/jsp/admin/directRegister01.jsp"/>
+    </definition>
+    <definition name="directRegister02" extends="adminLayout">
+        <put name="title" value="title.registerPage"/>
+        <put name="body" value="/jsp/admin/directRegister02.jsp"/>
+    </definition>
+    <definition name="directRegister03" extends="adminLayout">
+        <put name="title" value="title.manageSubscriptions"/>
+        <put name="body" value="/jsp/admin/directRegister03.jsp"/>
+    </definition>
+    <definition name="accountTransactionForResidenceAccount01" extends="mainLayout">
+        <put name="title" value="title.accountTransactionForResidenceAccount"/>
+        <put name="body" value="/jsp/accountTransactionForResidenceAccount01.jsp"/>
+    </definition>
+    <definition name="accountTransactionForResidenceAccount02" extends="mainLayout">
+        <put name="title" value="title.accountTransactionForResidenceAccount"/>
+        <put name="body" value="/jsp/accountTransactionForResidenceAccount02.jsp"/>
+    </definition>
+    <!--15-4-2009 MSM: swift Recon statement     -->
+    <definition name="swftReconStatement01" extends="mainLayout">
+        <put name="title" value="title.swftReconStatement"/>
+        <put name="body" value="/jsp/swftReconStatement01.jsp"/>
+    </definition>
+    <definition name="swftReconStatement02" extends="mainLayout">
+        <put name="title" value="title.swftReconStatement"/>
+        <put name="body" value="/jsp/swftReconStatement02.jsp"/>
+    </definition>
+
+    <definition name="searchFTTMessage" extends="mainLayout">
+        <put name="title" value="title.searchFTTMessage"/>
+        <put name="body" value="/jsp/searchFTTMessage.jsp"/>
+    </definition>
+
+    <definition name="searchFDDPayment" extends="mainLayout">
+        <put name="title" value="title.searchFDDPayment"/>
+        <put name="body" value="/jsp/searchFDDPayment.jsp"/>
+    </definition>
+
+
+    <definition name="autoUnlockUser01" extends="loginLayout">
+        <put name="title" value="title.autoUnlockUser"/>
+        <put name="body" value="/jsp/autoUnlockUser01.jsp"/>
+    </definition>
+    <definition name="autoUnlockUser02" extends="loginLayout">
+        <put name="title" value="title.autoUnlockUser"/>
+        <put name="body" value="/jsp/autoUnlockUser02.jsp"/>
+    </definition>
+    <definition name="error" extends="userLayout">
+        <put name="title" value="title.error"/>
+        <put name="body" value="/jsp/error.jsp"/>
+    </definition>
+    <definition name="systemError" extends="userLayout">
+        <put name="title" value="title.error"/>
+        <put name="body" value="/jsp/systemError.jsp"/>
+    </definition>
+
+    <definition name="unbanUsersByAdmin01" extends="adminLayout">
+        <put name="title" value="title.unbanUsersByAdmin"/>
+        <put name="body" value="/jsp/admin/unbanUsersByAdmin01.jsp"/>
+    </definition>
+    <definition name="unbanUsersByAdmin02" extends="adminLayout">
+        <put name="title" value="title.unbanUsersByAdmin"/>
+        <put name="body" value="/jsp/admin/unbanUsersByAdmin02.jsp"/>
+    </definition>
+    <definition name="unbanUsersByAdmin03" extends="adminLayout">
+        <put name="title" value="title.unbanUsersByAdmin"/>
+        <put name="body" value="/jsp/admin/unbanUsersByAdmin03.jsp"/>
+    </definition>
+
+
+    <definition name="batchResendFailedEmail01" extends="adminLayout">
+        <put name="title" value="title.batchResendFailedEmail"/>
+        <put name="body" value="/jsp/admin/batchResendFailedEmail01.jsp"/>
+    </definition>
+    <definition name="batchResendFailedEmail02" extends="adminLayout">
+        <put name="title" value="title.batchResendFailedEmail"/>
+        <put name="body" value="/jsp/admin/batchResendFailedEmail02.jsp"/>
+    </definition>
+    <definition name="batchResendFailedEmail03" extends="adminLayout">
+        <put name="title" value="title.batchResendFailedEmail"/>
+        <put name="body" value="/jsp/admin/batchResendFailedEmail03.jsp"/>
+    </definition>
+
+    <definition name="registeredUserAccList" extends="mainLayout">
+        <put name="title" value="title.registeredUserAccList"/>
+        <put name="body" value="/jsp/registeredUserAccList.jsp"/>
+    </definition>
+
+    <definition name="instrucRegistration" extends="userLayout">
+        <put name="title" value="title.registerPage"/>
+        <put name="body" value="/jsp/importantInstructionsforRegistration.jsp"/>
+    </definition>
+
+    <definition name="helpPage" extends="userLayout">
+        <put name="title" value="title.registerPage"/>
+        <put name="body" value="/jsp/help.jsp"/>
+    </definition>
+
+    <definition name="directViewAccStmt" extends="adminLayout">
+        <put name="title" value="title.directAccStatement"/>
+        <put name="body" value="/jsp/admin/directAccStatement01.jsp"/>
+    </definition>
+
+    <definition name="availableBrList" extends="adminLayout">
+        <put name="title" value="title.listOfBr"/>
+        <put name="body" value="/jsp/admin/availableBrList.jsp"/>
+    </definition>
+
+    <definition name="adminReportHome" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/adminReportHome.jsp"/>
+    </definition>
+
+    <definition name="fundTransReportHome" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/fundTransReportHome.jsp"/>
+    </definition>
+
+    <definition name="fundTransClientReportHome" extends="mainLayout">
+        <put name="title" value="title.transactionalReport"/>
+        <put name="body" value="/jsp/fundTransClientReportHome.jsp"/>
+    </definition>
+
+    <definition name="rptFundTransDateWise" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptFundTransDateWise.jsp"/>
+    </definition>
+
+    <definition name="rptEFTDateWiseAdmin" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptEFTDateWiseAdmin.jsp"/>
+    </definition>
+
+    <definition name="rptEFTReturnDateWiseAdmin" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptEFTDReturnateWiseAdmin.jsp"/>
+    </definition>
+
+    <definition name="rptEFTStlBrWise" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptEFTDStlBrWise.jsp"/>
+    </definition>
+
+    <definition name="rptFundTransClientDateWise" extends="mainLayout">
+        <put name="title" value="title.transactionalReport"/>
+        <put name="body" value="/jsp/rptFundTransClientDateWise.jsp"/>
+    </definition>
+
+    <definition name="rptFundTransDetail" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptFundTransDetail.jsp"/>
+    </definition>
+
+    <definition name="rptEFTDetailAdmin" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptEFTDetailAdmin.jsp"/>
+    </definition>
+
+    <definition name="rptFundTransVoucher" extends="mainLayout">
+        <put name="title" value="title.ftVoucher"/>
+        <put name="body" value="/jsp/rptFundTransVoucher.jsp"/>
+    </definition>
+
+    <definition name="rptEFTVoucher" extends="mainLayout">
+        <put name="title" value="title.ftVoucher"/>
+        <put name="body" value="/jsp/rptEFTVoucher.jsp"/>
+    </definition>
+
+    <definition name="rptRechargeVoucher" extends="mainLayout">
+        <put name="title" value="title.iRechargeVoucher"/>
+        <put name="body" value="/jsp/rptRechargeVoucher.jsp"/>
+    </definition>
+
+    <definition name="rptRecharge" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptRecharge.jsp"/>
+    </definition>
+
+    <definition name="rptWiMaxRecharge" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptWiMaxRecharge.jsp"/>
+    </definition>
+
+    <definition name="rptRechargeClient" extends="mainLayout">
+        <put name="title" value="title.transactionalReport"/>
+        <put name="body" value="/jsp/rptRechargeClient.jsp"/>
+    </definition>
+
+    <definition name="custDetailInfo" extends="adminLayout">
+        <put name="title" value="title.custDetailInfo"/>
+        <put name="body" value="/jsp/admin/custDetailInfo.jsp"/>
+    </definition>
+
+
+    <definition name="brWiseApprovedUserAccSummary" extends="adminLayout">
+        <put name="title" value="title.brWiseApprovedUserAccSummary"/>
+        <put name="body" value="/jsp/admin/brWiseApprovedUserAccSummary.jsp"/>
+    </definition>
+
+
+    <definition name="brWiseRegisteredUserAccSummary" extends="adminLayout">
+        <put name="title" value="title.brWiseRegisteredUserAccSummary"/>
+        <put name="body" value="/jsp/admin/brWiseRegisteredUserAccSummary.jsp"/>
+    </definition>
+
+
+    <definition name="registeredAccList" extends="adminLayout">
+        <put name="title" value="title.registeredAccList"/>
+        <put name="body" value="/jsp/admin/registeredAccList.jsp"/>
+    </definition>
+
+
+    <definition name="pendingClientList" extends="adminLayout">
+        <put name="title" value="title.pendingClientList"/>
+        <put name="body" value="/jsp/admin/pendingClientList.jsp"/>
+    </definition>
+
+    <definition name="instrumentClearingStatus" extends="mainLayout">
+        <put name="title" value="title.instrumentClearingStatus"/>
+        <put name="body" value="/jsp/instrumentClearingStatus.jsp"/>
+    </definition>
+
+    <definition name="ostdLiability" extends="mainLayout">
+        <put name="title" value="title.ostdLiability"/>
+        <put name="body" value="/jsp/ostdLiability.jsp"/>
+    </definition>
+    <definition name="searchAccInfoByFTTNo1" extends="adminLayout">
+        <put name="title" value="title.accInfoBrRefNo"/>
+        <put name="body" value="/jsp/admin/searchAccInfoByFTTNo1.jsp"/>
+    </definition>
+    <definition name="searchAccInfoByFTTNo2" extends="adminLayout">
+        <put name="title" value="title.accInfoBrRefNo"/>
+        <put name="body" value="/jsp/admin/searchAccInfoByFTTNo2.jsp"/>
+    </definition>
+    <definition name="viewUserProfile" extends="mainLayout">
+        <put name="title" value="title.viewUserProfile"/>
+        <put name="body" value="/jsp/editUserProfile01.jsp"/>
+    </definition>
+    <definition name="editUserProfile01" extends="mainLayout">
+        <put name="title" value="title.editUserProfile"/>
+        <put name="body" value="/jsp/editUserProfile03.jsp"/>
+    </definition>
+    <definition name="editUserProfile" extends="mainLayout">
+        <put name="title" value="title.editUserProfile"/>
+        <put name="body" value="/jsp/editUserProfile02.jsp"/>
+    </definition>
+
+    <definition name="changeUserId" extends="mainLayout">
+        <put name="title" value="title.changeUserId"/>
+        <put name="body" value="/jsp/changeUserId.jsp"/>
+    </definition>
+    <definition name="changeUserId01" extends="mainLayout">
+        <put name="title" value="title.changeUserId"/>
+        <put name="body" value="/jsp/changeUserId01.jsp"/>
+    </definition>
+    <definition name="changeUserId02" extends="userLayout">
+        <put name="title" value="title.changeUserId"/>
+        <put name="body" value="/jsp/changeUserId02.jsp"/>
+    </definition>
+    <definition name="changeUserId03" extends="userLayout">
+        <put name="title" value="title.changeUserId"/>
+        <put name="titlebar" value="/layout/tiles/blank.jsp"/>
+        <put name="menuPanel" value="/layout/tiles/blank.jsp"/>
+        <put name="body" value="/jsp/changeUserId03.jsp"/>
+    </definition>
+    <definition name="changeUserId04" extends="userLayout">
+        <put name="title" value="title.changeUserId"/>
+        <put name="body" value="/jsp/changeUserId04.jsp"/>
+    </definition>
+    <definition name="changeUserId05" extends="userLayout">
+        <put name="title" value="title.changeUserId"/>
+        <put name="titlebar" value="/layout/tiles/blank.jsp"/>
+        <put name="menuPanel" value="/layout/tiles/blank.jsp"/>
+        <put name="body" value="/jsp/changeUserId05.jsp"/>
+    </definition>
+    <definition name="changeUserId06" extends="userLayout">
+        <put name="title" value="title.changeUserId"/>
+        <put name="titlebar" value="/layout/tiles/blank.jsp"/>
+        <put name="menuPanel" value="/layout/tiles/blank.jsp"/>
+        <put name="body" value="/jsp/changeUserId06.jsp"/>
+    </definition>
+    <definition name="changeUserId07" extends="userLayout">
+        <put name="title" value="title.changeUserId"/>
+        <put name="titlebar" value="/layout/tiles/blank.jsp"/>
+        <put name="menuPanel" value="/layout/tiles/blank.jsp"/>
+        <put name="body" value="/jsp/changeUserId07.jsp"/>
+    </definition>
+
+
+    <definition name="searchCustomer01" extends="adminLayout">
+        <put name="title" value="title.searchCustomer"/>
+        <put name="body" value="/jsp/admin/searchCustomer01.jsp"/>
+    </definition>
+    <definition name="searchCustomer02" extends="adminLayout">
+        <put name="title" value="title.accInfoBrRefNo"/>
+        <put name="body" value="/jsp/admin/searchCustomer02.jsp"/>
+    </definition>
+    <definition name="enlistProfileSubscriptionInfo01" extends="mainLayout">
+        <put name="title" value="title.profileSubsInfo"/>
+        <put name="body" value="/jsp/enlistProfileSubscriptionInfo01.jsp"/>
+    </definition>
+    <definition name="enlistProfileSubscriptionInfo02" extends="mainLayout">
+        <put name="title" value="title.profileSubsInfo"/>
+        <put name="body" value="/jsp/enlistProfileSubscriptionInfo02.jsp"/>
+    </definition>
+    <definition name="enlistProfileSubscriptionInfo03" extends="mainLayout">
+        <put name="title" value="title.profileSubsInfo"/>
+        <put name="body" value="/jsp/enlistProfileSubscriptionInfo03.jsp"/>
+    </definition>
+
+    <definition name="addProfileSubscriptionInfo" extends="mainLayout">
+        <put name="title" value="title.profileSubsInfo"/>
+        <put name="body" value="/jsp/addProfileSubscriptionInfo.jsp"/>
+    </definition>
+
+    <definition name="fundTransfer01" extends="mainLayout">
+        <put name="title" value="title.fundtransfer"/>
+        <put name="body" value="/jsp/fundTransfer01.jsp"/>
+    </definition>
+
+    <definition name="eftHome" extends="mainLayout">
+        <put name="title" value="title.fundtransfer"/>
+        <put name="body" value="/jsp/eftHome.jsp"/>
+    </definition>
+
+    <definition name="eftFundTransfer01" extends="mainLayout">
+        <put name="title" value="title.fundtransfer"/>
+        <put name="body" value="/jsp/eftIssue01.jsp"/>
+    </definition>
+
+    <definition name="fundTransfer02" extends="mainLayout">
+        <put name="title" value="title.fundtransfer"/>
+        <put name="body" value="/jsp/fundTransfer02.jsp"/>
+    </definition>
+
+    <definition name="eftFundTransfer02" extends="mainLayout">
+        <put name="title" value="title.fundtransfer"/>
+        <put name="body" value="/jsp/eftIssue02.jsp"/>
+    </definition>
+
+    <definition name="eftFundTransferPreview" extends="mainLayout">
+        <put name="title" value="title.fundtransfer"/>
+        <put name="body" value="/jsp/eftIssuePreview.jsp"/>
+    </definition>
+
+    <definition name="eftFundTransfer03" extends="mainLayout">
+        <put name="title" value="title.fundtransfer"/>
+        <put name="body" value="/jsp/eftIssue03.jsp"/>
+    </definition>
+
+    <definition name="eftFundTransfer04" extends="mainLayout">
+        <put name="title" value="title.fundtransfer"/>
+        <put name="body" value="/jsp/eftIssue04.jsp"/>
+    </definition>
+
+    <definition name="eftFundTransfer05" extends="mainLayout">
+        <put name="title" value="title.fundtransfer"/>
+        <put name="body" value="/jsp/eftIssue05.jsp"/>
+    </definition>
+
+    <definition name="rptEFTDateWiseForClient" extends="mainLayout">
+        <put name="title" value="title.transactionalReport"/>
+        <put name="body" value="/jsp/rptEFTDateWise.jsp"/>
+    </definition>
+
+    <definition name="fundTransferPreview02" extends="mainLayout">
+        <put name="title" value="title.fundtransfer"/>
+        <put name="body" value="/jsp/fundTransferPreview02.jsp"/>
+    </definition>
+
+    <definition name="fundTransfer03" extends="mainLayout">
+        <put name="title" value="title.fundtransfer"/>
+        <put name="body" value="/jsp/fundTransfer03.jsp"/>
+    </definition>
+
+    <definition name="fundTransfer04" extends="mainLayout">
+        <put name="title" value="title.fundtransfer"/>
+        <put name="body" value="/jsp/fundTransfer04.jsp"/>
+    </definition>
+
+
+    <definition name="featureDetail" extends="mainLayout">
+        <put name="title" value="title.featureDetail"/>
+        <put name="body" value="/jsp/featureDetail.jsp"/>
+    </definition>
+
+    <definition name="featureDetail01" extends="mainLayout">
+        <put name="title" value="title.featureDetail"/>
+        <put name="body" value="/jsp/featureDetail01.jsp"/>
+    </definition>
+
+
+    <definition name="featureDetail02" extends="mainLayout">
+        <put name="title" value="title.featureDetail"/>
+        <put name="body" value="/jsp/featureDetail02.jsp"/>
+    </definition>
+
+    <definition name="fndTransSubscribeSucc" extends="mainLayout">
+        <put name="title" value="title.featureDetail"/>
+        <put name="body" value="/jsp/fndTransSubscribeSucc.jsp"/>
+    </definition>
+
+    <definition name="confirmRequestedFundTransfer01" extends="mainLayout">
+        <put name="title" value="title.confirmRequestedFT"/>
+        <put name="body" value="/jsp/confirmRequestedFundTransfer01.jsp"/>
+    </definition>
+    <definition name="confirmRequestedFundTransfer02" extends="mainLayout">
+        <put name="title" value="title.confirmRequestedFT"/>
+        <put name="body" value="/jsp/confirmRequestedFundTransfer02.jsp"/>
+    </definition>
+    <definition name="changeFundTransferPinCode01" extends="mainLayout">
+        <put name="title" value="title.changePinCode"/>
+        <put name="body" value="/jsp/changeFundTransferPinCode01.jsp"/>
+    </definition>
+    <definition name="changeFundTransferPinCode02" extends="mainLayout">
+        <put name="title" value="title.changePinCode"/>
+        <put name="body" value="/jsp/changeFundTransferPinCode02.jsp"/>
+    </definition>
+    <definition name="changeFundTransferPinCode03" extends="userLayout">
+        <put name="title" value="title.changePinCode"/>
+        <put name="body" value="/jsp/changeFundTransferPinCode03.jsp"/>
+    </definition>
+    <definition name="changeFundTransferPinCode04" extends="userLayout">
+        <put name="title" value="title.changePinCode"/>
+        <put name="body" value="/jsp/changeFundTransferPinCode04.jsp"/>
+    </definition>
+
+    <definition name="changePhoneNo01" extends="userLayout">
+        <put name="title" value="title.changePhoneNo"/>
+        <put name="titlebar" value="/layout/tiles/blank.jsp"/>
+        <put name="menuPanel" value="/layout/tiles/blank.jsp"/>
+        <put name="body" value="/jsp/changePhoneNo01.jsp"/>
+    </definition>
+
+    <definition name="changePhoneNo02" extends="userLayout">
+        <put name="title" value="title.changePhoneNo"/>
+        <put name="titlebar" value="/layout/tiles/blank.jsp"/>
+        <put name="menuPanel" value="/layout/tiles/blank.jsp"/>
+        <put name="body" value="/jsp/changePhoneNo02.jsp"/>
+    </definition>
+
+    <definition name="changePhoneNo03" extends="userLayout">
+        <put name="title" value="title.changeUserId"/>
+        <put name="body" value="/jsp/changePhoneNo03.jsp"/>
+    </definition>
+    <definition name="frequentlyAskedQuestion01" extends="adminLayout">
+        <put name="title" value="title.faqs"/>
+        <put name="body" value="/jsp/admin/frequentlyAskedQuestion01.jsp"/>
+    </definition>
+    <definition name="frequentlyAskedQuestion02" extends="adminLayout">
+        <put name="title" value="title.faqs"/>
+        <put name="body" value="/jsp/admin/frequentlyAskedQuestion02.jsp"/>
+    </definition>
+    <definition name="frequentlyAskedQuestion03" extends="adminLayout">
+        <put name="title" value="title.faqs"/>
+        <put name="body" value="/jsp/admin/frequentlyAskedQuestion03.jsp"/>
+    </definition>
+    <definition name="addFrequentlyAskedQuestion" extends="adminLayout">
+        <put name="title" value="title.faqs"/>
+        <put name="body" value="/jsp/admin/addFrequentlyAskedQuestion.jsp"/>
+    </definition>
+
+    <definition name="modifyFrequentlyAskedQuestion" extends="adminLayout">
+        <put name="title" value="title.faqs"/>
+        <put name="body" value="/jsp/admin/modifyFrequentlyAskedQuestion.jsp"/>
+    </definition>
+    <definition name="viewFrequentlyAskedQuestion01" extends="mainLayout">
+        <put name="title" value="title.faqs"/>
+        <put name="body" value="/jsp/viewFrequentlyAskedQuestion01.jsp"/>
+    </definition>
+    <definition name="viewFrequentlyAskedQuestion02" extends="mainLayout">
+        <put name="title" value="title.faqs"/>
+        <put name="body" value="/jsp/viewFrequentlyAskedQuestion02.jsp"/>
+    </definition>
+    <definition name="viewFrequentlyAskedQuestion03" extends="mainLayout">
+        <put name="title" value="title.faqs"/>
+        <put name="body" value="/jsp/viewFrequentlyAskedQuestion03.jsp"/>
+    </definition>
+    <definition name="viewFrequentlyAskedQuestionFromIndex" extends="faqLayout">
+        <put name="title" value="title.faqs"/>
+        <put name="body" value="/jsp/viewFrequentlyAskedQuestion.jsp"/>
+    </definition>
+    <definition name="viewFrequentlyAskedQuestionFromIndex01" extends="faqLayout">
+        <put name="title" value="title.faqs"/>
+        <put name="body" value="/jsp/viewFrequentlyAskedQuestionFromIndex01.jsp"/>
+    </definition>
+
+    <definition name="virtualRecharge01" extends="mainLayout">
+        <put name="title" value="title.virtualRecharge"/>
+        <put name="body" value="/jsp/virtualRecharge01.jsp"/>
+    </definition>
+    <definition name="virtualRecharge02" extends="mainLayout">
+        <put name="title" value="title.virtualRecharge"/>
+        <put name="body" value="/jsp/virtualRecharge02.jsp"/>
+    </definition>
+    <definition name="virtualRecharge03" extends="mainLayout">
+        <put name="title" value="title.virtualRecharge"/>
+        <put name="body" value="/jsp/virtualRecharge03.jsp"/>
+    </definition>
+    <definition name="virtualRecharge04" extends="mainLayout">
+        <put name="title" value="title.virtualRecharge"/>
+        <put name="body" value="/jsp/virtualRecharge04.jsp"/>
+    </definition>
+
+    <definition name="SearchClientByAdmin" extends="adminLayout">
+        <put name="title" value="title.searchClient"/>
+        <put name="body" value="/jsp/admin/searchClientByAdmin01.jsp"/>
+    </definition>
+
+    <definition name="searchClientByAdmin02" extends="adminLayout">
+        <put name="title" value="title.searchClient"/>
+        <put name="body" value="/jsp/admin/searchClientByAdmin02.jsp"/>
+    </definition>
+
+    <definition name="profileWaiverList" extends="adminLayout">
+        <put name="title" value="title.waiver"/>
+        <put name="body" value="/jsp/admin/profileWaiverList.jsp"/>
+    </definition>
+
+    <definition name="profileWaiver01" extends="adminLayout">
+        <put name="title" value="title.waiver"/>
+        <put name="body" value="/jsp/admin/profileWaiver01.jsp"/>
+    </definition>
+
+    <definition name="profileWaiver02" extends="adminLayout">
+        <put name="title" value="title.waiver"/>
+        <put name="body" value="/jsp/admin/profileWaiver02.jsp"/>
+    </definition>
+
+    <definition name="profileWaiver03" extends="adminLayout">
+        <put name="title" value="title.waiver"/>
+        <put name="body" value="/jsp/admin/profileWaiver03.jsp"/>
+    </definition>
+
+    <definition name="profileWaiver04" extends="adminLayout">
+        <put name="title" value="title.waiver"/>
+        <put name="body" value="/jsp/admin/profileWaiver04.jsp"/>
+    </definition>
+    <definition name="virtualRechargeStatement01" extends="adminLayout">
+        <put name="title" value="title.sslStatement"/>
+        <put name="body" value="/jsp/admin/virtualRechargeStatement01.jsp"/>
+    </definition>
+    <definition name="virtualRechargeStatement02" extends="adminLayout">
+        <put name="title" value="title.sslStatement"/>
+        <put name="body" value="/jsp/admin/virtualRechargeStatement02.jsp"/>
+    </definition>
+
+    <definition name="addiRechargeSubscriptionSuccess" extends="mainLayout">
+        <put name="title" value="title.virtualRecharge"/>
+        <put name="body" value="/jsp/addiRechargeSubscriptionSuccess.jsp"/>
+    </definition>
+
+
+    <definition name="approveDebitAccount" extends="adminLayout">
+        <put name="title" value="title.approveDebitAccount"/>
+        <put name="body" value="/jsp/admin/approveDebitAccount.jsp"/>
+    </definition>
+    <definition name="approveDebitAccount01" extends="adminLayout">
+        <put name="title" value="title.approveDebitAccount"/>
+        <put name="body" value="/jsp/admin/approveDebitAccount01.jsp"/>
+    </definition>
+
+    <definition name="checkUserPhoneNumber" extends="userLayout">
+        <put name="title" value="title.checkUserPhoneNumber"/>
+        <put name="body" value="/jsp/updateUserCellNumber.jsp"/>
+    </definition>
+    <definition name="updatePassword" extends="userLayout">
+        <put name="title" value="title.changePassword"/>
+        <put name="body" value="/jsp/updatePassword.jsp"/>
+    </definition>
+    <definition name="login2FactorVerification" extends="loginLayout">
+        <put name="title" value="title.login"/>
+        <put name="body" value="/jsp/login2Factor.jsp"/>
+    </definition>
+    <definition name="deleteUserProfile01" extends="adminLayout">
+        <put name="title" value="title.deleteUserProfile"/>
+        <put name="body" value="/jsp/admin/deleteUserProfile01.jsp"/>
+    </definition>
+    <definition name="deleteUserProfile02" extends="adminLayout">
+        <put name="title" value="title.deleteUserProfile"/>
+        <put name="body" value="/jsp/admin/deleteUserProfile02.jsp"/>
+    </definition>
+    <definition name="deleteUserProfile03" extends="adminLayout">
+        <put name="title" value="title.deleteUserProfile"/>
+        <put name="body" value="/jsp/admin/deleteUserProfile03.jsp"/>
+    </definition>
+    <definition name="massMailing01" extends="adminLayout">
+        <put name="title" value="title.massMailing"/>
+        <put name="body" value="/jsp/admin/massMailing01.jsp"/>
+    </definition>
+    <definition name="massMailing02" extends="adminLayout">
+        <put name="title" value="title.massMailing"/>
+        <put name="body" value="/jsp/admin/massMailing02.jsp"/>
+    </definition>
+    <definition name="massMailing03" extends="adminLayout">
+        <put name="title" value="title.massMailing"/>
+        <put name="body" value="/jsp/admin/massMailing03.jsp"/>
+    </definition>
+    <definition name="massMailing04" extends="adminLayout">
+        <put name="title" value="title.massMailing"/>
+        <put name="body" value="/jsp/admin/massMailing04.jsp"/>
+    </definition>
+    <definition name="connectionTest" extends="adminLayout">
+        <put name="title" value="title.massMailing"/>
+        <put name="body" value="/jsp/admin/connectionTest.jsp"/>
+    </definition>
+    <definition name="adminDocsHome" extends="adminLayout">
+        <put name="title" value="title.adminDocs"/>
+        <put name="body" value="/jsp/admin/adminDocsHome.jsp"/>
+    </definition>
+    <definition name="chequeBookIssue01" extends="adminLayout">
+        <put name="title" value="title.chequeBookIssue"/>
+        <put name="body" value="/jsp/admin/chequeBookIssue01.jsp"/>
+    </definition>
+    <definition name="costSheet" extends="mainLayout">
+        <put name="title" value="title.costSheet"/>
+        <put name="body" value="/jsp/costSheet.jsp"/>
+    </definition>
+    <definition name="costSheet02" extends="mainLayout">
+        <put name="title" value="title.costSheet"/>
+        <put name="body" value="/jsp/costSheet02.jsp"/>
+    </definition>
+    <definition name="chequeBookIssue02" extends="adminLayout">
+        <put name="title" value="title.chequeBookIssue"/>
+        <put name="body" value="/jsp/admin/chequeBookIssue02.jsp"/>
+    </definition>
+    <definition name="chequeBookIssue03" extends="adminLayout">
+        <put name="title" value="title.chequeBookIssue"/>
+        <put name="body" value="/jsp/admin/chequeBookIssue03.jsp"/>
+    </definition>
+    <definition name="privilegeAdminUser01" extends="adminLayout">
+        <put name="title" value="title.privilegeAdmin"/>
+        <put name="body" value="/jsp/admin/privilegeAdminUser01.jsp"/>
+    </definition>
+    <definition name="privilegeAdminUser02" extends="adminLayout">
+        <put name="title" value="title.privilegeAdmin"/>
+        <put name="body" value="/jsp/admin/privilegeAdminUser02.jsp"/>
+    </definition>
+    <definition name="privilegeAdminUser03" extends="adminLayout">
+        <put name="title" value="title.privilegeAdmin"/>
+        <put name="body" value="/jsp/admin/privilegeAdminUser03.jsp"/>
+    </definition>
+    <definition name="virtualBatchRecharge01" extends="mainLayout">
+        <put name="title" value="title.virtualBatchRecharge"/>
+        <put name="body" value="/jsp/virtualBatchRecharge01.jsp"/>
+    </definition>
+    <definition name="virtualBatchRecharge02" extends="mainLayout">
+        <put name="title" value="title.virtualBatchRecharge"/>
+        <put name="body" value="/jsp/virtualBatchRecharge02.jsp"/>
+    </definition>
+    <definition name="virtualBatchRecharge03" extends="mainLayout">
+        <put name="title" value="title.virtualBatchRecharge"/>
+        <put name="body" value="/jsp/virtualBatchRecharge03.jsp"/>
+    </definition>
+    <definition name="virtualBatchRecharge04" extends="mainLayout">
+        <put name="title" value="title.virtualBatchRecharge"/>
+        <put name="body" value="/jsp/virtualBatchRecharge04.jsp"/>
+    </definition>
+    <definition name="chequebookRequition" extends="adminLayout">
+        <put name="title" value="title.chequeBookRequisition"/>
+        <put name="body" value="/jsp/admin/chequeBookRequisitionMenu.jsp"/>
+    </definition>
+    <definition name="rptChequeBookIssuePositionDateWise" extends="adminLayout">
+        <put name="title" value="title.chequeBookRequisition"/>
+        <put name="body" value="/jsp/admin/rptChequeBookIssuePositionDateWise.jsp"/>
+    </definition>
+    <definition name="chequeBookRequest01" extends="mainLayout">
+        <put name="title" value="title.chequeBookRequest"/>
+        <put name="body" value="/jsp/chequeBookRequest01.jsp"/>
+    </definition>
+    <definition name="chequeBookRequisitionPrint01" extends="mainLayout">
+        <put name="title" value="title.chequeBookRequest"/>
+        <put name="body" value="/jsp/chequeBookRequisitionPrint01.jsp"/>
+    </definition>
+    <definition name="chequeBookRequisitionPrint02" extends="mainLayout">
+        <put name="title" value="title.chequeBookRequest"/>
+        <put name="body" value="/jsp/chequeBookRequisitionPrint02.jsp"/>
+    </definition>
+    <definition name="chequeBookRequest02" extends="mainLayout">
+        <put name="title" value="title.chequeBookRequest"/>
+        <put name="body" value="/jsp/chequeBookRequest02.jsp"/>
+    </definition>
+    <definition name="chequeBookRequest03" extends="mainLayout">
+        <put name="title" value="title.chequeBookRequest"/>
+        <put name="body" value="/jsp/chequeBookRequest03.jsp"/>
+    </definition>
+    <definition name="chequeBookRequest04" extends="mainLayout">
+        <put name="title" value="title.chequeBookRequest"/>
+        <put name="body" value="/jsp/chequeBookRequest04.jsp"/>
+    </definition>
+    <definition name="rptClientChequeBookRequisitionDateWise" extends="mainLayout">
+        <put name="title" value="title.chequeBookRequest"/>
+        <put name="body" value="/jsp/rptClientChequeBookRequisitionDateWise.jsp"/>
+    </definition>
+
+    <definition name="chequeBookUserRequest" extends="mainLayout">
+        <put name="title" value="title.manageChequeBook"/>
+        <put name="body" value="/jsp/chequeBookRequestMenuForUser.jsp"/>
+    </definition>
+    <definition name="requestNewPinCode01" extends="mainLayout">
+        <put name="title" value="title.newPinCodeRequest"/>
+        <put name="body" value="/jsp/requestNewPinCode01.jsp"/>
+    </definition>
+    <definition name="requestNewPinCode02" extends="mainLayout">
+        <put name="title" value="title.newPinCodeRequest"/>
+        <put name="body" value="/jsp/requestNewPinCode02.jsp"/>
+    </definition>
+    <definition name="requestNewPinCode03" extends="userLayout">
+        <put name="title" value="title.newPinCodeRequest"/>
+        <put name="body" value="/jsp/requestNewPinCode03.jsp"/>
+    </definition>
+    <definition name="virtualBatchRechargeMenu" extends="mainLayout">
+        <put name="title" value="title.virtualBatchRecharge"/>
+        <put name="body" value="/jsp/virtualBatchRechargeMenu.jsp"/>
+    </definition>
+    <definition name="modifyVirtualBatchRecharge01" extends="mainLayout">
+        <put name="title" value="title.modifyBatchRechrg"/>
+        <put name="body" value="/jsp/modifyVirtualBatchRecharge01.jsp"/>
+    </definition>
+
+    <definition name="previewDeleteVirtualBatchRecharge" extends="mainLayout">
+        <put name="title" value="title.modifyBatchRechrg"/>
+        <put name="body" value="/jsp/previewDeleteVirtualBatchRecharge.jsp"/>
+    </definition>
+    <definition name="confirmDeleteVirtualBatchRecharge" extends="mainLayout">
+        <put name="title" value="title.modifyBatchRechrg"/>
+        <put name="body" value="/jsp/confirmDeleteVirtualBatchRecharge.jsp"/>
+    </definition>
+    <definition name="requestNewPinCode04" extends="userLayout">
+        <put name="title" value="title.newPinCodeRequest"/>
+        <put name="body" value="/jsp/requestNewPinCode04.jsp"/>
+    </definition>
+    <definition name="requestNewPinCode05" extends="userLayout">
+        <put name="title" value="title.newPinCodeRequest"/>
+        <put name="body" value="/jsp/requestNewPinCode05.jsp"/>
+    </definition>
+    <definition name="requestNewPinCode" extends="userLayout">
+        <put name="title" value="title.newPinCodeRequest"/>
+        <put name="body" value="/jsp/requestNewPinCode.jsp"/>
+    </definition>
+    <definition name="assignProfilePrivilegeByAdmin01" extends="adminLayout">
+        <put name="title" value="title.privilegeProfile"/>
+        <put name="body" value="/jsp/admin/assignProfilePrivilegeByAdmin01.jsp"/>
+    </definition>
+    <definition name="assignProfilePrivilegeByAdmin02" extends="adminLayout">
+        <put name="title" value="title.privilegeProfile"/>
+        <put name="body" value="/jsp/admin/assignProfilePrivilegeByAdmin02.jsp"/>
+    </definition>
+    <definition name="assignProfilePrivilegeByAdmin03" extends="adminLayout">
+        <put name="title" value="title.privilegeProfile"/>
+        <put name="body" value="/jsp/admin/assignProfilePrivilegeByAdmin03.jsp"/>
+    </definition>
+    <definition name="assignProfilePrivilegeByAdmin04" extends="adminLayout">
+        <put name="title" value="title.privilegeProfile"/>
+        <put name="body" value="/jsp/admin/assignProfilePrivilegeByAdmin04.jsp"/>
+    </definition>
+    <definition name="dateWiseBatchRechrgRpt" extends="mainLayout">
+        <put name="title" value="title.virtualBatchRechargeRpt"/>
+        <put name="body" value="/jsp/dateWiseBatchRechrgRpt.jsp"/>
+    </definition>
+    <definition name="dateWiseBatchRechrgRpt01" extends="mainLayout">
+        <put name="title" value="title.virtualBatchRechargeRpt"/>
+        <put name="body" value="/jsp/dateWiseBatchRechrgRpt01.jsp"/>
+    </definition>
+    <definition name="rptBrWiseRechargeStatus" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptBrWiseRechargeStatus.jsp"/>
+    </definition>
+    <definition name="wimaxBillPay01" extends="mainLayout">
+        <put name="title" value="title.wimaxBillPay"/>
+        <put name="body" value="/jsp/wimaxBillPay01.jsp"/>
+    </definition>
+    <definition name="wimaxBillPay02" extends="mainLayout">
+        <put name="title" value="title.wimaxBillPay"/>
+        <put name="body" value="/jsp/wimaxBillPay02.jsp"/>
+    </definition>
+    <definition name="wimaxBillPay03" extends="mainLayout">
+        <put name="title" value="title.wimaxBillPay"/>
+        <put name="body" value="/jsp/wimaxBillPay03.jsp"/>
+    </definition>
+    <definition name="wimaxBillPay04" extends="mainLayout">
+        <put name="title" value="title.wimaxBillPay"/>
+        <put name="body" value="/jsp/wimaxBillPay04.jsp"/>
+    </definition>
+    <definition name="rptWimaxBillPayClient" extends="mainLayout">
+        <put name="title" value="title.rptWimaxBillPay"/>
+        <put name="body" value="/jsp/rptWimaxBillPayClient.jsp"/>
+    </definition>
+    <definition name="rptWimaxBillPay" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptWimaxBillPay.jsp"/>
+    </definition>
+    <definition name="wimaxBillPayMenu" extends="mainLayout">
+        <put name="title" value="title.wimaxBillPay"/>
+        <put name="body" value="/jsp/wimaxBillPayMenu.jsp"/>
+    </definition>
+    <definition name="rptWimaxCardDetail01" extends="mainLayout">
+        <put name="title" value="title.wimaxBillPay"/>
+        <put name="body" value="/jsp/rptWimaxCardDetail01.jsp"/>
+    </definition>
+    <definition name="rptWimaxCardDetail02" extends="mainLayout">
+        <put name="title" value="title.wimaxBillPay"/>
+        <put name="body" value="/jsp/rptWimaxCardDetail02.jsp"/>
+    </definition>
+    <definition name="registrationByAdminMenu" extends="adminLayout">
+        <put name="title" value="title.registration"/>
+        <put name="body" value="/jsp/admin/registrationByAdminMenu.jsp"/>
+    </definition>
+    <definition name="profileMaintainanceMenu" extends="adminLayout">
+        <put name="title" value="title.profileMaintainance"/>
+        <put name="body" value="/jsp/admin/profileMaintainanceMenu.jsp"/>
+    </definition>
+    <definition name="mailSupportMenu" extends="adminLayout">
+        <put name="title" value="title.mailSupport"/>
+        <put name="body" value="/jsp/admin/mailSupportMenu.jsp"/>
+    </definition>
+    <definition name="adminMaintainanceMenu" extends="adminLayout">
+        <put name="title" value="title.adminMaintainance"/>
+        <put name="body" value="/jsp/admin/adminMaintainanceMenu.jsp"/>
+    </definition>
+    <definition name="operationsMenu" extends="adminLayout">
+        <put name="title" value="title.operations"/>
+        <put name="body" value="/jsp/admin/operationsMenu.jsp"/>
+    </definition>
+    <definition name="settlementMenu" extends="adminLayout">
+        <put name="title" value="title.settlement"/>
+        <put name="body" value="/jsp/admin/settlementMenu.jsp"/>
+    </definition>
+    <definition name="addRemoveSubscription01" extends="adminLayout">
+        <put name="title" value="title.addRemoveSubscription"/>
+        <put name="body" value="/jsp/admin/addRemoveSubscription01.jsp"/>
+    </definition>
+    <definition name="addRemoveSubscription02" extends="adminLayout">
+        <put name="title" value="title.addRemoveSubscription"/>
+        <put name="body" value="/jsp/admin/addRemoveSubscription02.jsp"/>
+    </definition>
+    <definition name="addRemoveSubscription03" extends="adminLayout">
+        <put name="title" value="title.addRemoveSubscription"/>
+        <put name="body" value="/jsp/admin/addRemoveSubscription03.jsp"/>
+    </definition>
+    <definition name="addSubscriptions" extends="adminLayout">
+        <put name="title" value="title.addRemoveSubscription"/>
+        <put name="body" value="/jsp/admin/addSubscriptions.jsp"/>
+    </definition>
+    <definition name="addRemoveSubscription04" extends="adminLayout">
+        <put name="title" value="title.addRemoveSubscription"/>
+        <put name="body" value="/jsp/admin/addRemoveSubscription04.jsp"/>
+    </definition>
+    <definition name="rptProfileWiseRechargeSummary" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptProfileWiseRechargeSummary.jsp"/>
+    </definition>
+    <definition name="rptDateWiseiRechargeSummary" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptDateWiseRechargeSummary.jsp"/>
+    </definition>
+    <definition name="rptBatchRecharge" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptBatchRecharge.jsp"/>
+    </definition>
+    <definition name="instrumentClearingStatusMenu" extends="mainLayout">
+        <put name="title" value="title.instrumentClearingStatus"/>
+        <put name="body" value="/jsp/instrumentClearingStatusMenu.jsp"/>
+    </definition>
+    <definition name="searchOutwardClearingInstrument01" extends="mainLayout">
+        <put name="title" value="title.clearingInstruStatusDaily"/>
+        <put name="body" value="/jsp/searchOutwardClearingInstrument01.jsp"/>
+    </definition>
+    <definition name="searchOutwardClearingInstrument02" extends="mainLayout">
+        <put name="title" value="title.clearingInstruStatusDaily"/>
+        <put name="body" value="/jsp/searchOutwardClearingInstrument02.jsp"/>
+    </definition>
+    <definition name="utilityBillPayMenu" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/utilityBillPayMenu.jsp"/>
+    </definition>
+    <definition name="utilityBillPay01" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/utilityBillPay01.jsp"/>
+    </definition>
+    <definition name="utilityBillPay02" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/utilityBillPay02.jsp"/>
+    </definition>
+    <definition name="descoBillPay02" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/descoBillPay/descoBillPay02.jsp"/>
+    </definition>
+    <definition name="descoBillPay03" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/descoBillPay/descoBillPay03.jsp"/>
+    </definition>
+    <definition name="descoBillPay04" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/descoBillPay/descoBillPay04.jsp"/>
+    </definition>
+    <definition name="descoBillPay05" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/descoBillPay/descoBillPay05.jsp"/>
+    </definition>
+    <definition name="utilityBillPay03" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/utilityBillPay03.jsp"/>
+    </definition>
+    <definition name="utilityBillPay04" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/utilityBillPay04.jsp"/>
+    </definition>
+    <definition name="descoBillPay01" extends="mainLayout">
+        <put name="title" value="title.descoBillPay"/>
+        <put name="body" value="/jsp/descoBillPay/descoBillPay01.jsp"/>
+    </definition>
+    <definition name="userDocsHome" extends="mainLayout">
+        <put name="title" value="title.userDocs"/>
+        <put name="body" value="/jsp/userDocsHome.jsp"/>
+    </definition>
+    <definition name="serviceCharges" extends="mainLayout">
+        <put name="title" value="title.serviceChrages"/>
+        <put name="body" value="/jsp/serviceCharges.jsp"/>
+    </definition>
+
+    <definition name="rptWimaxVoucher" extends="mainLayout">
+        <put name="title" value="title.wimaxVoucher"/>
+        <put name="body" value="/jsp/rptWimaxVoucher.jsp"/>
+    </definition>
+
+    <definition name="editUserProfileMenu" extends="mainLayout">
+        <put name="title" value="title.editUserProfile"/>
+        <put name="body" value="/jsp/editUserProfileMenu.jsp"/>
+    </definition>
+    <definition name="fundTransferHome" extends="mainLayout">
+        <put name="title" value="title.fundtransfer"/>
+        <put name="body" value="/jsp/fundTransferHome.jsp"/>
+    </definition>
+    <definition name="virtualRechargeHome" extends="mainLayout">
+        <put name="title" value="title.virtualRecharge"/>
+        <put name="body" value="/jsp/virtualRechargeHome.jsp"/>
+    </definition>
+    <definition name="rptChequeBookRequisition" extends="adminLayout">
+        <put name="title" value="title.chequeBookRequisition"/>
+        <put name="body" value="/jsp/admin/rptChequeBookRequisition.jsp"/>
+    </definition>
+    <definition name="pendingFundTransfer" extends="mainLayout">
+        <put name="title" value="title.fundtransfer"/>
+        <put name="body" value="/jsp/pendingFundTransfer.jsp"/>
+    </definition>
+    <definition name="rptUtilityBillPayClient" extends="mainLayout">
+        <put name="title" value="title.utilityStatement"/>
+        <put name="body" value="/jsp/rptUtilityBillPayClient.jsp"/>
+    </definition>
+    <definition name="rptUtilityVoucher" extends="mainLayout">
+        <put name="title" value="title.utilityVoucher"/>
+        <put name="body" value="/jsp/rptUtilityVoucher.jsp"/>
+    </definition>
+    <definition name="rptUtilityBillPay" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptUtilityBillPay.jsp"/>
+    </definition>
+    <definition name="technicalOperationMenu" extends="adminLayout">
+        <put name="title" value="title.technicalOperationHome"/>
+        <put name="body" value="/jsp/admin/technicalOperationMenu.jsp"/>
+    </definition>
+    <definition name="rptDateWiseSettlement" extends="adminLayout">
+        <put name="title" value="title.rptDateWiseSettlement"/>
+        <put name="body" value="/jsp/admin/rptDateWiseSettlement.jsp"/>
+    </definition>
+    <definition name="rptWebServiceTransaction" extends="adminLayout">
+        <put name="title" value="title.webServiceTransaction"/>
+        <put name="body" value="/jsp/admin/rptWebServiceTransaction.jsp"/>
+    </definition>
+    <definition name="rptProfileLogInfo" extends="adminLayout">
+        <put name="title" value="title.profileLoginfo"/>
+        <put name="body" value="/jsp/admin/rptProfileLogInfo.jsp"/>
+    </definition>
+    <definition name="changeUserIdByAdmin01" extends="adminLayout">
+        <put name="title" value="title.changeUserId"/>
+        <put name="body" value="/jsp/admin/changeUserIdByAdmin01.jsp"/>
+    </definition>
+
+    <definition name="changeUserIdByAdmin02" extends="adminLayout">
+        <put name="title" value="title.changeUserId"/>
+        <put name="body" value="/jsp/admin/changeUserIdByAdmin02.jsp"/>
+    </definition>
+    <definition name="changeUserIdByAdmin03" extends="adminLayout">
+        <put name="title" value="title.changeUserId"/>
+        <put name="body" value="/jsp/admin/changeUserIdByAdmin03.jsp"/>
+    </definition>
+    <definition name="changeUserIdByAdmin04" extends="adminLayout">
+        <put name="title" value="title.changeUserId"/>
+        <put name="body" value="/jsp/admin/changeUserIdByAdmin04.jsp"/>
+    </definition>
+    <definition name="changePhoneNoByAdmin01" extends="adminLayout">
+        <put name="title" value="title.changePhoneNo"/>
+        <put name="body" value="/jsp/admin/changePhoneNoByAdmin01.jsp"/>
+    </definition>
+    <definition name="changePhoneNoByAdmin02" extends="adminLayout">
+        <put name="title" value="title.changePhoneNo"/>
+        <put name="body" value="/jsp/admin/changePhoneNoByAdmin02.jsp"/>
+    </definition>
+    <definition name="changePhoneNoByAdmin03" extends="adminLayout">
+        <put name="title" value="title.changePhoneNo"/>
+        <put name="body" value="/jsp/admin/changePhoneNoByAdmin03.jsp"/>
+    </definition>
+    <definition name="changePhoneNoByAdmin04" extends="adminLayout">
+        <put name="title" value="title.changePhoneNo"/>
+        <put name="body" value="/jsp/admin/changePhoneNoByAdmin04.jsp"/>
+    </definition>
+    <definition name="addProfileSubscriptionInfo01" extends="mainLayout">
+        <put name="title" value="title.profileSubsInfo"/>
+        <put name="body" value="/jsp/addProfileSubscriptionInfo01.jsp"/>
+    </definition>
+    <definition name="rptDateWiseFtSummary" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptDateWiseFtSummary.jsp"/>
+    </definition>
+    <definition name="verifyRechargeStatement01" extends="adminLayout">
+        <put name="title" value="title.sslStatement"/>
+        <put name="body" value="/jsp/admin/verifyRechargeStatement01.jsp"/>
+    </definition>
+    <definition name="verifyRechargeStatement02" extends="adminLayout">
+        <put name="title" value="title.sslStatement"/>
+        <put name="body" value="/jsp/admin/verifyRechargeStatement02.jsp"/>
+    </definition>
+    <definition name="rptAdminLogInfo" extends="adminLayout">
+        <put name="title" value="title.adminLoginfo"/>
+        <put name="body" value="/jsp/admin/rptAdminLogInfo.jsp"/>
+    </definition>
+    <definition name="searchCustomerForUser01" extends="mainLayout">
+        <put name="title" value="title.searchCustomer"/>
+        <put name="body" value="/jsp/searchCustomerForUser01.jsp"/>
+    </definition>
+    <definition name="searchCustomerForUser02" extends="mainLayout">
+        <put name="title" value="title.accInfoBrRefNo"/>
+        <put name="body" value="/jsp/searchCustomerForUser02.jsp"/>
+    </definition>
+    <definition name="positivePaymenHome" extends="mainLayout">
+        <put name="title" value="title.positivepayment"/>
+        <put name="body" value="/jsp/positivePaymentHome.jsp"/>
+    </definition>
+    <definition name="positivePayment01" extends="mainLayout">
+        <put name="title" value="title.positivepayment"/>
+        <put name="body" value="/jsp/positivePayment01.jsp"/>
+    </definition>
+    <definition name="positivePaymentIssue01" extends="mainLayout">
+        <put name="title" value="title.positivepayment"/>
+        <put name="body" value="/jsp/positivePaymentIssue01.jsp"/>
+    </definition>
+    <definition name="positivePaymentIssue02" extends="mainLayout">
+        <put name="title" value="title.positivepayment"/>
+        <put name="body" value="/jsp/positivePaymentIssue02.jsp"/>
+    </definition>
+    <definition name="positivePayment02" extends="mainLayout">
+        <put name="title" value="title.positivepayment"/>
+        <put name="body" value="/jsp/positivePayment02.jsp"/>
+    </definition>
+    <definition name="positivePayment03" extends="mainLayout">
+        <put name="title" value="title.positivepayment"/>
+        <put name="body" value="/jsp/positivePayment03.jsp"/>
+    </definition>
+    <definition name="positivePayment04" extends="mainLayout">
+        <put name="title" value="title.positivepayment"/>
+        <put name="body" value="/jsp/positivePayment04.jsp"/>
+    </definition>
+    <definition name="rptPositivePaymentClientDateWise" extends="mainLayout">
+        <put name="title" value="title.transactionalReport"/>
+        <put name="body" value="/jsp/rptPositivePaymentClientDateWise.jsp"/>
+    </definition>
+    <definition name="checkAdminPhoneNoEmail" extends="userLayout">
+        <put name="title" value="title.adminInfoUpdate"/>
+        <put name="body" value="/jsp/admin/checkAdminPhoneNoEmail.jsp"/>
+    </definition>
+    <definition name="profileTransLimit01" extends="adminLayout">
+        <put name="title" value="title.profileTransLimit"/>
+        <put name="body" value="/jsp/admin/profileTransLimit01.jsp"/>
+    </definition>
+    <definition name="profileTransLimit02" extends="adminLayout">
+        <put name="title" value="title.profileTransLimit"/>
+        <put name="body" value="/jsp/admin/profileTransLimit02.jsp"/>
+    </definition>
+    <definition name="profileTransLimit03" extends="adminLayout">
+        <put name="title" value="title.profileTransLimit"/>
+        <put name="body" value="/jsp/admin/profileTransLimit03.jsp"/>
+    </definition>
+    <definition name="addProfileTransLimit" extends="adminLayout">
+        <put name="title" value="title.profileTransLimit"/>
+        <put name="body" value="/jsp/admin/addProfileTransLimit.jsp"/>
+    </definition>
+    <definition name="activeDeactivateProfile01" extends="adminLayout">
+        <put name="title" value="title.activeDactivateProfile"/>
+        <put name="body" value="/jsp/admin/activeDeactivateProfile01.jsp"/>
+    </definition>
+    <definition name="activeDeactivateProfile02" extends="adminLayout">
+        <put name="title" value="title.activeDactivateProfile"/>
+        <put name="body" value="/jsp/admin/activeDeactivateProfile02.jsp"/>
+    </definition>
+    <definition name="activeDeactivateProfile03" extends="adminLayout">
+        <put name="title" value="title.activeDactivateProfile"/>
+        <put name="body" value="/jsp/admin/activeDeactivateProfile03.jsp"/>
+    </definition>
+    <definition name="securityConcern" extends="loginLayout">
+        <put name="title" value="title.securiyConcern"/>
+        <put name="body" value="/jsp/securityConcern.jsp"/>
+    </definition>
+    <definition name="changeAdminPasswdByAdmin01" extends="adminLayout">
+        <put name="title" value="title.changeAdminPass"/>
+        <put name="body" value="/jsp/admin/changeAdminPasswdByAdmin01.jsp"/>
+    </definition>
+    <definition name="changeAdminPasswdByAdmin02" extends="adminLayout">
+        <put name="title" value="title.changeAdminPass"/>
+        <put name="body" value="/jsp/admin/changeAdminPasswdByAdmin02.jsp"/>
+    </definition>
+    <definition name="changeAdminPasswdByAdmin03" extends="adminLayout">
+        <put name="title" value="title.changeAdminPass"/>
+        <put name="body" value="/jsp/admin/changeAdminPasswdByAdmin03.jsp"/>
+    </definition>
+    <definition name="tpinCollection" extends="mainLayout">
+        <put name="title" value="title.loginSuccess"/>
+        <put name="body" value="/jsp/userWelcome.jsp"/>
+    </definition>
+    <definition name="issueTicket01" extends="mainLayout">
+        <put name="title" value="title.issueTicket"/>
+        <put name="body" value="/jsp/issueTicket01.jsp"/>
+    </definition>
+    <definition name="issueTicket02" extends="mainLayout">
+        <put name="title" value="title.issueTicket"/>
+        <put name="body" value="/jsp/issueTicket02.jsp"/>
+    </definition>
+    <definition name="resolveTicket01" extends="adminLayout">
+        <put name="title" value="title.responseTicket"/>
+        <put name="body" value="/jsp/admin/resolveTicket01.jsp"/>
+    </definition>
+    <definition name="resolveTicket02" extends="adminLayout">
+        <put name="title" value="title.responseTicket"/>
+        <put name="body" value="/jsp/admin/resolveTicket02.jsp"/>
+    </definition>
+    <definition name="resolveTicket03" extends="adminLayout">
+        <put name="title" value="title.responseTicket"/>
+        <put name="body" value="/jsp/admin/resolveTicket03.jsp"/>
+    </definition>
+    <definition name="unlockUsersByAdmin01" extends="adminLayout">
+        <put name="title" value="title.unbanUsersByAdmin"/>
+        <put name="body" value="/jsp/admin/unlockUsersByAdmin01.jsp"/>
+    </definition>
+    <definition name="unlockUsersByAdmin02" extends="adminLayout">
+        <put name="title" value="title.unbanUsersByAdmin"/>
+        <put name="body" value="/jsp/admin/unlockUsersByAdmin02.jsp"/>
+    </definition>
+    <definition name="unlockUsersByAdmin03" extends="adminLayout">
+        <put name="title" value="title.unbanUsersByAdmin"/>
+        <put name="body" value="/jsp/admin/unlockUsersByAdmin03.jsp"/>
+    </definition>
+    <definition name="searchTicket01" extends="mainLayout">
+        <put name="title" value="title.searchTicket"/>
+        <put name="body" value="/jsp/searchTicket01.jsp"/>
+    </definition>
+    <definition name="searchTicket02" extends="mainLayout">
+        <put name="title" value="title.searchTicket"/>
+        <put name="body" value="/jsp/searchTicket02.jsp"/>
+    </definition>
+    <definition name="listOfTicket01" extends="mainLayout">
+        <put name="title" value="title.searchTicket"/>
+        <put name="body" value="/jsp/listOfTicket01.jsp"/>
+    </definition>
+    <definition name="dateWiseTicketStatus01" extends="adminLayout">
+        <put name="title" value="title.dateWiseTicketStatus"/>
+        <put name="body" value="/jsp/admin/dateWiseTicketStatus01.jsp"/>
+    </definition>
+    <definition name="dateWiseTicketStatus02" extends="adminLayout">
+        <put name="title" value="title.dateWiseTicketStatus"/>
+        <put name="body" value="/jsp/admin/dateWiseTicketStatus02.jsp"/>
+    </definition>
+    <definition name="dateWiseTicketStatus03" extends="adminLayout">
+        <put name="title" value="title.dateWiseTicketStatus"/>
+        <put name="body" value="/jsp/admin/dateWiseTicketStatus03.jsp"/>
+    </definition>
+    <definition name="reOpenTicket01" extends="adminLayout">
+        <put name="title" value="title.dateWiseTicketStatus"/>
+        <put name="body" value="/jsp/admin/reOpenTicket01.jsp"/>
+    </definition>
+    <definition name="resolveRefereedTicket01" extends="adminLayout">
+        <put name="title" value="title.resolveReferredTicket"/>
+        <put name="body" value="/jsp/admin/resolveRefereedTicket01.jsp"/>
+    </definition>
+    <definition name="resolveRefereedTicket02" extends="adminLayout">
+        <put name="title" value="title.resolveReferredTicket"/>
+        <put name="body" value="/jsp/admin/resolveRefereedTicket02.jsp"/>
+    </definition>
+    <definition name="resolveRefereedTicket03" extends="adminLayout">
+        <put name="title" value="title.resolveReferredTicket"/>
+        <put name="body" value="/jsp/admin/resolveRefereedTicket03.jsp"/>
+    </definition>
+    <definition name="developerQueuedTicket01" extends="adminLayout">
+        <put name="title" value="title.developerQueuedTicket"/>
+        <put name="body" value="/jsp/admin/developerQueuedTicket01.jsp"/>
+    </definition>
+    <definition name="developerQueuedTicketDetail" extends="adminLayout">
+        <put name="title" value="title.developerQueuedTicket"/>
+        <put name="body" value="/jsp/admin/developerQueuedTicketDetail.jsp"/>
+    </definition>
+    <definition name="clientRechargeStatus01" extends="mainLayout">
+        <put name="title" value="title.clientRechargeStatus"/>
+        <put name="body" value="/jsp/clientRechargeStatus01.jsp"/>
+    </definition>
+    <definition name="clientRechargeStatus02" extends="mainLayout">
+        <put name="title" value="title.clientRechargeStatus"/>
+        <put name="body" value="/jsp/clientRechargeStatus02.jsp"/>
+    </definition>
+    <definition name="manageTicketHome" extends="adminLayout">
+        <put name="title" value="title.manageTicket"/>
+        <put name="body" value="/jsp/admin/manageTicketHome.jsp"/>
+    </definition>
+    <definition name="forwardTicketToOther01" extends="adminLayout">
+        <put name="title" value="title.resolveReferredTicket"/>
+        <put name="body" value="/jsp/admin/forwardTicketToOther01.jsp"/>
+    </definition>
+    <definition name="clientRechargeStatusByAdmin01" extends="adminLayout">
+        <put name="title" value="title.clientRechargeStatus"/>
+        <put name="body" value="/jsp/admin/clientRechargeStatusByAdmin01.jsp"/>
+    </definition>
+    <definition name="clientRechargeStatusByAdmin02" extends="adminLayout">
+        <put name="title" value="title.clientRechargeStatus"/>
+        <put name="body" value="/jsp/admin/clientRechargeStatusByAdmin02.jsp"/>
+    </definition>
+    <definition name="runSystemProcess01" extends="adminLayout">
+        <put name="title" value="title.technicalOperationHome"/>
+        <put name="body" value="/jsp/admin/runSystemProcess01.jsp"/>
+    </definition>
+    <definition name="runSystemProcess02" extends="adminLayout">
+        <put name="title" value="title.technicalOperationHome"/>
+        <put name="body" value="/jsp/admin/runSystemProcess02.jsp"/>
+    </definition>
+    <definition name="reloadSystemParameter01" extends="adminLayout">
+        <put name="title" value="title.technicalOperationHome"/>
+        <put name="body" value="/jsp/admin/reloadSystemParameter01.jsp"/>
+    </definition>
+    <definition name="reloadSystemParameter02" extends="adminLayout">
+        <put name="title" value="title.technicalOperationHome"/>
+        <put name="body" value="/jsp/admin/reloadSystemParameter02.jsp"/>
+    </definition>
+    <definition name="chequeStopPayment01" extends="mainLayout">
+        <put name="title" value="title.chequeStopPayment"/>
+        <put name="body" value="/jsp/chequeStopPayment01.jsp"/>
+    </definition>
+    <definition name="chequeStopPayment02" extends="mainLayout">
+        <put name="title" value="title.chequeStopPayment"/>
+        <put name="body" value="/jsp/chequeStopPayment02.jsp"/>
+    </definition>
+    <definition name="chequeStopPayment03" extends="mainLayout">
+        <put name="title" value="title.chequeStopPayment"/>
+        <put name="body" value="/jsp/chequeStopPayment03.jsp"/>
+    </definition>
+    <definition name="chequeStopPayment04" extends="mainLayout">
+        <put name="title" value="title.chequeStopPayment"/>
+        <put name="body" value="/jsp/chequeStopPayment04.jsp"/>
+    </definition>
+    <definition name="creditCardHome" extends="mainLayout">
+        <put name="title" value="title.creditCardHome"/>
+        <put name="body" value="/jsp/creditCardHome.jsp"/>
+    </definition>
+    <definition name="creditCardBillPay01" extends="mainLayout">
+        <put name="title" value="title.creditCardBillPay"/>
+        <put name="body" value="/jsp/creditCardBillPay01.jsp"/>
+    </definition>
+    <definition name="creditCardBillPay02" extends="mainLayout">
+        <put name="title" value="title.creditCardBillPay"/>
+        <put name="body" value="/jsp/creditCardBillPay02.jsp"/>
+    </definition>
+
+    <definition name="creditCardBillPay03" extends="mainLayout">
+        <put name="title" value="title.creditCardBillPay"/>
+        <put name="body" value="/jsp/creditCardBillPay03.jsp"/>
+    </definition>
+    <definition name="creditCardBillPay04" extends="mainLayout">
+        <put name="title" value="title.creditCardBillPay"/>
+        <put name="body" value="/jsp/creditCardBillPay04.jsp"/>
+    </definition>
+    <definition name="changeSMSSender01" extends="adminLayout">
+        <put name="title" value="title.changeSMSSender"/>
+        <put name="body" value="/jsp/admin/changeSMSSender01.jsp"/>
+    </definition>
+    <definition name="changeSMSSender02" extends="adminLayout">
+        <put name="title" value="title.changeSMSSender"/>
+        <put name="body" value="/jsp/admin/changeSMSSender02.jsp"/>
+    </definition>
+
+    <definition name="rptDateWiseTotalTransaction" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptDateWiseTotalTransaction.jsp"/>
+    </definition>
+
+    <definition name="rptProfileWiseEFTSummary" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptProfileWiseEFTSummary.jsp"/>
+    </definition>
+
+    <definition name="updateBranchDbInfo01" extends="adminLayout">
+        <put name="title" value="title.updateBranchInfo"/>
+        <put name="body" value="/jsp/admin/updateBranchDbInfo01.jsp"/>
+    </definition>
+    <definition name="updateBranchDbInfo02" extends="adminLayout">
+        <put name="title" value="title.updateBranchInfo"/>
+        <put name="body" value="/jsp/admin/updateBranchDbInfo02.jsp"/>
+    </definition>
+    <definition name="updateBranchDbInfo03" extends="adminLayout">
+        <put name="title" value="title.updateBranchInfo"/>
+        <put name="body" value="/jsp/admin/updateBranchDbInfo03.jsp"/>
+    </definition>
+    <definition name="addBranchDbInfo01" extends="adminLayout">
+        <put name="title" value="title.updateBranchInfo"/>
+        <put name="body" value="/jsp/admin/addBranchDbInfo01.jsp"/>
+    </definition>
+    <definition name="addBranchDbInfo02" extends="adminLayout">
+        <put name="title" value="title.updateBranchInfo"/>
+        <put name="body" value="/jsp/admin/addBranchDbInfo02.jsp"/>
+    </definition>
+    <definition name="sendTestSMStoUser01" extends="adminLayout">
+        <put name="title" value="title.sendTestSMS"/>
+        <put name="body" value="/jsp/admin/sendTestSMStoUser01.jsp"/>
+    </definition>
+    <definition name="sendTestSMStoUser02" extends="adminLayout">
+        <put name="title" value="title.sendTestSMS"/>
+        <put name="body" value="/jsp/admin/sendTestSMStoUser02.jsp"/>
+    </definition>
+    <definition name="sendTestSMStoUser03" extends="adminLayout">
+        <put name="title" value="title.sendTestSMS"/>
+        <put name="body" value="/jsp/admin/sendTestSMStoUser03.jsp"/>
+    </definition>
+    <definition name="ostdLiabilityByAdmin" extends="adminLayout">
+        <put name="title" value="title.ostdLiability"/>
+        <put name="body" value="/jsp/admin/ostdLiabilityByAdmin.jsp"/>
+    </definition>
+    <definition name="rptCreditCardBillPayClientDateWise" extends="mainLayout">
+        <put name="title" value="title.creditCardBillPay"/>
+        <put name="body" value="/jsp/rptCreditCardBillPayClientDateWise.jsp"/>
+    </definition>
+    <definition name="rptCreditCardBillPaySettlement" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptCreditCardBillPaySettlement.jsp"/>
+    </definition>
+    <definition name="manageUserRole01" extends="adminLayout">
+        <put name="title" value="title.manageUserRole"/>
+        <put name="body" value="/jsp/admin/manageUserRole01.jsp"/>
+    </definition>
+    <definition name="manageUserRole02" extends="adminLayout">
+        <put name="title" value="title.manageUserRole"/>
+        <put name="body" value="/jsp/admin/manageUserRole02.jsp"/>
+    </definition>
+    <definition name="manageUserRole03" extends="adminLayout">
+        <put name="title" value="title.manageUserRole"/>
+        <put name="body" value="/jsp/admin/manageUserRole03.jsp"/>
+    </definition>
+    <definition name="manageUserRole04" extends="adminLayout">
+        <put name="title" value="title.manageUserRole"/>
+        <put name="body" value="/jsp/admin/manageUserRole04.jsp"/>
+    </definition>
+    <definition name="rptEcommerceBillPaySettlement" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptEcommerceBillPaySettlement.jsp"/>
+    </definition>
+    <definition name="accountServicesHome" extends="mainLayout">
+        <put name="title" value="title.accountServices"/>
+        <put name="body" value="/jsp/accountServicesHome.jsp"/>
+    </definition>
+    <definition name="accountNoWithdrawal01" extends="mainLayout">
+        <put name="title" value="title.accountNoWithdrawal"/>
+        <put name="body" value="/jsp/accountNoWithdrawal01.jsp"/>
+    </definition>
+    <definition name="accountNoWithdrawal02" extends="mainLayout">
+        <put name="title" value="title.accountNoWithdrawal"/>
+        <put name="body" value="/jsp/accountNoWithdrawal02.jsp"/>
+    </definition>
+    <definition name="accountNoWithdrawal03" extends="mainLayout">
+        <put name="title" value="title.accountNoWithdrawal"/>
+        <put name="body" value="/jsp/accountNoWithdrawal03.jsp"/>
+    </definition>
+    <definition name="accountNoWithdrawal04" extends="mainLayout">
+        <put name="title" value="title.accountNoWithdrawal"/>
+        <put name="body" value="/jsp/accountNoWithdrawal04.jsp"/>
+    </definition>
+    <definition name="handoverBranchAdmin01" extends="adminLayout">
+        <put name="title" value="title.handoverBrAdmin"/>
+        <put name="body" value="/jsp/admin/handoverBranchAdmin01.jsp"/>
+    </definition>
+    <definition name="handoverBranchAdmin02" extends="adminLayout">
+        <put name="title" value="title.handoverBrAdmin"/>
+        <put name="body" value="/jsp/admin/handoverBranchAdmin02.jsp"/>
+    </definition>
+    <definition name="handoverBranchAdmin03" extends="adminLayout">
+        <put name="title" value="title.handoverBrAdmin"/>
+        <put name="body" value="/jsp/admin/handoverBranchAdmin03.jsp"/>
+    </definition>
+    <definition name="updateBrAdminHistory01" extends="userLayout">
+        <put name="title" value="title.adminInfoUpdate"/>
+        <put name="body" value="/jsp/admin/updateBrAdminHistory01.jsp"/>
+    </definition>
+    <definition name="updateBrAdminHistory02" extends="userLayout">
+        <put name="title" value="title.adminInfoUpdate"/>
+        <put name="body" value="/jsp/admin/updateBrAdminHistory02.jsp"/>
+    </definition>
+    <definition name="visaCreditCardHome" extends="mainLayout">
+        <put name="title" value="title.visaCreditCardHome"/>
+        <put name="body" value="/jsp/visaCreditCardHome.jsp"/>
+    </definition>
+    <definition name="visaCreditCardBillPay01" extends="mainLayout">
+        <put name="title" value="title.visaCreditCardBillPay"/>
+        <put name="body" value="/jsp/visaCreditCardBillPay01.jsp"/>
+    </definition>
+    <definition name="visaCreditCardBillPay02" extends="mainLayout">
+        <put name="title" value="title.visaCreditCardBillPay"/>
+        <put name="body" value="/jsp/visaCreditCardBillPay02.jsp"/>
+    </definition>
+    <definition name="visaCreditCardBillPay03" extends="mainLayout">
+        <put name="title" value="title.visaCreditCardBillPay"/>
+        <put name="body" value="/jsp/visaCreditCardBillPay03.jsp"/>
+    </definition>
+    <definition name="visaCreditCardBillPay04" extends="mainLayout">
+        <put name="title" value="title.visaCreditCardBillPay"/>
+        <put name="body" value="/jsp/visaCreditCardBillPay04.jsp"/>
+    </definition>
+    <definition name="rptRechargeDetailByRechargeId" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/rptRechargeDetailByRechargeId.jsp"/>
+    </definition>
+    <definition name="addKhidmahCrCardSubscriptionSuccess" extends="mainLayout">
+        <put name="title" value="title.creditCardBillPay"/>
+        <put name="body" value="/jsp/addKhidmahCrCardSubscriptionSuccess.jsp"/>
+    </definition>
+    <definition name="currentAdminInfo01" extends="adminLayout">
+        <put name="title" value="title.currentAdminInfo"/>
+        <put name="body" value="/jsp/admin/currentAdminInfo01.jsp"/>
+    </definition>
+    <definition name="currentAdminInfo02" extends="adminLayout">
+        <put name="title" value="title.currentAdminInfo"/>
+        <put name="body" value="/jsp/admin/currentAdminInfo02.jsp"/>
+    </definition>
+    <definition name="rptCBSAccountOperationLog" extends="adminLayout">
+        <put name="title" value="title.cbsAccOperationLog"/>
+        <put name="body" value="/jsp/admin/rptCBSAccountOperationLog.jsp"/>
+    </definition>
+    <definition name="rptDateWiseChequeRequisitionInfo" extends="adminLayout">
+        <put name="title" value="title.chqRequisitionInfo"/>
+        <put name="body" value="/jsp/admin/rptDateWiseChequeRequisitionInfo.jsp"/>
+    </definition>
+    <definition name="updateChequeRequisitionStatus01" extends="mainLayout">
+        <put name="title" value="title.chqRequisitionStatus"/>
+        <put name="body" value="/jsp/updateChequeRequisitionStatus01.jsp"/>
+    </definition>
+    <definition name="updateChequeRequisitionStatus02" extends="mainLayout">
+        <put name="title" value="title.chqRequisitionStatus"/>
+        <put name="body" value="/jsp/updateChequeRequisitionStatus02.jsp"/>
+    </definition>
+    <definition name="updateChequeRequisitionStatus03" extends="mainLayout">
+        <put name="title" value="title.chqRequisitionStatus"/>
+        <put name="body" value="/jsp/updateChequeRequisitionStatus03.jsp"/>
+    </definition>
+    <definition name="dateWiseBulkRechargeDetailRpt" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/dateWiseBulkRechargeDetailRpt.jsp"/>
+    </definition>
+    <definition name="dateWiseBulkRechargeDetailRpt01" extends="adminLayout">
+        <put name="title" value="title.adminReportHome"/>
+        <put name="body" value="/jsp/admin/dateWiseBulkRechargeDetailRpt01.jsp"/>
+    </definition>
+    <definition name="utilityBillPayUsingGPMobicashMenu" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/utilityBillPayUsingGPMobicashMenu.jsp"/>
+    </definition>
+    <definition name="utilityBillPayUsingGPMobicash01" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/utilityBillPayUsingGPMobicash01.jsp"/>
+    </definition>
+    <definition name="utilityBillPayUsingGPMobicash02" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/utilityBillPayUsingGPMobicash02.jsp"/>
+    </definition>
+    <definition name="utilityBillPayUsingGPMobicash03" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/utilityBillPayUsingGPMobicash03.jsp"/>
+    </definition>
+    <definition name="utilityBillPayUsingGPMobicash04" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/utilityBillPayUsingGPMobicash04.jsp"/>
+    </definition>
+
+    <definition name="companyAssociationForGPMobicash01" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/companyAssociationForGPMobicash01.jsp"/>
+    </definition>
+
+    <definition name="companyAssociationForGPMobicash02" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/companyAssociationForGPMobicash02.jsp"/>
+    </definition>
+
+    <definition name="companyAssociationForGPMobicash03" extends="mainLayout">
+        <put name="title" value="title.utilityBillPay"/>
+        <put name="body" value="/jsp/companyAssociationForGPMobicash03.jsp"/>
+    </definition>
+
+
+    <definition name="updateAdminEmployeeId01" extends="userLayout">
+        <put name="title" value="title.updateAdminEmpId"/>
+        <put name="body" value="/jsp/admin/updateAdminEmployeeId01.jsp"/>
+    </definition>
+    <definition name="updateAdminEmployeeId02" extends="userLayout">
+        <put name="title" value="title.updateAdminEmpId"/>
+        <put name="body" value="/jsp/admin/updateAdminEmployeeId02.jsp"/>
+    </definition>
+    <definition name="updateAdminEmployeeId03" extends="adminLayout">
+        <put name="title" value="title.updateAdminEmpId"/>
+        <put name="body" value="/jsp/admin/updateAdminEmployeeId03.jsp"/>
+    </definition>
+    <definition name="rptChequeBookRequisitionStatus01" extends="adminLayout">
+        <put name="title" value="title.chqRequisitionStatus"/>
+        <put name="body" value="/jsp/admin/rptChequeBookRequisitionStatus01.jsp"/>
+    </definition>
+    <definition name="rptChequeBookRequisitionStatus02" extends="adminLayout">
+        <put name="title" value="title.chqRequisitionStatus"/>
+        <put name="body" value="/jsp/admin/rptChequeBookRequisitionStatus02.jsp"/>
+    </definition>
+    <definition name="rptChequeBookRequisitionStatus03" extends="adminLayout">
+        <put name="title" value="title.chqRequisitionStatus"/>
+        <put name="body" value="/jsp/admin/rptChequeBookRequisitionStatus03.jsp"/>
+    </definition>
+    <definition name="featureList" extends="loginLayout">
+        <put name="title" value="title.ourService"/>
+        <put name="body" value="/jsp/indexFeatureList.jsp"/>
+    </definition>
+    <definition name="monitorUserSessionActivity01" extends="adminLayout">
+        <put name="title" value="title.monitorUsrSesnActivity"/>
+        <put name="body" value="/jsp/admin/monitorUserSessionActivity01.jsp"/>
+    </definition>
+    <definition name="monitorUserSessionActivity02" extends="adminLayout">
+        <put name="title" value="title.monitorUsrSesnActivity"/>
+        <put name="body" value="/jsp/admin/monitorUserSessionActivity02.jsp"/>
+    </definition>
+    <definition name="rptVisaInstantPayClientDateWise" extends="mainLayout">
+        <put name="title" value="title.visaCreditCardBillPay"/>
+        <put name="body" value="/jsp/rptVisaInstantPayClientDateWise.jsp"/>
+    </definition>
+    <definition name="rptVisaInstantPayDateWiseAdmin" extends="adminLayout">
+        <put name="title" value="title.visaCreditCardBillPay"/>
+        <put name="body" value="/jsp/admin/rptVisaInstantPayDateWiseAdmin.jsp"/>
+    </definition>
+
+    <definition name="accountListForOpening" extends="mainLayout">
+        <put name="title" value="title.accountOpening"/>
+        <put name="body" value="/jsp/accOpening/accountOpeningAccList.jsp"/>
+    </definition>
+    <definition name="accountOpeningSrcAcc" extends="mainLayout">
+        <put name="title" value="title.accountOpening"/>
+        <put name="body" value="/jsp/accOpening/accountOpeningSrcAcc.jsp"/>
+    </definition>
+    <definition name="accountOpening01" extends="mainLayout">
+        <put name="title" value="title.accountOpening"/>
+        <put name="body" value="/jsp/accOpening/accountOpening01.jsp"/>
+    </definition>
+    <definition name="visaReverseTrans01" extends="adminLayout">
+        <put name="title" value="title.visaReverseTrans"/>
+        <put name="body" value="/jsp/admin/visaReverseTrans01.jsp"/>
+    </definition>
+    <definition name="visaReversePreview" extends="adminLayout">
+        <put name="title" value="title.visaReverseTrans"/>
+        <put name="body" value="/jsp/admin/visaReversePreview.jsp"/>
+    </definition>
+    <definition name="visaReverseTrans02" extends="adminLayout">
+        <put name="title" value="title.visaReverseTrans"/>
+        <put name="body" value="/jsp/admin/visaReverseTrans02.jsp"/>
+    </definition>
+</tiles-definitions>

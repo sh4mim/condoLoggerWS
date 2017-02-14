@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<digester-rules>
+    <object-create-rule classname="com.ibbl.portal.util.MailManConfig" pattern="mailman-config"/>
+
+    <call-method-rule methodname="setDomain" pattern="mailman-config/domain" paramcount="0"/>
+    <call-method-rule methodname="setMailServer" pattern="mailman-config/mail-server" paramcount="0"/>
+    <call-method-rule methodname="setSmtpPort" pattern="mailman-config/smtp-port" paramcount="0"/>
+
+    <call-method-rule methodname="setAdminAddr" pattern="mailman-config/admin-addr" paramcount="0"/>
+    <call-method-rule methodname="setAdminPass" pattern="mailman-config/admin-pass" paramcount="0"/>
+    <call-method-rule methodname="setAdminPersonal" pattern="mailman-config/admin-personal" paramcount="0"/>
+    <call-method-rule methodname="setSupportAddr" pattern="mailman-config/support-addr" paramcount="0"/>
+    <call-method-rule methodname="setSupportPass" pattern="mailman-config/support-pass" paramcount="0"/>
+    <call-method-rule methodname="setSupportPersonal" pattern="mailman-config/support-personal" paramcount="0"/>
+    <call-method-rule methodname="setInfoAddr" pattern="mailman-config/info-addr" paramcount="0"/>
+    <call-method-rule methodname="setInfoPass" pattern="mailman-config/info-pass" paramcount="0"/>
+    <call-method-rule methodname="setInfoPersonal" pattern="mailman-config/info-personal" paramcount="0"/>
+
+    <object-create-rule classname="com.ibbl.portal.util.MailTemplate" pattern="mailman-config/mail-template"/>
+    <pattern value="mailman-config/mail-template">
+        <set-properties-rule/>
+        <bean-property-setter-rule pattern="subject" propertyname="subject"/>
+        <bean-property-setter-rule pattern="body" propertyname="body"/>
+        <set-next-rule methodname="addTemplate" paramtype="com.ibbl.portal.util.MailTemplate"/>
+    </pattern>
+
+    <pattern value="mailman-config/mail-variables/variable">
+        <call-method-rule methodname="addVariable" paramcount="2"/>
+        <call-param-rule paramnumber="0" pattern="name"/>
+        <call-param-rule paramnumber="1" pattern="value"/>
+    </pattern>
+    <!--<call-method-rule methodname="addVariable" pattern="mailman-config/mail-variables/variable" paramcount="2"/>-->
+    <!--<call-param-rule paramnumber="0" pattern="mailman-config/mail-variables/variable/name"/>-->
+    <!--<call-param-rule paramnumber="1" pattern="mailman-config/mail-variables/variable/value"/>-->
+
+</digester-rules>
