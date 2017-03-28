@@ -132,6 +132,7 @@
 
         <!--- create mapping resources -->
         <mapping resource="com/ibbl/profile/dao/hbm/Profile.hbm.xml"/>
+        <mapping resource="com/ibbl/menu/dao/hbm/Menu.hbm.xml"/>
 
 
     </session-factory>

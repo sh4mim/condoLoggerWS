@@ -68,7 +68,15 @@ public class PortalServicePwdEncoder extends BCryptPasswordEncoder
         {
 //            Profile profile = pmc.getProfileComplete(userDetailsService.getPortalServiceUserDetails().getUsername());
 //            isValid = profile.validatePassword(rawpassword.toString());
-            isValid= Encrypter.encryptOneWay(rawpassword).equals(encPass);
+//            isValid= Encrypter.encryptOneWay(rawpassword).equals(encPass);
+            if (rawpassword.equals(encPass))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
         catch (Exception e)
