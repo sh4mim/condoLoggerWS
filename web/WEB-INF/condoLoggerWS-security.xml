@@ -77,7 +77,7 @@
         </authentication-provider>
     </authentication-manager>
 
-    <bean id="customjdbcUserService" class="com.ibbl.services.oAuth2.PortalServiceUserDetailsService">
+    <bean id="customjdbcUserService" class="com.condo.services.oAuth2.PortalServiceUserDetailsService">
         <property name="dataSource" ref="dataSource"/>
         <property name="enableAuthorities" value="true"/>
         <property name="usersByUsernameQuery">
@@ -93,7 +93,7 @@
         </property>
     </bean>
 
-    <bean id="encoder" class="com.ibbl.services.oAuth2.PortalServicePwdEncoder">
+    <bean id="encoder" class="com.condo.services.oAuth2.PortalServicePwdEncoder">
         <property name="userDetailsService" ref="customjdbcUserService"/>
     </bean>
 

@@ -12,7 +12,7 @@
                     <name>JobSchedulerTest</name>
                     <group>groupTestScheduler</group>
                     <description>This is job scheduler test</description>
-                    <job-class>com.ibbl.portal.schedule.jobs.MySchedulerTestJob</job-class>
+                    <job-class>com.condoo.portal.schedule.jobs.MySchedulerTestJob</job-class>
                 </job>
         -->
         <!--EFT processes-->
@@ -20,28 +20,28 @@
             <name>jobProcessEFTInstructionIssue</name>
             <group>groupEFTScheduler</group>
             <description>Send EFT Instruction debiting customer account</description>
-            <job-class>com.ibbl.portal.schedule.jobs.EFTInstructionIssueJob</job-class>
+            <job-class>com.condo.portal.schedule.jobs.EFTInstructionIssueJob</job-class>
         </job>
 
         <job>
             <name>jobProcessEFTFundSettlement</name>
             <group>groupEFTScheduler</group>
             <description>Fund transfer to BACH Service Branch</description>
-            <job-class>com.ibbl.portal.schedule.jobs.EFTFundSettlementJob</job-class>
+            <job-class>com.condo.portal.schedule.jobs.EFTFundSettlementJob</job-class>
         </job>
 
         <job>
             <name>jobProcessEFTRefundPBMFailItems</name>
             <group>groupEFTScheduler</group>
             <description>Refund EFT amount to customer account for PBM fail</description>
-            <job-class>com.ibbl.portal.schedule.jobs.EFTRefundPBMFailItemsJob</job-class>
+            <job-class>com.condo.portal.schedule.jobs.EFTRefundPBMFailItemsJob</job-class>
         </job>
 
         <job>
             <name>jobProcessEFTRefundRBReturnItems</name>
             <group>groupEFTScheduler</group>
             <description>Refund EFT amount to customer account rejected by Receiving Bank</description>
-            <job-class>com.ibbl.portal.schedule.jobs.EFTRefundRBReturnItemsJob</job-class>
+            <job-class>com.condo.portal.schedule.jobs.EFTRefundRBReturnItemsJob</job-class>
         </job>
 
         <!--e-Commerce processes-->
@@ -49,7 +49,7 @@
             <name>jobProcessECommercePaymentTransferSettlementAccount</name>
             <group>groupECommerceProcess</group>
             <description>E-commerce payment receive to Settlement Account</description>
-            <job-class>com.ibbl.portal.schedule.jobs.EComPayReceiveJob</job-class>
+            <job-class>com.condo.portal.schedule.jobs.EComPayReceiveJob</job-class>
         </job>
 
 
@@ -113,7 +113,7 @@
             <name>jobProcessVISATransactionFundSettleCoverAccount</name>
             <group>groupVISATransactionProcess</group>
             <description>VISA transaction fund settlement to Cover Account</description>
-            <job-class>com.ibbl.portal.schedule.jobs.VISAFundSettlementJob</job-class>
+            <job-class>com.condo.portal.schedule.jobs.VISAFundSettlementJob</job-class>
         </job>
 
         <trigger>
