@@ -1,4 +1,4 @@
-package com.condo.menu;
+package com.condo.menu.bean;
 
 import java.io.Serializable;
 

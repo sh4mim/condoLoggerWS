@@ -1,8 +1,12 @@
 package com.condo.profile;
 
+import com.condo.menu.bean.MenuBean;
+import com.condo.menu.dao.MenuDao;
 import com.condo.profile.dao.ProfileDao;
 import com.condo.tx.TxController;
 import com.condo.tx.TxException;
+
+import java.util.List;
 
 
 /**
@@ -41,6 +45,31 @@ public class ProfileDBAccessBL
         {
             txController.closeTxSession(txSessionID);
         }
+    }
+
+    public ProfileBean findProfileByUserId(String userID) throws TxException
+    {
+        TxController txController = TxController.getInstance();
+        ProfileBean returnBean=null;
+        int txSessionID = txController.initPersistence();
+        try
+        {
+            ProfileDao profileDao = new ProfileDao(txSessionID);
+            returnBean= profileDao.findProfileByUserId(userID);
+            txController.commitPersistence(txSessionID);
+            return returnBean;
+        }
+        catch (Exception ex)
+        {
+            txController.rollbackPersistence(txSessionID);
+            throw new TxException("Fail to Fetch Profile Information. ");
+        }
+
+        finally
+        {
+            txController.closeTxSession(txSessionID);
+        }
+
     }
 
 

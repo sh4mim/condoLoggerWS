@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.condo.menu.MenuBean" table="T_MENU">
+    <class name="com.condo.menu.bean.MenuBean" table="T_MENU">
         <id name="menuID" column="menu_id">
             <generator class="increment">
             </generator>

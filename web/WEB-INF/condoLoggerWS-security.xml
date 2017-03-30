@@ -82,13 +82,13 @@
         <property name="enableAuthorities" value="true"/>
         <property name="usersByUsernameQuery">
             <value>select user_id as username, PASSWD as password, status as ENABLED, profile_id as profileId from
-                PROFILE
+                T_PROFILE
                 where user_id=?
             </value>
         </property>
         <property name="authoritiesByUsernameQuery">
             <value>
-                select user_id as username,'ROLE_USER' as ROLE from PROFILE where user_id =?
+                select user_id as username,'ROLE_USER' as ROLE from T_PROFILE where user_id =?
             </value>
         </property>
     </bean>

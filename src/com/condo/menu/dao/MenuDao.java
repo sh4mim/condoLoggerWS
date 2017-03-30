@@ -1,9 +1,13 @@
 package com.condo.menu.dao;
 
-import com.condo.menu.MenuBean;
+import com.condo.menu.bean.MenuBean;
 import com.condo.tx.TxException;
 import com.condo.tx.dao.CommonDAOImpl;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.criterion.Restrictions;
+
+import java.util.List;
 
 /**
  * package com.condo.payProc.dl.dao;
@@ -36,6 +40,28 @@ public class MenuDao extends CommonDAOImpl
         catch (HibernateException e)
         {
             e.printStackTrace();
+        }
+    }
+    public List<MenuBean> findMenuListByUserType(int userType) throws TxException
+    {
+        try
+        {
+            Criteria crit = session.createCriteria(MenuBean.class);
+            crit.add(Restrictions.eq("menuType", userType));
+            crit.add(Restrictions.eq("status", 1));
+            List<MenuBean> menuBeanList = crit.list();
+            if (menuBeanList.size() > 0)
+            {
+                return menuBeanList;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch (HibernateException e)
+        {
+            throw new TxException("Fail to Fetch menu information. ");
         }
     }
 

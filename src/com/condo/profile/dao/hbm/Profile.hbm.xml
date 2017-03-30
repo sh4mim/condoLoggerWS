@@ -13,5 +13,11 @@
         <property name="userID" column="user_id"/>
         <property name="passWD" column="passwd"/>
         <property name="status" column="STATUS"/>
+        <property name="firstName" column="FIRST_NAME"/>
+        <property name="lastName" column="LAST_NAME"/>
+        <property name="phone" column="PHONE"/>
+        <property name="address" column="ADDRESS"/>
+        <property name="userType" column="USER_TYPE"/>
+
     </class>
 </hibernate-mapping>

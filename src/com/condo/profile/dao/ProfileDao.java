@@ -1,9 +1,14 @@
 package com.condo.profile.dao;
 
+import com.condo.menu.bean.MenuBean;
 import com.condo.profile.ProfileBean;
 import com.condo.tx.TxException;
 import com.condo.tx.dao.CommonDAOImpl;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.criterion.Restrictions;
+
+import java.util.List;
 
 /**
  * package com.condo.payProc.dl.dao;
@@ -36,6 +41,22 @@ public class ProfileDao extends CommonDAOImpl
         catch (HibernateException e)
         {
             e.printStackTrace();
+        }
+    }
+
+    public ProfileBean findProfileByUserId(String userID) throws TxException
+    {
+        try
+        {
+            Criteria crit = session.createCriteria(ProfileBean.class);
+            crit.add(Restrictions.eq("userID", userID));
+            crit.add(Restrictions.eq("status", 1));
+            return (ProfileBean) crit.uniqueResult();
+
+        }
+        catch (HibernateException e)
+        {
+            throw new TxException("Fail to Fetch menu information. ");
         }
     }
 
