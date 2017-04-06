@@ -48,7 +48,8 @@ public class MenuController
             headers = "Accept=application/json", produces = {"application/json"})
     @ResponseBody
     public AppGenericResponse getLoginSession(@RequestParam(value = "userId", required = true) String userId,
-                                            HttpServletRequest request)
+                                              @RequestParam(value = "appId", required = true) String appId,
+                                              HttpServletRequest request)
     {
         AppGenericResponse response = new AppGenericResponse();
         response.setStatus(WebDictionary.STATUS_FAIL);
@@ -58,6 +59,7 @@ public class MenuController
         try
         {
             userId = ParamWrapper.unWrapParamValue(userId);
+            appId = ParamWrapper.unWrapParamValue(appId);
         }
         catch (CondoException e)
         {
@@ -66,8 +68,7 @@ public class MenuController
 
         try
         {
-            ProfileDBAccessBL bl = new ProfileDBAccessBL();
-            ProfileBean profileBean = bl.findProfileByUserId(userId);
+            ProfileBean profileBean = new ProfileValidator().validateProfile(userId);
             if (profileBean != null)
             {
                 menuResponseBean.setFirstName(profileBean.getFirstName());
@@ -75,7 +76,6 @@ public class MenuController
                 menuResponseBean.setWelcomeText(null);
                 userType=profileBean.getUserType();
             }
-
         }
         catch (Exception ex)
         {
