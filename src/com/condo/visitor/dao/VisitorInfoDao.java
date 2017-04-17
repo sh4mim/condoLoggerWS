@@ -1,9 +1,9 @@
-package com.condo.profile.dao;
+package com.condo.visitor.dao;
 
 import com.condo.menu.bean.MenuBean;
-import com.condo.profile.ProfileBean;
 import com.condo.tx.TxException;
 import com.condo.tx.dao.CommonDAOImpl;
+import com.condo.visitor.bean.VisitorInfoBean;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
@@ -23,16 +23,16 @@ import java.util.List;
  * Revision History:
  * ------------------
  */
-public class ProfileDao extends CommonDAOImpl
+public class VisitorInfoDao extends CommonDAOImpl
 {
 
 
-    public ProfileDao(int txSessionID) throws TxException
+    public VisitorInfoDao(int txSessionID) throws TxException
     {
         super(txSessionID);
     }
 
-    public void saveProfile(ProfileBean bean) throws TxException
+    public void SaveVisitorInfo(VisitorInfoBean bean) throws TxException
     {
         try
         {
@@ -43,28 +43,21 @@ public class ProfileDao extends CommonDAOImpl
             e.printStackTrace();
         }
     }
-
-    public void updateProfile(ProfileBean bean) throws TxException
+    public List<VisitorInfoBean> findVisitorInfoByStatus(int status) throws TxException
     {
         try
         {
-            super.update(bean);
-        }
-        catch (HibernateException e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-
-    public ProfileBean findProfileByUserId(String userID) throws TxException
-    {
-        try
-        {
-            Criteria crit = session.createCriteria(ProfileBean.class);
-            crit.add(Restrictions.eq("userID", userID));
-            crit.add(Restrictions.eq("status", 1));
-            return (ProfileBean) crit.uniqueResult();
+            Criteria crit = session.createCriteria(VisitorInfoBean.class);
+            crit.add(Restrictions.eq("status", status));
+            List<VisitorInfoBean> visitorInfoBeanList = crit.list();
+            if (visitorInfoBeanList.size() > 0)
+            {
+                return visitorInfoBeanList;
+            }
+            else
+            {
+                return null;
+            }
         }
         catch (HibernateException e)
         {

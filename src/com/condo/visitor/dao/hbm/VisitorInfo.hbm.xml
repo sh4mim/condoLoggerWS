@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.condo.visitor.bean.VisitorInfoBean" table="T_VISITOR_INFO">
+        <id name="OID" column="OID">
+            <generator class="increment">
+            </generator>
+        </id>
+
+        <property name="name" column="NAME"/>
+        <property name="phoneNo" column="PHONE_NO"/>
+        <property name="vehicleNo" column="VEHICLE_NO"/>
+        <property name="nid" column="NID"/>
+        <property name="expectedGuest" column="EXPECTED_GUEST"/>
+        <property name="possibleTime" column="POSSIBLE_TIME"/>
+        <property name="visitingTo" column="VISITING_TO"/>
+        <property name="status" column="STATUS"/>
+        <property name="imageUrl" column="IMAGE_URL"/>
+    </class>
+</hibernate-mapping>

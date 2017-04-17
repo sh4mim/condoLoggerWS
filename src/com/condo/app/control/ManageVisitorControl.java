@@ -3,14 +3,15 @@ package com.condo.app.control;
 import com.condo.app.bean.AppGenericResponse;
 import com.condo.profile.ProfileBean;
 import com.condo.profile.ProfileDBAccessBL;
+import com.condo.util.CondoDictionary;
 import com.condo.util.CondoException;
+import com.condo.visitor.bean.VisitorInfoBean;
+import com.condo.visitor.bl.VisitorDBAccessBL;
 import com.condo.web.ParamWrapper;
 import com.condo.web.WebDictionary;
+import org.apache.commons.httpclient.util.DateUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.owasp.esapi.ESAPI;
-import org.owasp.esapi.errors.ValidationException;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,21 +34,27 @@ import javax.servlet.http.HttpServletRequest;
  * ------------------
  **/
 @Controller
-@RequestMapping("/services/condoAppAuth")
-public class PasswordServiceControl
+@RequestMapping("/services/manageVisitor")
+public class ManageVisitorControl
 {
     private Log log = LogFactory.getLog(this.getClass());
 
-    public PasswordServiceControl()
+    public ManageVisitorControl()
     {
     }
 
-    @RequestMapping(value = "/updateUserPIN", method = RequestMethod.GET,
+    @RequestMapping(value = "/entryNewVisitor", method = RequestMethod.GET,
             headers = "Accept=application/json", produces = {"application/json"})
     @ResponseBody
     public AppGenericResponse updatePasswordExpiry(@RequestParam(value = "userId", required = true) String userId,
                                                    @RequestParam(value = "appId", required = true) String appDeviceId,
-                                                   @RequestParam(value = "newPIN", required = true) String newPIN,
+                                                   @RequestParam(value = "name", required = true) String name,
+                                                   @RequestParam(value = "phoneNo", required = true) String phoneNo,
+                                                   @RequestParam(value = "nid", required = true) String nid,
+                                                   @RequestParam(value = "vehicleNo", required = true) String vehicleNo,
+                                                   @RequestParam(value = "expectedGuest", required = true) String expectedGuest,
+                                                   @RequestParam(value = "possibleTime", required = true) String possibleTime,
+                                                   @RequestParam(value = "imageUrl", required = true) String imageUrl,
                                                    HttpServletRequest request)
     {
         AppGenericResponse response = new AppGenericResponse();
@@ -55,7 +62,13 @@ public class PasswordServiceControl
         {
             userId = ParamWrapper.unWrapParamValue(userId);
             appDeviceId = ParamWrapper.unWrapParamValue(appDeviceId);
-            newPIN = ParamWrapper.unWrapParamValue(newPIN);
+            name = ParamWrapper.unWrapParamValue(name);
+            phoneNo = ParamWrapper.unWrapParamValue(phoneNo);
+            nid = ParamWrapper.unWrapParamValue(nid);
+            vehicleNo = ParamWrapper.unWrapParamValue(vehicleNo);
+            expectedGuest = ParamWrapper.unWrapParamValue(expectedGuest);
+            possibleTime = ParamWrapper.unWrapParamValue(possibleTime);
+            imageUrl = ParamWrapper.unWrapParamValue(imageUrl);
         }
         catch (CondoException e)
         {
@@ -68,12 +81,18 @@ public class PasswordServiceControl
             ProfileBean profileBean = validator.validateProfile(userId);
             if (profileBean != null)
             {
-                log.debug("Password Change Request for User : " + profileBean.getUserID());
-                log.debug("Device ID : " + appDeviceId);
-                log.debug("New PIN : " + newPIN);
-                ProfileDBAccessBL bl = new ProfileDBAccessBL();
-                profileBean.setPin(newPIN);
-                bl.updateProfile(profileBean);
+                VisitorInfoBean bean = new VisitorInfoBean();
+                bean.setName(name);
+                bean.setPhoneNo(phoneNo);
+                bean.setNid(nid);
+                bean.setVehicleNo(vehicleNo);
+                bean.setExpectedGuest(Integer.valueOf(expectedGuest));
+                bean.setVisitingTo(userId);
+                bean.setImageUrl(imageUrl);
+                bean.setStatus(CondoDictionary.VISITOR_STATUS_ENQUEUED);
+                VisitorDBAccessBL bl = new VisitorDBAccessBL();
+//                bean.setPossibleTime(DateUtil.parseDate(possibleTime,DateUtil.);
+                bl.saveVisitor(bean);
                 response.setStatus(WebDictionary.STATUS_SUCCESS);
             }
         }

@@ -5,6 +5,8 @@ import com.condo.menu.dao.MenuDao;
 import com.condo.profile.dao.ProfileDao;
 import com.condo.tx.TxController;
 import com.condo.tx.TxException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.util.List;
 
@@ -25,6 +27,7 @@ import java.util.List;
 public class ProfileDBAccessBL
 {
 
+    private Log log = LogFactory.getLog(this.getClass());
 
     public void saveProfile(ProfileBean profileBean) throws TxException
     {
@@ -47,15 +50,39 @@ public class ProfileDBAccessBL
         }
     }
 
+    public void updateProfile(ProfileBean profileBean) throws TxException
+    {
+        TxController txController = TxController.getInstance();
+        int txSessionID = txController.initPersistence();
+        try
+        {
+            log.debug("Profile update called");
+            ProfileDao profileDao = new ProfileDao(txSessionID);
+            profileDao.update(profileBean);
+
+            txController.commitPersistence(txSessionID);
+        }
+        catch (Exception ex)
+        {
+            log.error("Profile update error : ,"+ ex );
+            txController.rollbackPersistence(txSessionID);
+        }
+
+        finally
+        {
+            txController.closeTxSession(txSessionID);
+        }
+    }
+
     public ProfileBean findProfileByUserId(String userID) throws TxException
     {
         TxController txController = TxController.getInstance();
-        ProfileBean returnBean=null;
+        ProfileBean returnBean = null;
         int txSessionID = txController.initPersistence();
         try
         {
             ProfileDao profileDao = new ProfileDao(txSessionID);
-            returnBean= profileDao.findProfileByUserId(userID);
+            returnBean = profileDao.findProfileByUserId(userID);
             txController.commitPersistence(txSessionID);
             return returnBean;
         }

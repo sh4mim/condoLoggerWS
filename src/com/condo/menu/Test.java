@@ -17,7 +17,7 @@ public class Test
         ProfileBean profile=new ProfileBean();
         profile.setProfileID(100);
         profile.setUserID("uzzalkuet@gmail.com");
-        profile.setPassWD(Encrypter.encryptOneWay("pass123"));
+        profile.setPin(Encrypter.encryptOneWay("pass123"));
         profile.setStatus(1);
         ProfileDBAccessBL bl=new ProfileDBAccessBL();
         try

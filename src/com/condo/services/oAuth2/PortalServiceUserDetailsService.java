@@ -50,7 +50,7 @@ public class PortalServiceUserDetailsService extends JdbcDaoImpl
                         String username = rs.getString("username");
                         String password = rs.getString("password");
                         boolean enabled = rs.getBoolean("enabled");
-                        long profileId = rs.getLong("profileId");
+                        long profileId = rs.getLong("oid");
 
 
                         boolean accountNonExpired = true;

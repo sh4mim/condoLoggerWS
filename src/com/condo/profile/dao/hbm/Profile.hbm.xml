@@ -4,19 +4,15 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.condo.profile.ProfileBean" table="T_PROFILE">
-        <id name="profileID" column="profile_id">
+    <class name="com.condo.profile.ProfileBean" table="T_IDENTITY">
+        <id name="profileID" column="OID">
             <generator class="increment">
             </generator>
         </id>
 
         <property name="userID" column="user_id"/>
-        <property name="passWD" column="passwd"/>
+        <property name="pin" column="PIN"/>
         <property name="status" column="STATUS"/>
-        <property name="firstName" column="FIRST_NAME"/>
-        <property name="lastName" column="LAST_NAME"/>
-        <property name="phone" column="PHONE"/>
-        <property name="address" column="ADDRESS"/>
         <property name="userType" column="USER_TYPE"/>
 
     </class>

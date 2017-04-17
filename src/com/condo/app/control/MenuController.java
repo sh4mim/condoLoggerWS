@@ -71,8 +71,8 @@ public class MenuController
             ProfileBean profileBean = new ProfileValidator().validateProfile(userId);
             if (profileBean != null)
             {
-                menuResponseBean.setFirstName(profileBean.getFirstName());
-                menuResponseBean.setLastName(profileBean.getLastName());
+                menuResponseBean.setFirstName(profileBean.getUserID());
+                menuResponseBean.setLastName("");
                 menuResponseBean.setWelcomeText(null);
                 userType=profileBean.getUserType();
             }

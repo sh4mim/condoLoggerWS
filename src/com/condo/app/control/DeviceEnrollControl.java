@@ -54,7 +54,7 @@ public class DeviceEnrollControl
 
         try
         {
-            ProfileValidator validator=new ProfileValidator();
+            ProfileValidator validator = new ProfileValidator();
             ProfileBean profileBean = validator.validateProfile(userId);
             if (profileBean != null)
             {
@@ -96,11 +96,11 @@ public class DeviceEnrollControl
             headers = "Accept=application/json", produces = {"application/json"})
     @ResponseBody
     public AppGenericResponse enqueueAppEnroll(@RequestParam(value = "userId", required = true) String userId,
-                                             @RequestParam(value = "appId", required = true) String appDeviceId,
-                                             @RequestParam(value = "otp", required = true) String otp,
-                                             @RequestParam(value = "model", required = true) String model,
-                                             @RequestParam(value = "manufacturer", required = true) String manufacturer
-                                            )
+                                               @RequestParam(value = "appId", required = true) String appDeviceId,
+                                               @RequestParam(value = "otp", required = true) String otp,
+                                               @RequestParam(value = "model", required = true) String model,
+                                               @RequestParam(value = "manufacturer", required = true) String manufacturer
+    )
     {
         AppGenericResponse response = new AppGenericResponse();
         response.setStatus(WebDictionary.STATUS_FAIL);
@@ -118,17 +118,24 @@ public class DeviceEnrollControl
             return response;
         }
 
+        if (!otp.equals("123456"))
+        {
+            response.setNote("SMS gate not integrated, Use 123456 as default OTP");
+            response.setObject(null);
+            return response;
+        }
+
         try
         {
-            ProfileValidator validator=new ProfileValidator();
+            ProfileValidator validator = new ProfileValidator();
             ProfileBean profileBean = validator.validateProfile(userId);
             if (profileBean != null)
             {
                 log.debug("Init Enroll request for: " + profileBean.getUserID());
-                log.debug("App ID : "+appDeviceId);
-                log.debug("OTP : "+otp);
-                log.debug("Model : "+model);
-                log.debug("Manufacturer : "+manufacturer);
+                log.debug("App ID : " + appDeviceId);
+                log.debug("OTP : " + otp);
+                log.debug("Model : " + model);
+                log.debug("Manufacturer : " + manufacturer);
                 response.setStatus(WebDictionary.STATUS_SUCCESS);
 
             }
