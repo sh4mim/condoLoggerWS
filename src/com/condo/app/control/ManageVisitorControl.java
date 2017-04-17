@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * package com.ibbl.app.control;
@@ -93,6 +94,95 @@ public class ManageVisitorControl
                 VisitorDBAccessBL bl = new VisitorDBAccessBL();
 //                bean.setPossibleTime(DateUtil.parseDate(possibleTime,DateUtil.);
                 bl.saveVisitor(bean);
+                response.setStatus(WebDictionary.STATUS_SUCCESS);
+            }
+        }
+        catch (Exception ex)
+        {
+            response.setNote("Request from Invalid User. Please contact with administrator");
+            response.setObject(null);
+            return response;
+        }
+
+        return response;
+    }
+
+    @RequestMapping(value = "/findGuestByDweller", method = RequestMethod.GET,
+            headers = "Accept=application/json", produces = {"application/json"})
+    @ResponseBody
+    public AppGenericResponse findGuestByDweller(@RequestParam(value = "userId", required = true) String userId,
+                                                 @RequestParam(value = "appId", required = true) String appDeviceId,
+                                                 @RequestParam(value = "dwellerId", required = true) String dwellerId,
+
+                                                 HttpServletRequest request)
+    {
+        AppGenericResponse response = new AppGenericResponse();
+        try
+        {
+            userId = ParamWrapper.unWrapParamValue(userId);
+            appDeviceId = ParamWrapper.unWrapParamValue(appDeviceId);
+            dwellerId = ParamWrapper.unWrapParamValue(dwellerId);
+            log.debug(appDeviceId);
+            log.debug(dwellerId);
+
+        }
+        catch (CondoException e)
+        {
+            return response;
+        }
+
+        try
+        {
+            ProfileValidator validator = new ProfileValidator();
+            ProfileBean profileBean = validator.validateProfile(userId);
+            if (profileBean != null)
+            {
+                VisitorDBAccessBL bl = new VisitorDBAccessBL();
+                List<VisitorInfoBean> visitorInfoBeanList = bl.findVisitorInfoByStatus(dwellerId, CondoDictionary.VISITOR_STATUS_ENQUEUED);
+                response.setObject(visitorInfoBeanList);
+                response.setStatus(WebDictionary.STATUS_SUCCESS);
+            }
+        }
+        catch (Exception ex)
+        {
+            response.setNote("Request from Invalid User. Please contact with administrator");
+            response.setObject(null);
+            return response;
+        }
+
+        return response;
+    }
+
+    @RequestMapping(value = "/findAllGuestList", method = RequestMethod.GET,
+            headers = "Accept=application/json", produces = {"application/json"})
+    @ResponseBody
+    public AppGenericResponse findAllGuestList(@RequestParam(value = "userId", required = true) String userId,
+                                                      @RequestParam(value = "appId", required = true) String appDeviceId,
+                                                      HttpServletRequest request)
+    {
+        AppGenericResponse response = new AppGenericResponse();
+        try
+        {
+            userId = ParamWrapper.unWrapParamValue(userId);
+            appDeviceId = ParamWrapper.unWrapParamValue(appDeviceId);
+            log.debug(appDeviceId);
+            log.debug(userId);
+
+        }
+        catch (CondoException e)
+        {
+            return response;
+        }
+
+        try
+        {
+            ProfileValidator validator = new ProfileValidator();
+            ProfileBean profileBean = validator.validateProfile(userId);
+            if (profileBean != null)
+            {
+                VisitorDBAccessBL bl = new VisitorDBAccessBL();
+                List<VisitorInfoBean> visitorInfoBeanList = bl.findAllGuestList();
+                response.setObject(visitorInfoBeanList);
                 response.setStatus(WebDictionary.STATUS_SUCCESS);
             }
         }

@@ -48,7 +48,7 @@ public class VisitorDBAccessBL
         }
     }
 
-    public List<VisitorInfoBean> findMenuByUserType(int status) throws TxException
+    public List<VisitorInfoBean> findVisitorInfoByStatus(String dwellerID,int status) throws TxException
     {
         TxController txController = TxController.getInstance();
         List<VisitorInfoBean> visitorInfoBeanList=null;
@@ -56,7 +56,32 @@ public class VisitorDBAccessBL
         try
         {
             VisitorInfoDao visitorInfoDao = new VisitorInfoDao(txSessionID);
-            visitorInfoBeanList = visitorInfoDao.findVisitorInfoByStatus(status);
+            visitorInfoBeanList = visitorInfoDao.findVisitorInfoByStatus(dwellerID,status);
+            txController.commitPersistence(txSessionID);
+            return visitorInfoBeanList;
+        }
+        catch (Exception ex)
+        {
+            txController.rollbackPersistence(txSessionID);
+            throw new TxException("Fail to Fetch menu information. ");
+        }
+
+        finally
+        {
+            txController.closeTxSession(txSessionID);
+        }
+
+    }
+
+    public List<VisitorInfoBean> findAllGuestList() throws TxException
+    {
+        TxController txController = TxController.getInstance();
+        List<VisitorInfoBean> visitorInfoBeanList=null;
+        int txSessionID = txController.initPersistence();
+        try
+        {
+            VisitorInfoDao visitorInfoDao = new VisitorInfoDao(txSessionID);
+            visitorInfoBeanList = visitorInfoDao.findAllGuestList();
             txController.commitPersistence(txSessionID);
             return visitorInfoBeanList;
         }

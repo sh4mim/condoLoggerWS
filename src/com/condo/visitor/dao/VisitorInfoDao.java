@@ -43,11 +43,12 @@ public class VisitorInfoDao extends CommonDAOImpl
             e.printStackTrace();
         }
     }
-    public List<VisitorInfoBean> findVisitorInfoByStatus(int status) throws TxException
+    public List<VisitorInfoBean> findVisitorInfoByStatus(String dwellerID,int status) throws TxException
     {
         try
         {
             Criteria crit = session.createCriteria(VisitorInfoBean.class);
+            crit.add(Restrictions.eq("visitingTo", dwellerID));
             crit.add(Restrictions.eq("status", status));
             List<VisitorInfoBean> visitorInfoBeanList = crit.list();
             if (visitorInfoBeanList.size() > 0)
@@ -61,9 +62,29 @@ public class VisitorInfoDao extends CommonDAOImpl
         }
         catch (HibernateException e)
         {
-            throw new TxException("Fail to Fetch menu information. ");
+            throw new TxException("Fail to Fetch Guest information. ");
         }
     }
 
+    public List<VisitorInfoBean> findAllGuestList() throws TxException
+    {
+        try
+        {
+            Criteria crit = session.createCriteria(VisitorInfoBean.class);
+            List<VisitorInfoBean> visitorInfoBeanList = crit.list();
+            if (visitorInfoBeanList.size() > 0)
+            {
+                return visitorInfoBeanList;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        catch (HibernateException e)
+        {
+            throw new TxException("Fail to Fetch Guest information. ");
+        }
+    }
 
 }
