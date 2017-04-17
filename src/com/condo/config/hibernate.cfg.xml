@@ -134,6 +134,7 @@
         <mapping resource="com/condo/profile/dao/hbm/Profile.hbm.xml"/>
         <mapping resource="com/condo/menu/dao/hbm/Menu.hbm.xml"/>
         <mapping resource="com/condo/visitor/dao/hbm/VisitorInfo.hbm.xml"/>
+        <mapping resource="com/condo/residence/dao/hbm/ResidenceInfo.hbm.xml"/>
 
 
     </session-factory>

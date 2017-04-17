@@ -21,4 +21,5 @@ public class CondoDictionary implements Serializable
     public static int VISITOR_STATUS_ACCEPTED = 1;
     public static int VISITOR_STATUS_REJECTED = 2;
     public static int VISITOR_STATUS_FAIL_TO_VERIFY = 3;
+    public static int RESIDENCE_STATUS_ACTIVE = 1;
 }
