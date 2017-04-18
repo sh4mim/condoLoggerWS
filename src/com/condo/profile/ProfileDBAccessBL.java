@@ -64,8 +64,9 @@ public class ProfileDBAccessBL
         }
         catch (Exception ex)
         {
-            log.error("Profile update error : ,"+ ex );
             txController.rollbackPersistence(txSessionID);
+            log.error("Profile update error : ,"+ ex );
+            throw new TxException("Fail to Update PIN.");
         }
 
         finally

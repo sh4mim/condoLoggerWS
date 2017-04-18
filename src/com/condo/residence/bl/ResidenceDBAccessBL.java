@@ -27,26 +27,6 @@ public class ResidenceDBAccessBL
 {
 
 
-//    public void saveVisitor(VisitorInfoBean bean) throws TxException
-//    {
-//        TxController txController = TxController.getInstance();
-//        int txSessionID = txController.initPersistence();
-//        try
-//        {
-//            VisitorInfoDao visitorInfoDao = new VisitorInfoDao(txSessionID);
-//            visitorInfoDao.save(bean);
-//            txController.commitPersistence(txSessionID);
-//        }
-//        catch (Exception ex)
-//        {
-//            txController.rollbackPersistence(txSessionID);
-//        }
-//
-//        finally
-//        {
-//            txController.closeTxSession(txSessionID);
-//        }
-//    }
 
     public List<ResidenceInfoBean> fetchResidenceByStatus(int status) throws TxException
     {
@@ -63,7 +43,7 @@ public class ResidenceDBAccessBL
         catch (Exception ex)
         {
             txController.rollbackPersistence(txSessionID);
-            throw new TxException("Fail to Fetch menu information. ");
+            throw new TxException(ex.getLocalizedMessage());
         }
 
         finally

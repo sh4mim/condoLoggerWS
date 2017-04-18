@@ -4,6 +4,7 @@ import com.condo.app.bean.AppGenericResponse;
 import com.condo.profile.ProfileBean;
 import com.condo.residence.bean.ResidenceInfoBean;
 import com.condo.residence.bl.ResidenceDBAccessBL;
+import com.condo.tx.TxException;
 import com.condo.util.CondoDictionary;
 import com.condo.util.CondoException;
 import com.condo.visitor.bean.VisitorInfoBean;
@@ -69,10 +70,19 @@ public class ManageResidenceControl
             ProfileBean profileBean = validator.validateProfile(userId);
             if (profileBean != null)
             {
-                ResidenceDBAccessBL bl = new ResidenceDBAccessBL();
-                List<ResidenceInfoBean> residenceInfoBeenList= bl.fetchResidenceByStatus(CondoDictionary.RESIDENCE_STATUS_ACTIVE);
-                response.setObject(residenceInfoBeenList);
-                response.setStatus(WebDictionary.STATUS_SUCCESS);
+                try
+                {
+                    ResidenceDBAccessBL bl = new ResidenceDBAccessBL();
+                    List<ResidenceInfoBean> residenceInfoBeenList = bl.fetchResidenceByStatus(CondoDictionary.RESIDENCE_STATUS_ACTIVE);
+                    response.setObject(residenceInfoBeenList);
+                    response.setStatus(WebDictionary.STATUS_SUCCESS);
+                }
+                catch (TxException ex)
+                {
+                    response.setNote(ex.getLocalizedMessage());
+                    response.setObject(null);
+                    return response;
+                }
             }
         }
         catch (Exception ex)

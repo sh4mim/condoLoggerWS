@@ -62,7 +62,7 @@ public class ResidenceInfoDao extends CommonDAOImpl
         }
         catch (HibernateException e)
         {
-            throw new TxException("Fail to Fetch Residence information. ");
+            throw new TxException("Fail to Fetch Residence information.");
         }
     }
 

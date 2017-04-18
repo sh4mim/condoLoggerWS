@@ -3,6 +3,7 @@ package com.condo.app.control;
 import com.condo.app.bean.AppGenericResponse;
 import com.condo.profile.ProfileBean;
 import com.condo.profile.ProfileDBAccessBL;
+import com.condo.tx.TxException;
 import com.condo.util.CondoException;
 import com.condo.web.ParamWrapper;
 import com.condo.web.WebDictionary;
@@ -73,8 +74,17 @@ public class PasswordServiceControl
                 log.debug("New PIN : " + newPIN);
                 ProfileDBAccessBL bl = new ProfileDBAccessBL();
                 profileBean.setPin(newPIN);
-                bl.updateProfile(profileBean);
-                response.setStatus(WebDictionary.STATUS_SUCCESS);
+                try
+                {
+                    bl.updateProfile(profileBean);
+                    response.setStatus(WebDictionary.STATUS_SUCCESS);
+                }
+                catch (TxException ex)
+                {
+                    response.setNote(ex.getLocalizedMessage());
+                    response.setObject(null);
+                    return response;
+                }
             }
         }
         catch (Exception ex)

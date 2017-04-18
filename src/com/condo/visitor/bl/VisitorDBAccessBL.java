@@ -40,6 +40,7 @@ public class VisitorDBAccessBL
         catch (Exception ex)
         {
             txController.rollbackPersistence(txSessionID);
+            throw new TxException("Fail to insert visitor information.");
         }
 
         finally
@@ -63,7 +64,7 @@ public class VisitorDBAccessBL
         catch (Exception ex)
         {
             txController.rollbackPersistence(txSessionID);
-            throw new TxException("Fail to Fetch menu information. ");
+            throw new TxException(ex.getLocalizedMessage());
         }
 
         finally
@@ -88,7 +89,7 @@ public class VisitorDBAccessBL
         catch (Exception ex)
         {
             txController.rollbackPersistence(txSessionID);
-            throw new TxException("Fail to Fetch menu information. ");
+            throw new TxException(ex.getLocalizedMessage());
         }
 
         finally

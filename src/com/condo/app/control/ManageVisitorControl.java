@@ -3,13 +3,14 @@ package com.condo.app.control;
 import com.condo.app.bean.AppGenericResponse;
 import com.condo.profile.ProfileBean;
 import com.condo.profile.ProfileDBAccessBL;
+import com.condo.tx.TxException;
 import com.condo.util.CondoDictionary;
 import com.condo.util.CondoException;
 import com.condo.visitor.bean.VisitorInfoBean;
 import com.condo.visitor.bl.VisitorDBAccessBL;
 import com.condo.web.ParamWrapper;
 import com.condo.web.WebDictionary;
-import org.apache.commons.httpclient.util.DateUtil;
+import com.ibbl.common.DateUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -82,6 +83,7 @@ public class ManageVisitorControl
             ProfileBean profileBean = validator.validateProfile(userId);
             if (profileBean != null)
             {
+
                 VisitorInfoBean bean = new VisitorInfoBean();
                 bean.setName(name);
                 bean.setPhoneNo(phoneNo);
@@ -92,9 +94,18 @@ public class ManageVisitorControl
                 bean.setImageUrl(imageUrl);
                 bean.setStatus(CondoDictionary.VISITOR_STATUS_ENQUEUED);
                 VisitorDBAccessBL bl = new VisitorDBAccessBL();
-//                bean.setPossibleTime(DateUtil.parseDate(possibleTime,DateUtil.);
-                bl.saveVisitor(bean);
-                response.setStatus(WebDictionary.STATUS_SUCCESS);
+                bean.setPossibleTime(DateUtil.toDateWithFormat(possibleTime, "dd/MM/yyyy HH:mm:ss"));
+                try
+                {
+                    bl.saveVisitor(bean);
+                    response.setStatus(WebDictionary.STATUS_SUCCESS);
+                }
+                catch (TxException ex)
+                {
+                    response.setNote(ex.getLocalizedMessage());
+                    response.setObject(null);
+                    return response;
+                }
             }
         }
         catch (Exception ex)
@@ -137,10 +148,19 @@ public class ManageVisitorControl
             ProfileBean profileBean = validator.validateProfile(userId);
             if (profileBean != null)
             {
-                VisitorDBAccessBL bl = new VisitorDBAccessBL();
-                List<VisitorInfoBean> visitorInfoBeanList = bl.findVisitorInfoByStatus(dwellerId, CondoDictionary.VISITOR_STATUS_ENQUEUED);
-                response.setObject(visitorInfoBeanList);
-                response.setStatus(WebDictionary.STATUS_SUCCESS);
+                try
+                {
+                    VisitorDBAccessBL bl = new VisitorDBAccessBL();
+                    List<VisitorInfoBean> visitorInfoBeanList = bl.findVisitorInfoByStatus(dwellerId, CondoDictionary.VISITOR_STATUS_ENQUEUED);
+                    response.setObject(visitorInfoBeanList);
+                    response.setStatus(WebDictionary.STATUS_SUCCESS);
+                }
+                catch (TxException ex)
+                {
+                    response.setNote(ex.getLocalizedMessage());
+                    response.setObject(null);
+                    return response;
+                }
             }
         }
         catch (Exception ex)
@@ -157,8 +177,8 @@ public class ManageVisitorControl
             headers = "Accept=application/json", produces = {"application/json"})
     @ResponseBody
     public AppGenericResponse findAllGuestList(@RequestParam(value = "userId", required = true) String userId,
-                                                      @RequestParam(value = "appId", required = true) String appDeviceId,
-                                                      HttpServletRequest request)
+                                               @RequestParam(value = "appId", required = true) String appDeviceId,
+                                               HttpServletRequest request)
     {
         AppGenericResponse response = new AppGenericResponse();
         try
@@ -181,9 +201,18 @@ public class ManageVisitorControl
             if (profileBean != null)
             {
                 VisitorDBAccessBL bl = new VisitorDBAccessBL();
-                List<VisitorInfoBean> visitorInfoBeanList = bl.findAllGuestList();
-                response.setObject(visitorInfoBeanList);
-                response.setStatus(WebDictionary.STATUS_SUCCESS);
+                try
+                {
+                    List<VisitorInfoBean> visitorInfoBeanList = bl.findAllGuestList();
+                    response.setObject(visitorInfoBeanList);
+                    response.setStatus(WebDictionary.STATUS_SUCCESS);
+                }
+                catch (TxException ex)
+                {
+                    response.setNote(ex.getLocalizedMessage());
+                    response.setObject(null);
+                    return response;
+                }
             }
         }
         catch (Exception ex)

@@ -17,6 +17,14 @@ public class VisitorInfoBean implements Serializable
     private String imageUrl;
     private int status;
 
+    ////This field is for Joining and display
+    private String dwellerName;
+    private String dwellerPhone;
+    private String dwellerEmail;
+    private String blockNo;
+    private String flatNo;
+    private String dwellerImage;
+
     public long getOID()
     {
         return OID;
@@ -115,5 +123,65 @@ public class VisitorInfoBean implements Serializable
     public void setStatus(int status)
     {
         this.status = status;
+    }
+
+    public String getDwellerName()
+    {
+        return dwellerName;
+    }
+
+    public void setDwellerName(String dwellerName)
+    {
+        this.dwellerName = dwellerName;
+    }
+
+    public String getDwellerPhone()
+    {
+        return dwellerPhone;
+    }
+
+    public void setDwellerPhone(String dwellerPhone)
+    {
+        this.dwellerPhone = dwellerPhone;
+    }
+
+    public String getDwellerEmail()
+    {
+        return dwellerEmail;
+    }
+
+    public void setDwellerEmail(String dwellerEmail)
+    {
+        this.dwellerEmail = dwellerEmail;
+    }
+
+    public String getBlockNo()
+    {
+        return blockNo;
+    }
+
+    public void setBlockNo(String blockNo)
+    {
+        this.blockNo = blockNo;
+    }
+
+    public String getFlatNo()
+    {
+        return flatNo;
+    }
+
+    public void setFlatNo(String flatNo)
+    {
+        this.flatNo = flatNo;
+    }
+
+    public String getDwellerImage()
+    {
+        return dwellerImage;
+    }
+
+    public void setDwellerImage(String dwellerImage)
+    {
+        this.dwellerImage = dwellerImage;
     }
 }
