@@ -2,7 +2,6 @@ package com.condo.app.control;
 
 import com.condo.app.bean.AppGenericResponse;
 import com.condo.profile.ProfileBean;
-import com.condo.profile.ProfileDBAccessBL;
 import com.condo.tx.TxException;
 import com.condo.util.CondoDictionary;
 import com.condo.util.CondoException;
@@ -224,4 +223,61 @@ public class ManageVisitorControl
 
         return response;
     }
+
+
+    @RequestMapping(value = "/updateVisitorInformation", method = RequestMethod.GET,
+            headers = "Accept=application/json", produces = {"application/json"})
+    @ResponseBody
+    public AppGenericResponse updateVisitorInformation(@RequestParam(value = "userId", required = true) String userId,
+                                                       @RequestParam(value = "appId", required = true) String appDeviceId,
+                                                       @RequestParam(value = "oid", required = true) String oid,
+                                                       HttpServletRequest request)
+    {
+        AppGenericResponse response = new AppGenericResponse();
+        try
+        {
+            log.debug(appDeviceId);
+            log.debug(oid);
+            userId = ParamWrapper.unWrapParamValue(userId);
+            appDeviceId = ParamWrapper.unWrapParamValue(appDeviceId);
+            oid = ParamWrapper.unWrapParamValue(oid);
+
+
+        }
+        catch (CondoException e)
+        {
+            return response;
+        }
+
+        try
+        {
+            ProfileValidator validator = new ProfileValidator();
+            ProfileBean profileBean = validator.validateProfile(userId);
+            if (profileBean != null)
+            {
+                try
+                {
+                    VisitorDBAccessBL bl = new VisitorDBAccessBL();
+                    bl.updateVisitorInfo(Long.parseLong(oid));
+                    response.setStatus(WebDictionary.STATUS_SUCCESS);
+                }
+                catch (TxException ex)
+                {
+                    response.setNote(ex.getLocalizedMessage());
+                    response.setObject(null);
+                    return response;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            response.setNote("Request from Invalid User. Please contact with administrator");
+            response.setObject(null);
+            return response;
+        }
+
+        return response;
+    }
+
+
 }

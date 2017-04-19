@@ -3,6 +3,7 @@ package com.condo.visitor.dao;
 import com.condo.menu.bean.MenuBean;
 import com.condo.tx.TxException;
 import com.condo.tx.dao.CommonDAOImpl;
+import com.condo.util.CondoDictionary;
 import com.condo.visitor.bean.VisitorInfoBean;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -10,7 +11,10 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.internal.SessionImpl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -39,15 +43,24 @@ public class VisitorInfoDao extends CommonDAOImpl
         super(txSessionID);
     }
 
-    public void SaveVisitorInfo(VisitorInfoBean bean) throws TxException
+    public void updateVisitorInfo(long oid) throws TxException
     {
         try
         {
-            super.save(bean);
+            SessionImpl sessionImpl = (SessionImpl) session;
+            Connection connection = sessionImpl.connection();
+            String queryString = "UPDATE t_visitor_info SET STATUS=? " +
+                    " WHERE OID=?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(queryString);
+            preparedStatement.setInt(1, CondoDictionary.VISITOR_STATUS_ACCEPTED);
+            preparedStatement.setLong(2, oid);
+            preparedStatement.executeUpdate();
         }
-        catch (HibernateException e)
+        catch (Exception e)
         {
-            e.printStackTrace();
+            log.error("error", e);
+            throw new TxException("Fail to Update Guest Information");
         }
     }
 
@@ -71,7 +84,7 @@ public class VisitorInfoDao extends CommonDAOImpl
             Criteria crit = session.createCriteria(VisitorInfoBean.class);
             crit.add(Restrictions.eq("visitingTo", dwellerID));
             crit.add(Restrictions.eq("status", status));
-            crit.add(Restrictions.between("possibleTime",new Date(fromCal.getTimeInMillis()),new Date(toCal.getTimeInMillis())));
+            crit.add(Restrictions.between("possibleTime", new Date(fromCal.getTimeInMillis()), new Date(toCal.getTimeInMillis())));
 
             List<VisitorInfoBean> visitorInfoBeanList = crit.list();
             if (visitorInfoBeanList.size() > 0)
@@ -153,7 +166,7 @@ public class VisitorInfoDao extends CommonDAOImpl
         }
         catch (Exception ex)
         {
-           throw new TxException("Fail to fetch guest information ",ex);
+            throw new TxException("Fail to fetch guest information ", ex);
         }
     }
 

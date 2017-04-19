@@ -49,6 +49,28 @@ public class VisitorDBAccessBL
         }
     }
 
+    public void updateVisitorInfo(long oid) throws TxException
+    {
+        TxController txc = TxController.getInstance();
+        int txID = txc.initPersistence();
+        VisitorInfoDao visitorInfoDao=new VisitorInfoDao(txID);
+        try
+        {
+            visitorInfoDao.updateVisitorInfo(oid);
+            txc.commitPersistence(txID);
+        }
+
+        catch (TxException e)
+        {
+            txc.rollbackPersistence(txID);
+            throw new TxException(e.getMessage());
+        }
+        finally
+        {
+            txc.closeTxSession(txID);
+        }
+    }
+
     public List<VisitorInfoBean> findVisitorInfoByStatus(String dwellerID,int status) throws TxException
     {
         TxController txController = TxController.getInstance();
